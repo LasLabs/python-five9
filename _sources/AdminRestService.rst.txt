@@ -1,0 +1,2 @@
+.. autowsdl: five9/wsdl/AdminRestService.wsdl
+   :namespace: AdminRestService

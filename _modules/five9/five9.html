@@ -1,0 +1,172 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>five9.five9 &#8212; Python Five9 0.0.1b6 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.0.1b6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for five9.five9</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright 2017-TODAY LasLabs Inc.</span>
+<span class="c1"># License MIT (https://opensource.org/licenses/MIT).</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">zeep</span>
+
+
+<div class="viewcode-block" id="Five9"><a class="viewcode-back" href="../../five9.html#five9.five9.Five9">[docs]</a><span class="k">class</span> <span class="nc">Five9</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="n">WSDL_ADMIN</span> <span class="o">=</span> <span class="s1">&#39;https://api.five9.com/wsadmin/v9_5/%20AdminWebService&#39;</span> \
+                 <span class="s1">&#39;?wsdl&amp;user=</span><span class="si">%s</span><span class="s1">&#39;</span>
+
+    <span class="n">_api_admin</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">_api_report</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">admin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api_admin</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_api_admin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_authenticated_client</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">WSDL_ADMIN</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api_admin</span><span class="o">.</span><span class="n">service</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">report</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api_report</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_api_report</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_authenticated_client</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">WSDL_REPORT</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api_report</span><span class="o">.</span><span class="n">service</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="n">username</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">auth</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_authenticated_client</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wsdl</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return an authenticated SOAP client.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            zeep.Client: Authenticated API client.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">auth</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">auth</span>
+        <span class="k">return</span> <span class="n">zeep</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">wsdl</span><span class="p">,</span> <span class="n">transport</span><span class="o">=</span><span class="n">zeep</span><span class="o">.</span><span class="n">Transport</span><span class="p">(</span><span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">))</span>
+
+<div class="viewcode-block" id="Five9.call"><a class="viewcode-back" href="../../five9.html#five9.five9.Five9.call">[docs]</a>    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">output_type</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Call the remote endpoint and returns the result, if success.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            endpoint (str): Five9 endpoint to call (e.g. ``ndcs``).</span>
+<span class="sd">            output_type (type): Class type to output. Object will be</span>
+<span class="sd">                instantiated using the current row before output.</span>
+<span class="sd">            params: (dict|bytes) Data to be sent in the query string</span>
+<span class="sd">                for the Request.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            RequestPaginator: Iterator representing all pages of the call</span>
+<span class="sd">                result.</span>
+<span class="sd">        Raises:</span>
+<span class="sd">            Five9RemoteException: In the event of something that is TBD.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">endpoint</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">.json&#39;</span> <span class="o">%</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">API_BASE</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">RequestPaginator</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">output_type</span><span class="o">=</span><span class="n">output_type</span><span class="p">)</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Python Five9</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=LasLabs&repo=python-five9&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+    
+
+<p>
+<a href="https://travis-ci.org/LasLabs/python-five9">
+    <img
+        alt="https://secure.travis-ci.org/LasLabs/python-five9.svg?branch=master"
+        src="https://secure.travis-ci.org/LasLabs/python-five9.svg?branch=master"
+    />
+</a>
+</p>
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../five9.html">five9 package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup.html">setup module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../test_flow.html">test_flow module</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017 LasLabs Inc..
+      
+    </div>
+
+    
+    <a href="https://github.com/LasLabs/python-five9" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

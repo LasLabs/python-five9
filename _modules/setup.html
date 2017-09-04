@@ -1,0 +1,203 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>setup &#8212; Python Five9 0.0.1b6 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1b6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for setup</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright 2016-TODAY LasLabs Inc.</span>
+<span class="c1"># License MIT (https://opensource.org/licenses/MIT).</span>
+
+<span class="kn">from</span> <span class="nn">setuptools</span> <span class="k">import</span> <span class="n">Command</span><span class="p">,</span> <span class="n">setup</span>
+<span class="kn">from</span> <span class="nn">setuptools</span> <span class="k">import</span> <span class="n">find_packages</span>
+<span class="kn">from</span> <span class="nn">unittest</span> <span class="k">import</span> <span class="n">TestLoader</span><span class="p">,</span> <span class="n">TextTestRunner</span>
+
+<span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">environ</span><span class="p">,</span> <span class="n">path</span>
+
+
+<span class="n">PROJECT</span> <span class="o">=</span> <span class="s1">&#39;python-five9&#39;</span>
+<span class="n">SHORT_DESC</span> <span class="o">=</span> <span class="s1">&#39;This library allows for you to integrate with Five9 Cloud &#39;</span> \
+             <span class="s1">&#39;Contact Center using Python.&#39;</span>
+<span class="n">README_FILE</span> <span class="o">=</span> <span class="s1">&#39;README.rst&#39;</span>
+
+<span class="n">CLASSIFIERS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Development Status :: 4 - Beta&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Environment :: Console&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Intended Audience :: Developers&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;License :: OSI Approved :: MIT License&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Programming Language :: Python&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Topic :: Software Development :: Libraries :: Python Modules&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">version</span> <span class="o">=</span> <span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;RELEASE&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;VERSION&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;0.0.0&#39;</span>
+
+<span class="k">if</span> <span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;TRAVIS_BUILD_NUMBER&#39;</span><span class="p">):</span>
+    <span class="n">version</span> <span class="o">+=</span> <span class="s1">&#39;b</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;TRAVIS_BUILD_NUMBER&#39;</span><span class="p">)</span>
+
+
+<span class="n">setup_vals</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">PROJECT</span><span class="p">,</span>
+    <span class="s1">&#39;author&#39;</span><span class="p">:</span> <span class="s1">&#39;LasLabs Inc.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;author_email&#39;</span><span class="p">:</span> <span class="s1">&#39;support@laslabs.com&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">SHORT_DESC</span><span class="p">,</span>
+    <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;https://laslabs.github.io/python-five9&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;download_url&#39;</span><span class="p">:</span> <span class="s1">&#39;https://github.com/LasLabs/python-five9&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;license&#39;</span><span class="p">:</span> <span class="s1">&#39;MIT&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;classifiers&#39;</span><span class="p">:</span> <span class="n">CLASSIFIERS</span><span class="p">,</span>
+    <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="n">version</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">README_FILE</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">README_FILE</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+        <span class="n">setup_vals</span><span class="p">[</span><span class="s1">&#39;long_description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+
+<span class="n">install_requires</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;requirements.txt&#39;</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;requirements.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+        <span class="n">install_requires</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="FailTestException"><a class="viewcode-back" href="../setup.html#setup.FailTestException">[docs]</a><span class="k">class</span> <span class="nc">FailTestException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; It provides a failing build &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Tests"><a class="viewcode-back" href="../setup.html#setup.Tests">[docs]</a><span class="k">class</span> <span class="nc">Tests</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Run test &amp; coverage, save reports as XML &quot;&quot;&quot;</span>
+
+    <span class="n">user_options</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># &lt; For Command API compatibility</span>
+
+<div class="viewcode-block" id="Tests.initialize_options"><a class="viewcode-back" href="../setup.html#setup.Tests.initialize_options">[docs]</a>    <span class="k">def</span> <span class="nf">initialize_options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Tests.finalize_options"><a class="viewcode-back" href="../setup.html#setup.Tests.finalize_options">[docs]</a>    <span class="k">def</span> <span class="nf">finalize_options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">):</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Tests.run"><a class="viewcode-back" href="../setup.html#setup.Tests.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">):</span>
+        <span class="n">loader</span> <span class="o">=</span> <span class="n">TestLoader</span><span class="p">()</span>
+        <span class="n">tests</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">discover</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;test_*.py&#39;</span><span class="p">)</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">TextTestRunner</span><span class="p">(</span><span class="n">verbosity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tests</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">res</span><span class="o">.</span><span class="n">wasSuccessful</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">FailTestException</span><span class="p">()</span></div></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">setup</span><span class="p">(</span>
+        <span class="n">packages</span><span class="o">=</span><span class="n">find_packages</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;tests&#39;</span><span class="p">)),</span>
+        <span class="n">cmdclass</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;test&#39;</span><span class="p">:</span> <span class="n">Tests</span><span class="p">},</span>
+        <span class="n">tests_require</span><span class="o">=</span><span class="p">[</span>
+            <span class="s1">&#39;mock&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="n">install_requires</span><span class="o">=</span><span class="n">install_requires</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">setup_vals</span>
+    <span class="p">)</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Python Five9</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=LasLabs&repo=python-five9&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+    
+
+<p>
+<a href="https://travis-ci.org/LasLabs/python-five9">
+    <img
+        alt="https://secure.travis-ci.org/LasLabs/python-five9.svg?branch=master"
+        src="https://secure.travis-ci.org/LasLabs/python-five9.svg?branch=master"
+    />
+</a>
+</p>
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../five9.html">five9 package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">setup module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../test_flow.html">test_flow module</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017 LasLabs Inc..
+      
+    </div>
+
+    
+    <a href="https://github.com/LasLabs/python-five9" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

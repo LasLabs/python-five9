@@ -1,0 +1,327 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>five9 package &#8212; Python Five9 0.0.1b6 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1b6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="setup module" href="setup.html" />
+    <link rel="prev" title="Welcome to python-five9’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="five9-package">
+<h1>five9 package<a class="headerlink" href="#five9-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-five9.exceptions">
+<span id="five9-exceptions-module"></span><h2>five9.exceptions module<a class="headerlink" href="#module-five9.exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="five9.exceptions.Five9AuthenticationError">
+<em class="property">exception </em><code class="descclassname">five9.exceptions.</code><code class="descname">Five9AuthenticationError</code><a class="reference internal" href="_modules/five9/exceptions.html#Five9AuthenticationError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.exceptions.Five9AuthenticationError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#five9.exceptions.Five9RemoteException" title="five9.exceptions.Five9RemoteException"><code class="xref py py-class docutils literal"><span class="pre">five9.exceptions.Five9RemoteException</span></code></a></p>
+<p>Raised to indicate an error with authenticating to the API.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="five9.exceptions.Five9RemoteException">
+<em class="property">exception </em><code class="descclassname">five9.exceptions.</code><code class="descname">Five9RemoteException</code><a class="reference internal" href="_modules/five9/exceptions.html#Five9RemoteException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.exceptions.Five9RemoteException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/exceptions.html#exceptions.EnvironmentError" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">exceptions.EnvironmentError</span></code></a></p>
+<p>Raised to indicate an error from the API.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="five9.exceptions.Five9ValidationError">
+<em class="property">exception </em><code class="descclassname">five9.exceptions.</code><code class="descname">Five9ValidationError</code><a class="reference internal" href="_modules/five9/exceptions.html#Five9ValidationError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.exceptions.Five9ValidationError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/exceptions.html#exceptions.Exception" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></a></p>
+<p>Raised to indicate an error with user-supplied input.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="five9-five9-desktop-module">
+<h2>five9.five9-desktop module<a class="headerlink" href="#five9-five9-desktop-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-five9.five9">
+<span id="five9-five9-module"></span><h2>five9.five9 module<a class="headerlink" href="#module-five9.five9" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="five9.five9.Five9">
+<em class="property">class </em><code class="descclassname">five9.five9.</code><code class="descname">Five9</code><span class="sig-paren">(</span><em>username</em>, <em>password</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/five9.html#Five9"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.five9.Five9" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="five9.five9.Five9.WSDL_ADMIN">
+<code class="descname">WSDL_ADMIN</code><em class="property"> = 'https://api.five9.com/wsadmin/v9_5/%20AdminWebService?wsdl&amp;user=%s'</em><a class="headerlink" href="#five9.five9.Five9.WSDL_ADMIN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="five9.five9.Five9.admin">
+<code class="descname">admin</code><a class="headerlink" href="#five9.five9.Five9.admin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="five9.five9.Five9.call">
+<code class="descname">call</code><span class="sig-paren">(</span><em>endpoint</em>, <em>output_type</em>, <em>params=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/five9.html#Five9.call"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.five9.Five9.call" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call the remote endpoint and returns the result, if success.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>endpoint</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – Five9 endpoint to call (e.g. <code class="docutils literal"><span class="pre">ndcs</span></code>).</li>
+<li><strong>output_type</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#type" title="(in Python v2.7)"><em>type</em></a>) – Class type to output. Object will be
+instantiated using the current row before output.</li>
+<li><strong>params</strong> – (dict|bytes) Data to be sent in the query string
+for the Request.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>Iterator representing all pages of the call</dt>
+<dd><p class="first last">result.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#five9.request_paginator.RequestPaginator" title="five9.request_paginator.RequestPaginator">RequestPaginator</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">Five9RemoteException</span></code> – In the event of something that is TBD.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.five9.Five9.report">
+<code class="descname">report</code><a class="headerlink" href="#five9.five9.Five9.report" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-five9.request_paginator">
+<span id="five9-request-paginator-module"></span><h2>five9.request_paginator module<a class="headerlink" href="#module-five9.request_paginator" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="five9.request_paginator.RequestPaginator">
+<em class="property">class </em><code class="descclassname">five9.request_paginator.</code><code class="descname">RequestPaginator</code><span class="sig-paren">(</span><em>endpoint</em>, <em>params=None</em>, <em>page_size=25</em>, <em>page_start=1</em>, <em>output_type=&lt;type 'dict'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/request_paginator.html#RequestPaginator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.request_paginator.RequestPaginator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>RequestPaginator provides an iterator based upon an initial request.</p>
+<dl class="attribute">
+<dt id="five9.request_paginator.RequestPaginator.PAGE_CURRENT">
+<code class="descname">PAGE_CURRENT</code><em class="property"> = 'current_page'</em><a class="headerlink" href="#five9.request_paginator.RequestPaginator.PAGE_CURRENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="five9.request_paginator.RequestPaginator.PAGE_DATA">
+<code class="descname">PAGE_DATA</code><em class="property"> = 'data'</em><a class="headerlink" href="#five9.request_paginator.RequestPaginator.PAGE_DATA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="five9.request_paginator.RequestPaginator.PAGE_META">
+<code class="descname">PAGE_META</code><em class="property"> = 'metadata'</em><a class="headerlink" href="#five9.request_paginator.RequestPaginator.PAGE_META" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="five9.request_paginator.RequestPaginator.PAGE_NUM">
+<code class="descname">PAGE_NUM</code><em class="property"> = 'page'</em><a class="headerlink" href="#five9.request_paginator.RequestPaginator.PAGE_NUM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="five9.request_paginator.RequestPaginator.PAGE_SIZE">
+<code class="descname">PAGE_SIZE</code><em class="property"> = 'pagesize'</em><a class="headerlink" href="#five9.request_paginator.RequestPaginator.PAGE_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="five9.request_paginator.RequestPaginator.PAGE_TOTAL">
+<code class="descname">PAGE_TOTAL</code><em class="property"> = 'total_pages'</em><a class="headerlink" href="#five9.request_paginator.RequestPaginator.PAGE_TOTAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="five9.request_paginator.RequestPaginator.SSL_VERIFY">
+<code class="descname">SSL_VERIFY</code><em class="property"> = True</em><a class="headerlink" href="#five9.request_paginator.RequestPaginator.SSL_VERIFY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="five9.request_paginator.RequestPaginator.call">
+<code class="descname">call</code><span class="sig-paren">(</span><em>params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/request_paginator.html#RequestPaginator.call"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.request_paginator.RequestPaginator.call" title="Permalink to this definition">¶</a></dt>
+<dd><p>It calls the remote endpoint and returns the JSON decoded result.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-five9">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-five9" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="five9.Five9">
+<em class="property">class </em><code class="descclassname">five9.</code><code class="descname">Five9</code><span class="sig-paren">(</span><em>username</em>, <em>password</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/five9.html#Five9"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.Five9" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="five9.Five9.WSDL_ADMIN">
+<code class="descname">WSDL_ADMIN</code><em class="property"> = 'https://api.five9.com/wsadmin/v9_5/%20AdminWebService?wsdl&amp;user=%s'</em><a class="headerlink" href="#five9.Five9.WSDL_ADMIN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="five9.Five9.admin">
+<code class="descname">admin</code><a class="headerlink" href="#five9.Five9.admin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="five9.Five9.call">
+<code class="descname">call</code><span class="sig-paren">(</span><em>endpoint</em>, <em>output_type</em>, <em>params=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/five9.html#Five9.call"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.Five9.call" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call the remote endpoint and returns the result, if success.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>endpoint</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – Five9 endpoint to call (e.g. <code class="docutils literal"><span class="pre">ndcs</span></code>).</li>
+<li><strong>output_type</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#type" title="(in Python v2.7)"><em>type</em></a>) – Class type to output. Object will be
+instantiated using the current row before output.</li>
+<li><strong>params</strong> – (dict|bytes) Data to be sent in the query string
+for the Request.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>Iterator representing all pages of the call</dt>
+<dd><p class="first last">result.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#five9.request_paginator.RequestPaginator" title="five9.request_paginator.RequestPaginator">RequestPaginator</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">Five9RemoteException</span></code> – In the event of something that is TBD.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.Five9.report">
+<code class="descname">report</code><a class="headerlink" href="#five9.Five9.report" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Python Five9</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=LasLabs&repo=python-five9&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+    
+
+<p>
+<a href="https://travis-ci.org/LasLabs/python-five9">
+    <img
+        alt="https://secure.travis-ci.org/LasLabs/python-five9.svg?branch=master"
+        src="https://secure.travis-ci.org/LasLabs/python-five9.svg?branch=master"
+    />
+</a>
+</p>
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">five9 package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-five9.exceptions">five9.exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#five9-five9-desktop-module">five9.five9-desktop module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-five9.five9">five9.five9 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-five9.request_paginator">five9.request_paginator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-five9">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">setup module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test_flow.html">test_flow module</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017 LasLabs Inc..
+      
+      |
+      <a href="_sources/five9.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/LasLabs/python-five9" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,46 @@
+five9 package
+=============
+
+Submodules
+----------
+
+five9\.exceptions module
+------------------------
+
+.. automodule:: five9.exceptions
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+five9\.five9\-desktop module
+----------------------------
+
+.. automodule:: five9.five9-desktop
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+five9\.five9 module
+-------------------
+
+.. automodule:: five9.five9
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+five9\.request\_paginator module
+--------------------------------
+
+.. automodule:: five9.request_paginator
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: five9
+    :members:
+    :undoc-members:
+    :show-inheritance:
