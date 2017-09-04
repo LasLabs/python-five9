@@ -1,0 +1,36 @@
+language: python
+
+python:
+  - "2.7"
+  - "3.2"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.6"
+  - "nightly"
+
+virtualenv:
+  system_site_packages: true
+
+env:
+  global:
+    - PROJECT="Python Five9"
+    - VERSION="0.1.0"
+    - RELEASE="0.0.1"
+    - secure: "W2o6D/4tFTxl7KxAxB8YacAGadRBB/VdTSIyam7e2K9iCiW6kNVPWsIjTZCbYQb6hRuuLwerrkFrxKNkHIlWa6YJxcrfVZBSAabMBgviAB3ZyfSyrxAc0qfxZGm/pSndX6rZCdtRGb/P7kgDR/iXzDiKCa1mkyXdPDhpPMTt+9Co1Es+HDTgx71f6hmChp57xsQucxETnElMVAnkM7AW4QSlZxuAIJT2g5Zs8+bADowltIzj0fLPAcOnPPVBqZWfz+6Jlw02ZLXfsynZAgQf+ucwVMvPyg0jKFcrxdBZb9bwIhSvs4bNZ74JTg0prJVhOg630010Zaiq4dlVfVovAtfG3uQFdRjYBhYQbLQcLdgTfaIN9v7GBvT6UwgPsA7a5z1vlrTbqA/w0ityFwDRxJMYBcpvh2op/X7jgctFp5a5LyfsNkBO7ky3HrX+/w3RtRk69AI7rV4jqjwy/DyTcSMT6OHMrmSY2plTtoUaNINKGHSeEaCkWIlJHOGfhuWJGtcT100p35dF3lZIxSLFFpLufD5iazLzHp5GCJnqgqPJJVS1Z8lqlWv7GG3QhHdExgGdO8ePI+VVv9stWXNuS43pOU6bhKq4K8sQd4Cyj4H5TPO8Idxi/Ug+waojdJ5xiPLZXXLQk7uafPbTVceP+qT/rs3qSgVXbN3ES/eU7w0="
+  matrix:
+    - TESTS="1"
+    - LINT_CHECK="1"
+    - PYPI="1"
+    - DOCS="1"
+
+install:
+  - git clone --depth=1 https://github.com/LasLabs/python-quality-tools.git ${HOME}/python-quality-tools
+  - export PATH=${HOME}/python-quality-tools/travis:${PATH}
+  - travis_install
+
+script:
+  - travis_run
+
+after_success:
+  - travis_after_success

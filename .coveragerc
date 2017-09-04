@@ -1,0 +1,28 @@
+[run]
+
+branch = True
+
+[report]
+
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    if self.debug:
+    raise NotImplementedError
+    if __name__ == .__main__.:
+
+ignore_errors = True
+
+include =
+    */five9/*
+
+omit =
+    */virtualenv/*
+    */tests/*
+    setup.py
+    */__init__.py
+    tests.py
+
+[xml]
+
+output = coverage.xml
