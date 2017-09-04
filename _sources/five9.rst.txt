@@ -12,14 +12,6 @@ five9\.exceptions module
     :undoc-members:
     :show-inheritance:
 
-five9\.five9\-desktop module
-----------------------------
-
-.. automodule:: five9.five9-desktop
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 five9\.five9 module
 -------------------
 
