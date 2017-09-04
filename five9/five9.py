@@ -1,0 +1,77 @@
+# -*- coding: utf-8 -*-
+# Copyright 2017-TODAY LasLabs Inc.
+# License MIT (https://opensource.org/licenses/MIT).
+
+import requests
+import zeep
+
+try:
+    from urllib.parse import quote
+except ImportError:
+    from urllib import quote
+
+
+class Five9(object):
+
+    WSDL_CONFIGURATION = 'https://api.five9.com/wsadmin/v9_5/' \
+                         'AdminWebService?wsdl&user=%s'
+    WSDL_SUPERVISOR = 'https://api.five9.com/wssupervisor/v9_5/' \
+                      'SupervisorWebService?wsdl&user=%s'
+
+    _api_configuration = None
+    _api_supervisor = None
+
+    @property
+    def configuration(self):
+        """Return an authenticated connection for use, open new if required.
+
+        Returns:
+            AdminWebService: New or existing session with the Five9 Admin Web
+            Services API.
+        """
+        if not self._api_configuration:
+            self._api_configuration = self._get_authenticated_client(
+                self.WSDL_CONFIGURATION,
+            )
+        return self._api_configuration.service
+
+    @property
+    def supervisor(self):
+        """Return an authenticated connection for use, open new if required.
+
+        Returns:
+            SupervisorWebService: New or existing session with the Five9
+            Statistics API.
+        """
+        if not self._api_supervisor:
+            self._api_supervisor = self._get_authenticated_client(
+                self.WSDL_SUPERVISOR,
+            )
+        return self._api_supervisor.service
+
+    def __init__(self, username, password):
+        self.username = username
+        self.auth = requests.auth.HTTPBasicAuth(username, password)
+
+    def _get_authenticated_client(self, wsdl):
+        """Return an authenticated SOAP client.
+
+        Returns:
+            zeep.Client: Authenticated API client.
+        """
+        return zeep.Client(
+            wsdl % quote(self.username),
+            transport=zeep.Transport(
+                session=self._get_authenticated_session(),
+            ),
+        )
+
+    def _get_authenticated_session(self):
+        """Return an authenticated requests session.
+
+        Returns:
+            requests.Session: Authenticated session for use.
+        """
+        session = requests.Session()
+        session.auth = self.auth
+        return session

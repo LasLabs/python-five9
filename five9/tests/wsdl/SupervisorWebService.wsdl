@@ -1,0 +1,3479 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.supervisor.ws.five9.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="WsSupervisorService" targetNamespace="http://service.supervisor.ws.five9.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.supervisor.ws.five9.com/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://service.supervisor.ws.five9.com/">
+  <xs:element name="acceptChatInvite" type="tns:acceptChatInvite"/>
+  <xs:element name="acceptChatInviteResponse" type="tns:acceptChatInviteResponse"/>
+  <xs:element name="closeChatSession" type="tns:closeChatSession"/>
+  <xs:element name="closeChatSessionResponse" type="tns:closeChatSessionResponse"/>
+  <xs:element name="closeSession" type="tns:closeSession"/>
+  <xs:element name="closeSessionResponse" type="tns:closeSessionResponse"/>
+  <xs:element name="createChatSession" type="tns:createChatSession"/>
+  <xs:element name="createChatSessionResponse" type="tns:createChatSessionResponse"/>
+  <xs:element name="forceStopCampaign" type="tns:forceStopCampaign"/>
+  <xs:element name="forceStopCampaignResponse" type="tns:forceStopCampaignResponse"/>
+  <xs:element name="getApiVersions" type="tns:getApiVersions"/>
+  <xs:element name="getApiVersionsResponse" type="tns:getApiVersionsResponse"/>
+  <xs:element name="getCallCountersState" type="tns:getCallCountersState"/>
+  <xs:element name="getCallCountersStateResponse" type="tns:getCallCountersStateResponse"/>
+  <xs:element name="getColumnNames" type="tns:getColumnNames"/>
+  <xs:element name="getColumnNamesResponse" type="tns:getColumnNamesResponse"/>
+  <xs:element name="getDispositionsNames" type="tns:getDispositionsNames"/>
+  <xs:element name="getDispositionsNamesResponse" type="tns:getDispositionsNamesResponse"/>
+  <xs:element name="getLoggedInUsers" type="tns:getLoggedInUsers"/>
+  <xs:element name="getLoggedInUsersResponse" type="tns:getLoggedInUsersResponse"/>
+  <xs:element name="getMonitoringSupervisors" type="tns:getMonitoringSupervisors"/>
+  <xs:element name="getMonitoringSupervisorsResponse" type="tns:getMonitoringSupervisorsResponse"/>
+  <xs:element name="getMyGroupIds" type="tns:getMyGroupIds"/>
+  <xs:element name="getMyGroupIdsResponse" type="tns:getMyGroupIdsResponse"/>
+  <xs:element name="getMyPermissions" type="tns:getMyPermissions"/>
+  <xs:element name="getMyPermissionsResponse" type="tns:getMyPermissionsResponse"/>
+  <xs:element name="getMySkillsIds" type="tns:getMySkillsIds"/>
+  <xs:element name="getMySkillsIdsResponse" type="tns:getMySkillsIdsResponse"/>
+  <xs:element name="getSessionParameters" type="tns:getSessionParameters"/>
+  <xs:element name="getSessionParametersResponse" type="tns:getSessionParametersResponse"/>
+  <xs:element name="getStatistics" type="tns:getStatistics"/>
+  <xs:element name="getStatisticsResponse" type="tns:getStatisticsResponse"/>
+  <xs:element name="getStatisticsUpdate" type="tns:getStatisticsUpdate"/>
+  <xs:element name="getStatisticsUpdateResponse" type="tns:getStatisticsUpdateResponse"/>
+  <xs:element name="getUserLimits" type="tns:getUserLimits"/>
+  <xs:element name="getUserLimitsResponse" type="tns:getUserLimitsResponse"/>
+  <xs:element name="loginStation" type="tns:loginStation"/>
+  <xs:element name="loginStationResponse" type="tns:loginStationResponse"/>
+  <xs:element name="receiveMessages" type="tns:receiveMessages"/>
+  <xs:element name="receiveMessagesResponse" type="tns:receiveMessagesResponse"/>
+  <xs:element name="reconnectStation" type="tns:reconnectStation"/>
+  <xs:element name="reconnectStationResponse" type="tns:reconnectStationResponse"/>
+  <xs:element name="removeUserFromChat" type="tns:removeUserFromChat"/>
+  <xs:element name="removeUserFromChatResponse" type="tns:removeUserFromChatResponse"/>
+  <xs:element name="resetCampaign" type="tns:resetCampaign"/>
+  <xs:element name="resetCampaignDispositions" type="tns:resetCampaignDispositions"/>
+  <xs:element name="resetCampaignDispositionsResponse" type="tns:resetCampaignDispositionsResponse"/>
+  <xs:element name="resetCampaignResponse" type="tns:resetCampaignResponse"/>
+  <xs:element name="sendBroadcastMessages" type="tns:sendBroadcastMessages"/>
+  <xs:element name="sendBroadcastMessagesResponse" type="tns:sendBroadcastMessagesResponse"/>
+  <xs:element name="sendChatInvite" type="tns:sendChatInvite"/>
+  <xs:element name="sendChatInviteResponse" type="tns:sendChatInviteResponse"/>
+  <xs:element name="sendInfoMessage" type="tns:sendInfoMessage"/>
+  <xs:element name="sendInfoMessageResponse" type="tns:sendInfoMessageResponse"/>
+  <xs:element name="sendMsgToChat" type="tns:sendMsgToChat"/>
+  <xs:element name="sendMsgToChatResponse" type="tns:sendMsgToChatResponse"/>
+  <xs:element name="setSessionParameters" type="tns:setSessionParameters"/>
+  <xs:element name="setSessionParametersResponse" type="tns:setSessionParametersResponse"/>
+  <xs:element name="startCampaign" type="tns:startCampaign"/>
+  <xs:element name="startCampaignResponse" type="tns:startCampaignResponse"/>
+  <xs:element name="startMonitoring" type="tns:startMonitoring"/>
+  <xs:element name="startMonitoringResponse" type="tns:startMonitoringResponse"/>
+  <xs:element name="stopCampaign" type="tns:stopCampaign"/>
+  <xs:element name="stopCampaignResponse" type="tns:stopCampaignResponse"/>
+  <xs:element name="stopMonitoring" type="tns:stopMonitoring"/>
+  <xs:element name="stopMonitoringResponse" type="tns:stopMonitoringResponse"/>
+  <xs:complexType name="acceptChatInvite">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="chatId" type="xs:string"/>
+      <xs:element name="accepted" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="acceptChatInviteResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="closeSession">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="closeSessionResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getMyGroupIds">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getMyGroupIdsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:wsAgentGroup"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="wsAgentGroup">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getSessionParameters">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getSessionParametersResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:viewSettings"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="viewSettings">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appType" type="xs:string"/>
+      <xs:element minOccurs="0" name="forceLogoutSession" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="idleTimeOut" type="xs:int"/>
+      <xs:element minOccurs="0" name="rollingPeriod" type="tns:rollingPeriod"/>
+      <xs:element name="shiftStart" type="xs:int"/>
+      <xs:element minOccurs="0" name="statisticsRange" type="tns:statisticsRange"/>
+      <xs:element name="timeZone" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMyPermissions">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getMyPermissionsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:supervisorPermission"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="supervisorPermission">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="type" type="tns:supervisorPermissionType"/>
+      <xs:element name="value" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getDispositionsNames">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getDispositionsNamesResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="loginStation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="stationName" type="xs:string"/>
+      <xs:element name="forceLogoutSession" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="appType" type="xs:string"/>
+      <xs:element minOccurs="0" name="idleTimeOut" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="loginStationResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:stationParameters"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="stationParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="backupProxy" type="xs:string"/>
+      <xs:element minOccurs="0" name="codecParameters" type="tns:codecParameters"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+      <xs:element minOccurs="0" name="proxy" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="codecParameters">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="codecs" type="tns:codec"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="cryptoSuites" type="tns:cryptoSuite"/>
+      <xs:element name="disableNAT" type="xs:boolean"/>
+      <xs:element name="noSilenceSuppression" type="xs:boolean"/>
+      <xs:element name="ptime" type="xs:int"/>
+      <xs:element name="rfc2833pType" type="xs:int"/>
+      <xs:element name="useSRTP" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="setSessionParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="viewSettings" type="tns:viewSettings"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="setSessionParametersResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="resetCampaign">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="campaignName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resetCampaignResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="sendChatInvite">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="chatId" type="xs:string"/>
+      <xs:element minOccurs="0" name="user" type="tns:wsRoledId"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="wsRoledId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="role" type="tns:userRole"/>
+      <xs:element name="userId" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sendChatInviteResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="stopCampaign">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="campaignName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="stopCampaignResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getStatisticsUpdate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="statisticType" type="tns:statisticType"/>
+      <xs:element name="previousTimestamp" type="xs:long"/>
+      <xs:element name="longPollingTimeout" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getStatisticsUpdateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:statisticsUpdate"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="statisticsUpdate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="addedObjects" type="tns:row"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="dataUpdate" type="tns:itemUpdate"/>
+      <xs:element minOccurs="0" name="deletedObjects" type="tns:row"/>
+      <xs:element name="lastTimestamp" type="xs:long"/>
+      <xs:element name="previousTimestamp" type="xs:long"/>
+      <xs:element minOccurs="0" name="type" type="tns:statisticType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="row">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="values">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="data" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="itemUpdate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="columnName" type="xs:string"/>
+      <xs:element minOccurs="0" name="columnValue" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="objectName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="reconnectStation">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="reconnectStationResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:connectStationResult"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMySkillsIds">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getMySkillsIdsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:wsSkill"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="wsSkill">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="closeChatSession">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="chatId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="closeChatSessionResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getColumnNames">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="statisticType" type="tns:statisticType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getColumnNamesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:row"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sendBroadcastMessages">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="type" type="tns:broadcastType"/>
+      <xs:element name="specId" type="xs:long"/>
+      <xs:element minOccurs="0" name="text" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sendBroadcastMessagesResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="sendInfoMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="user" type="tns:wsRoledId"/>
+      <xs:element minOccurs="0" name="text" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sendInfoMessageResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getStatistics">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="statisticType" type="tns:statisticType"/>
+      <xs:element minOccurs="0" name="columnNames" type="tns:row"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getStatisticsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:statistics"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="statistics">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="columns" type="tns:row"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="rows" nillable="true" type="tns:row"/>
+      <xs:element name="timestamp" type="xs:long"/>
+      <xs:element minOccurs="0" name="type" type="tns:statisticType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removeUserFromChat">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="chatId" type="xs:string"/>
+      <xs:element minOccurs="0" name="user" type="tns:wsRoledId"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removeUserFromChatResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getLoggedInUsers">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getLoggedInUsersResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:wsUserRoledId"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="wsUserRoledId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="roledId" type="tns:wsRoledId"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCallCountersState">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getCallCountersStateResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:limitTimeoutState"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="limitTimeoutState">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="callCounterStates" nillable="true" type="tns:callCounterState"/>
+      <xs:element name="timeout" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="callCounterState">
+    <xs:sequence>
+      <xs:element name="limit" type="xs:long"/>
+      <xs:element minOccurs="0" name="operationType" type="tns:apiOperationType"/>
+      <xs:element name="value" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sendMsgToChat">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="chatId" type="xs:string"/>
+      <xs:element minOccurs="0" name="text" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sendMsgToChatResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getUserLimits">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getUserLimitsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:wsUserLimits"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="wsUserLimits">
+    <xs:sequence>
+      <xs:element name="mobileLimit" type="xs:int"/>
+      <xs:element name="mobileLoggedin" type="xs:int"/>
+      <xs:element name="supervisorLimit" type="xs:int"/>
+      <xs:element name="supervisorsLoggedin" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="startCampaign">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="campaignName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="startCampaignResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getMonitoringSupervisors">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="agentName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMonitoringSupervisorsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:monitoringSupervisor"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="monitoringSupervisor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="mode" type="tns:monitoringMode"/>
+      <xs:element minOccurs="0" name="supervisorName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="receiveMessages">
+    <xs:sequence>
+      <xs:element name="previousTimestamp" type="xs:long"/>
+      <xs:element name="longPollingTimeout" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="receiveMessagesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:wsChatMessages"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="wsChatMessages">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="messages" nillable="true" type="tns:wsChatMessage"/>
+      <xs:element name="timestamp" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="wsChatMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="chatId" type="xs:string"/>
+      <xs:element minOccurs="0" name="from" type="tns:wsRoledId"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="participants" nillable="true" type="tns:wsRoledId"/>
+      <xs:element minOccurs="0" name="text" type="xs:string"/>
+      <xs:element minOccurs="0" name="timestamp" type="xs:long"/>
+      <xs:element minOccurs="0" name="type" type="tns:wsChatMessageType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resetCampaignDispositions">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="campaignName" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="dispositions" type="xs:string"/>
+      <xs:element minOccurs="0" name="after" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="before" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="resetCampaignDispositionsResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="stopMonitoring">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="agentName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="stopMonitoringResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="forceStopCampaign">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="campaignName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="forceStopCampaignResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="startMonitoring">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="agentName" type="xs:string"/>
+      <xs:element minOccurs="0" name="monitoringMode" type="tns:monitoringMode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="startMonitoringResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getApiVersions">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getApiVersionsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:versions"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="versions">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="maxVersion" type="xs:string"/>
+      <xs:element minOccurs="0" name="minVersion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createChatSession">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="createChatSessionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="rollingPeriod">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Minutes5"/>
+      <xs:enumeration value="Minutes10"/>
+      <xs:enumeration value="Minutes15"/>
+      <xs:enumeration value="Minutes30"/>
+      <xs:enumeration value="Hour1"/>
+      <xs:enumeration value="Hours2"/>
+      <xs:enumeration value="Hours3"/>
+      <xs:enumeration value="Today"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="statisticsRange">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RollingHour"/>
+      <xs:enumeration value="CurrentDay"/>
+      <xs:enumeration value="CurrentWeek"/>
+      <xs:enumeration value="CurrentMonth"/>
+      <xs:enumeration value="Lifetime"/>
+      <xs:enumeration value="CurrentShift"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="supervisorPermissionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Users"/>
+      <xs:enumeration value="Agents"/>
+      <xs:enumeration value="CallMonitoring"/>
+      <xs:enumeration value="Stations"/>
+      <xs:enumeration value="ChatSessions"/>
+      <xs:enumeration value="Campaigns"/>
+      <xs:enumeration value="CampaignManagement"/>
+      <xs:enumeration value="AllSkills"/>
+      <xs:enumeration value="BillingInfo"/>
+      <xs:enumeration value="BargeInMonitor"/>
+      <xs:enumeration value="WhisperMonitor"/>
+      <xs:enumeration value="ViewDataForAllAgentGroups"/>
+      <xs:enumeration value="ReviewVoiceRecordings"/>
+      <xs:enumeration value="EditAgentSkills"/>
+      <xs:enumeration value="NICEEnabled"/>
+      <xs:enumeration value="CanAccessDashboardMenu"/>
+      <xs:enumeration value="CampaignManagementStart"/>
+      <xs:enumeration value="CampaignManagementStop"/>
+      <xs:enumeration value="CampaignManagementReset"/>
+      <xs:enumeration value="CampaignManagementResetDispositions"/>
+      <xs:enumeration value="CampaignManagementResetListPositions"/>
+      <xs:enumeration value="CampaignManagementResetAbandonCallRate"/>
+      <xs:enumeration value="CanViewTextDetailsTab"/>
+      <xs:enumeration value="CanAccessShowFields"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="codec">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="G711U"/>
+      <xs:enumeration value="G711A"/>
+      <xs:enumeration value="G729"/>
+      <xs:enumeration value="G723"/>
+      <xs:enumeration value="GSM"/>
+      <xs:enumeration value="G726"/>
+      <xs:enumeration value="ILBC"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="cryptoSuite">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AES_CM_128_HMAC_SHA1_80"/>
+      <xs:enumeration value="AES_CM_128_HMAC_SHA1_32"/>
+      <xs:enumeration value="F8_128_HMAC_SHA1_80"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="campaignType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OUTBOUND"/>
+      <xs:enumeration value="AUTODIAL"/>
+      <xs:enumeration value="INBOUND"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="userRole">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Agent"/>
+      <xs:enumeration value="DomainSupervisor"/>
+      <xs:enumeration value="DomainAdmin"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="statisticType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AgentState"/>
+      <xs:enumeration value="AgentStatistics"/>
+      <xs:enumeration value="ACDStatus"/>
+      <xs:enumeration value="CampaignState"/>
+      <xs:enumeration value="OutboundCampaignManager"/>
+      <xs:enumeration value="OutboundCampaignStatistics"/>
+      <xs:enumeration value="InboundCampaignStatistics"/>
+      <xs:enumeration value="AutodialCampaignStatistics"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="connectStationResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CONNECT"/>
+      <xs:enumeration value="CONNECT_VOICE"/>
+      <xs:enumeration value="CONNECT_ANSWR_MACHN"/>
+      <xs:enumeration value="CONNECT_DIGITAL_PHONE"/>
+      <xs:enumeration value="CONNECT_FAX"/>
+      <xs:enumeration value="CONNECT_RINGBACK"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="connectStationProblem">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="HARDWARE_TIMEOUT"/>
+      <xs:enumeration value="OPERATOR_INTERCEPT"/>
+      <xs:enumeration value="DIAL_ERROR"/>
+      <xs:enumeration value="RESOURCE_UNAVAILABLE"/>
+      <xs:enumeration value="BUSY"/>
+      <xs:enumeration value="NO_ANSWER"/>
+      <xs:enumeration value="NO_DIALTONE"/>
+      <xs:enumeration value="HANGUP"/>
+      <xs:enumeration value="UNKNOWN_ERROR"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="broadcastType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ALL"/>
+      <xs:enumeration value="MY_SKILLS"/>
+      <xs:enumeration value="SPEC_SKILL"/>
+      <xs:enumeration value="MY_AGENT_GROUPS"/>
+      <xs:enumeration value="SPEC_AGENT_GROUP"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="apiOperationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Query"/>
+      <xs:enumeration value="Modify"/>
+      <xs:enumeration value="Upload"/>
+      <xs:enumeration value="SingleUpload"/>
+      <xs:enumeration value="ReportRequest"/>
+      <xs:enumeration value="RetrieveReport"/>
+      <xs:enumeration value="AsynchronousUpload"/>
+      <xs:enumeration value="QueryStatistics"/>
+      <xs:enumeration value="QueryChangedStatistics"/>
+      <xs:enumeration value="Web2CampaignUpload"/>
+      <xs:enumeration value="VIVRCreateSession"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="monitoringMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Silence"/>
+      <xs:enumeration value="BargeIn"/>
+      <xs:enumeration value="Whispering"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="wsChatMessageType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BROADCAST"/>
+      <xs:enumeration value="INFO"/>
+      <xs:enumeration value="REQUEST"/>
+      <xs:enumeration value="INVITE"/>
+      <xs:enumeration value="INVITE_CANCELLED"/>
+      <xs:enumeration value="ACK"/>
+      <xs:enumeration value="NACK"/>
+      <xs:enumeration value="TIMEOUT"/>
+      <xs:enumeration value="KICK"/>
+      <xs:enumeration value="BROADCAST_TO_SKILL"/>
+      <xs:enumeration value="BROADCAST_TO_AGENT_GROUP"/>
+      <xs:enumeration value="CHAT"/>
+      <xs:enumeration value="ARRIVED"/>
+      <xs:enumeration value="LEAVE"/>
+      <xs:enumeration value="END"/>
+      <xs:enumeration value="KILLED"/>
+      <xs:enumeration value="PARTICIPANT_REQ"/>
+      <xs:enumeration value="PARTICIPANT_RESP"/>
+      <xs:enumeration value="HELP_REQUEST"/>
+      <xs:enumeration value="UNKNOWN"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="campaignState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NOT_RUNNING"/>
+      <xs:enumeration value="STARTING"/>
+      <xs:enumeration value="RUNNING"/>
+      <xs:enumeration value="STOPPING"/>
+      <xs:enumeration value="RESETTING"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="UserLimitReachedFault" type="tns:UserLimitReachedFault"/>
+  <xs:complexType name="UserLimitReachedFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChatFault" type="tns:ChatFault"/>
+  <xs:complexType name="ChatFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MissedArgumentFault" type="tns:MissedArgumentFault"/>
+  <xs:complexType name="MissedArgumentFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserAlreadyLoggedInFault" type="tns:UserAlreadyLoggedInFault"/>
+  <xs:complexType name="UserAlreadyLoggedInFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceUnavailableFault" type="tns:ServiceUnavailableFault"/>
+  <xs:complexType name="ServiceUnavailableFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OperationsLimitExceededFault" type="tns:OperationsLimitExceededFault"/>
+  <xs:complexType name="OperationsLimitExceededFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="limit" type="xs:long"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+      <xs:element minOccurs="0" name="operationType" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IncorrectArgumentFault" type="tns:IncorrectArgumentFault"/>
+  <xs:complexType name="IncorrectArgumentFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SessionClosedFault" type="tns:SessionClosedFault"/>
+  <xs:complexType name="SessionClosedFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InvalidAccountFault" type="tns:InvalidAccountFault"/>
+  <xs:complexType name="InvalidAccountFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServerFault" type="tns:ServerFault"/>
+  <xs:complexType name="ServerFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccessDisallowedFault" type="tns:AccessDisallowedFault"/>
+  <xs:complexType name="AccessDisallowedFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SessionNotInitializedFault" type="tns:SessionNotInitializedFault"/>
+  <xs:complexType name="SessionNotInitializedFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StationNotFoundFault" type="tns:StationNotFoundFault"/>
+  <xs:complexType name="StationNotFoundFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+      <xs:element minOccurs="0" name="stationName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WrongCampaignTypeFault" type="tns:WrongCampaignTypeFault"/>
+  <xs:complexType name="WrongCampaignTypeFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="actualType" type="tns:campaignType"/>
+      <xs:element minOccurs="0" name="campaignName" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="desiredTypes" type="tns:campaignType"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConcurrentModificationFault" type="tns:ConcurrentModificationFault"/>
+  <xs:complexType name="ConcurrentModificationFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CampaignNotFoundFault" type="tns:CampaignNotFoundFault"/>
+  <xs:complexType name="CampaignNotFoundFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="campaignName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CampaignStateUpdateFault" type="tns:CampaignStateUpdateFault"/>
+  <xs:complexType name="CampaignStateUpdateFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="campaignName" type="xs:string"/>
+      <xs:element minOccurs="0" name="details" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StatisticsNotRequestedFault" type="tns:StatisticsNotRequestedFault"/>
+  <xs:complexType name="StatisticsNotRequestedFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UnknownTimestampFault" type="tns:UnknownTimestampFault"/>
+  <xs:complexType name="UnknownTimestampFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConfigurationChangedFault" type="tns:ConfigurationChangedFault"/>
+  <xs:complexType name="ConfigurationChangedFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StationNotLoggedInFault" type="tns:StationNotLoggedInFault"/>
+  <xs:complexType name="StationNotLoggedInFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReconnectStationFault" type="tns:ReconnectStationFault"/>
+  <xs:complexType name="ReconnectStationFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+      <xs:element minOccurs="0" name="problem" type="tns:connectStationProblem"/>
+      <xs:element minOccurs="0" name="stationName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UnknownColumnFault" type="tns:UnknownColumnFault"/>
+  <xs:complexType name="UnknownColumnFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AgentNotFoundFault" type="tns:AgentNotFoundFault"/>
+  <xs:complexType name="AgentNotFoundFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="agentName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WrongCampaignStateFault" type="tns:WrongCampaignStateFault"/>
+  <xs:complexType name="WrongCampaignStateFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="actualState" type="tns:campaignState"/>
+      <xs:element minOccurs="0" name="campaignName" type="xs:string"/>
+      <xs:element minOccurs="0" name="desiredState" type="tns:campaignState"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DispositionNotFoundFault" type="tns:DispositionNotFoundFault"/>
+  <xs:complexType name="DispositionNotFoundFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dispositionName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AgentMonitorFault" type="tns:AgentMonitorFault"/>
+  <xs:complexType name="AgentMonitorFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="agentName" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+      <xs:element minOccurs="0" name="monitorError" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="acceptChatInvite">
+    <wsdl:part element="tns:acceptChatInvite" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="closeSession">
+    <wsdl:part element="tns:closeSession" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MissedArgumentException">
+    <wsdl:part element="tns:MissedArgumentFault" name="MissedArgumentException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMyPermissionsResponse">
+    <wsdl:part element="tns:getMyPermissionsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="resetCampaignResponse">
+    <wsdl:part element="tns:resetCampaignResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UnknownTimestampException">
+    <wsdl:part element="tns:UnknownTimestampFault" name="UnknownTimestampException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDispositionsNames">
+    <wsdl:part element="tns:getDispositionsNames" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getApiVersionsResponse">
+    <wsdl:part element="tns:getApiVersionsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setSessionParameters">
+    <wsdl:part element="tns:setSessionParameters" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="resetCampaign">
+    <wsdl:part element="tns:resetCampaign" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendChatInvite">
+    <wsdl:part element="tns:sendChatInvite" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getStatisticsUpdate">
+    <wsdl:part element="tns:getStatisticsUpdate" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AgentNotFoundException">
+    <wsdl:part element="tns:AgentNotFoundFault" name="AgentNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ServiceUnavailableException">
+    <wsdl:part element="tns:ServiceUnavailableFault" name="ServiceUnavailableException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="resetCampaignDispositionsResponse">
+    <wsdl:part element="tns:resetCampaignDispositionsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IncorrectArgumentException">
+    <wsdl:part element="tns:IncorrectArgumentFault" name="IncorrectArgumentException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaignResponse">
+    <wsdl:part element="tns:startCampaignResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="closeChatSession">
+    <wsdl:part element="tns:closeChatSession" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getColumnNames">
+    <wsdl:part element="tns:getColumnNames" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="StationNotFoundException">
+    <wsdl:part element="tns:StationNotFoundFault" name="StationNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendInfoMessage">
+    <wsdl:part element="tns:sendInfoMessage" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeUserFromChatResponse">
+    <wsdl:part element="tns:removeUserFromChatResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeUserFromChat">
+    <wsdl:part element="tns:removeUserFromChat" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="acceptChatInviteResponse">
+    <wsdl:part element="tns:acceptChatInviteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SessionNotInitializedException">
+    <wsdl:part element="tns:SessionNotInitializedFault" name="SessionNotInitializedException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CampaignStateUpdateException">
+    <wsdl:part element="tns:CampaignStateUpdateFault" name="CampaignStateUpdateException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ReconnectStationException">
+    <wsdl:part element="tns:ReconnectStationFault" name="ReconnectStationException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="StatisticsNotRequestedException">
+    <wsdl:part element="tns:StatisticsNotRequestedFault" name="StatisticsNotRequestedException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WSChatException">
+    <wsdl:part element="tns:ChatFault" name="WSChatException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loginStationResponse">
+    <wsdl:part element="tns:loginStationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getColumnNamesResponse">
+    <wsdl:part element="tns:getColumnNamesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCallCountersStateResponse">
+    <wsdl:part element="tns:getCallCountersStateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCallCountersState">
+    <wsdl:part element="tns:getCallCountersState" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WrongCampaignStateException">
+    <wsdl:part element="tns:WrongCampaignStateFault" name="WrongCampaignStateException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendChatInviteResponse">
+    <wsdl:part element="tns:sendChatInviteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSessionParametersResponse">
+    <wsdl:part element="tns:getSessionParametersResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="reconnectStationResponse">
+    <wsdl:part element="tns:reconnectStationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendMsgToChat">
+    <wsdl:part element="tns:sendMsgToChat" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OperationsLimitExceededException">
+    <wsdl:part element="tns:OperationsLimitExceededFault" name="OperationsLimitExceededException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InvalidAccountException">
+    <wsdl:part element="tns:InvalidAccountFault" name="InvalidAccountException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMySkillsIdsResponse">
+    <wsdl:part element="tns:getMySkillsIdsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMonitoringSupervisors">
+    <wsdl:part element="tns:getMonitoringSupervisors" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="resetCampaignDispositions">
+    <wsdl:part element="tns:resetCampaignDispositions" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createChatSessionResponse">
+    <wsdl:part element="tns:createChatSessionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startMonitoring">
+    <wsdl:part element="tns:startMonitoring" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AgentMonitorException">
+    <wsdl:part element="tns:AgentMonitorFault" name="AgentMonitorException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="stopMonitoringResponse">
+    <wsdl:part element="tns:stopMonitoringResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AccessDisallowedException">
+    <wsdl:part element="tns:AccessDisallowedFault" name="AccessDisallowedException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CampaignNotFoundException">
+    <wsdl:part element="tns:CampaignNotFoundFault" name="CampaignNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createChatSession">
+    <wsdl:part element="tns:createChatSession" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UserLimitReachedException">
+    <wsdl:part element="tns:UserLimitReachedFault" name="UserLimitReachedException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getStatisticsUpdateResponse">
+    <wsdl:part element="tns:getStatisticsUpdateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="forceStopCampaignResponse">
+    <wsdl:part element="tns:forceStopCampaignResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startMonitoringResponse">
+    <wsdl:part element="tns:startMonitoringResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMyGroupIds">
+    <wsdl:part element="tns:getMyGroupIds" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSessionParameters">
+    <wsdl:part element="tns:getSessionParameters" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WrongCampaignTypeException">
+    <wsdl:part element="tns:WrongCampaignTypeFault" name="WrongCampaignTypeException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getStatisticsResponse">
+    <wsdl:part element="tns:getStatisticsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMyPermissions">
+    <wsdl:part element="tns:getMyPermissions" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UnknownColumnException">
+    <wsdl:part element="tns:UnknownColumnFault" name="UnknownColumnException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loginStation">
+    <wsdl:part element="tns:loginStation" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DispositionNotFoundException">
+    <wsdl:part element="tns:DispositionNotFoundFault" name="DispositionNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="stopCampaign">
+    <wsdl:part element="tns:stopCampaign" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="reconnectStation">
+    <wsdl:part element="tns:reconnectStation" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SessionClosedException">
+    <wsdl:part element="tns:SessionClosedFault" name="SessionClosedException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMySkillsIds">
+    <wsdl:part element="tns:getMySkillsIds" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendMsgToChatResponse">
+    <wsdl:part element="tns:sendMsgToChatResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConcurrentModificationException">
+    <wsdl:part element="tns:ConcurrentModificationFault" name="ConcurrentModificationException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendBroadcastMessages">
+    <wsdl:part element="tns:sendBroadcastMessages" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="StationNotLoggedInException">
+    <wsdl:part element="tns:StationNotLoggedInFault" name="StationNotLoggedInException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getStatistics">
+    <wsdl:part element="tns:getStatistics" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="receiveMessagesResponse">
+    <wsdl:part element="tns:receiveMessagesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLoggedInUsers">
+    <wsdl:part element="tns:getLoggedInUsers" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDispositionsNamesResponse">
+    <wsdl:part element="tns:getDispositionsNamesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setSessionParametersResponse">
+    <wsdl:part element="tns:setSessionParametersResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="stopCampaignResponse">
+    <wsdl:part element="tns:stopCampaignResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendBroadcastMessagesResponse">
+    <wsdl:part element="tns:sendBroadcastMessagesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMyGroupIdsResponse">
+    <wsdl:part element="tns:getMyGroupIdsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UserAlreadyLoggedInException">
+    <wsdl:part element="tns:UserAlreadyLoggedInFault" name="UserAlreadyLoggedInException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="closeChatSessionResponse">
+    <wsdl:part element="tns:closeChatSessionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMonitoringSupervisorsResponse">
+    <wsdl:part element="tns:getMonitoringSupervisorsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserLimitsResponse">
+    <wsdl:part element="tns:getUserLimitsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendInfoMessageResponse">
+    <wsdl:part element="tns:sendInfoMessageResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserLimits">
+    <wsdl:part element="tns:getUserLimits" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCampaign">
+    <wsdl:part element="tns:startCampaign" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="closeSessionResponse">
+    <wsdl:part element="tns:closeSessionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="receiveMessages">
+    <wsdl:part element="tns:receiveMessages" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="stopMonitoring">
+    <wsdl:part element="tns:stopMonitoring" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="forceStopCampaign">
+    <wsdl:part element="tns:forceStopCampaign" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ServerException">
+    <wsdl:part element="tns:ServerFault" name="ServerException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLoggedInUsersResponse">
+    <wsdl:part element="tns:getLoggedInUsersResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getApiVersions">
+    <wsdl:part element="tns:getApiVersions" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ConfigurationChangedException">
+    <wsdl:part element="tns:ConfigurationChangedFault" name="ConfigurationChangedException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WsSupervisor">
+<wsdl:documentation>Web service to automate VCC Supervisor actions.Version [9.5.00/9_5]</wsdl:documentation>
+    <wsdl:operation name="acceptChatInvite">
+      <wsdl:input message="tns:acceptChatInvite" name="acceptChatInvite">
+    </wsdl:input>
+      <wsdl:output message="tns:acceptChatInviteResponse" name="acceptChatInviteResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionNotInitializedException" name="SessionNotInitializedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WSChatException" name="WSChatException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MissedArgumentException" name="MissedArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="closeSession">
+      <wsdl:input message="tns:closeSession" name="closeSession">
+    </wsdl:input>
+      <wsdl:output message="tns:closeSessionResponse" name="closeSessionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMyGroupIds">
+      <wsdl:input message="tns:getMyGroupIds" name="getMyGroupIds">
+    </wsdl:input>
+      <wsdl:output message="tns:getMyGroupIdsResponse" name="getMyGroupIdsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionNotInitializedException" name="SessionNotInitializedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSessionParameters">
+      <wsdl:input message="tns:getSessionParameters" name="getSessionParameters">
+    </wsdl:input>
+      <wsdl:output message="tns:getSessionParametersResponse" name="getSessionParametersResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionNotInitializedException" name="SessionNotInitializedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getMyPermissions">
+      <wsdl:input message="tns:getMyPermissions" name="getMyPermissions">
+    </wsdl:input>
+      <wsdl:output message="tns:getMyPermissionsResponse" name="getMyPermissionsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionNotInitializedException" name="SessionNotInitializedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDispositionsNames">
+      <wsdl:input message="tns:getDispositionsNames" name="getDispositionsNames">
+    </wsdl:input>
+      <wsdl:output message="tns:getDispositionsNamesResponse" name="getDispositionsNamesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionNotInitializedException" name="SessionNotInitializedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="loginStation">
+      <wsdl:input message="tns:loginStation" name="loginStation">
+    </wsdl:input>
+      <wsdl:output message="tns:loginStationResponse" name="loginStationResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:StationNotFoundException" name="StationNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MissedArgumentException" name="MissedArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setSessionParameters">
+      <wsdl:input message="tns:setSessionParameters" name="setSessionParameters">
+    </wsdl:input>
+      <wsdl:output message="tns:setSessionParametersResponse" name="setSessionParametersResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MissedArgumentException" name="MissedArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="resetCampaign">
+      <wsdl:input message="tns:resetCampaign" name="resetCampaign">
+    </wsdl:input>
+      <wsdl:output message="tns:resetCampaignResponse" name="resetCampaignResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ConcurrentModificationException" name="ConcurrentModificationException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CampaignNotFoundException" name="CampaignNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CampaignStateUpdateException" name="CampaignStateUpdateException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MissedArgumentException" name="MissedArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WrongCampaignTypeException" name="WrongCampaignTypeException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sendChatInvite">
+      <wsdl:input message="tns:sendChatInvite" name="sendChatInvite">
+    </wsdl:input>
+      <wsdl:output message="tns:sendChatInviteResponse" name="sendChatInviteResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionNotInitializedException" name="SessionNotInitializedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WSChatException" name="WSChatException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MissedArgumentException" name="MissedArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="stopCampaign">
+      <wsdl:input message="tns:stopCampaign" name="stopCampaign">
+    </wsdl:input>
+      <wsdl:output message="tns:stopCampaignResponse" name="stopCampaignResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ConcurrentModificationException" name="ConcurrentModificationException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CampaignNotFoundException" name="CampaignNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CampaignStateUpdateException" name="CampaignStateUpdateException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MissedArgumentException" name="MissedArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getStatisticsUpdate">
+      <wsdl:input message="tns:getStatisticsUpdate" name="getStatisticsUpdate">
+    </wsdl:input>
+      <wsdl:output message="tns:getStatisticsUpdateResponse" name="getStatisticsUpdateResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionNotInitializedException" name="SessionNotInitializedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ConfigurationChangedException" name="ConfigurationChangedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UnknownTimestampException" name="UnknownTimestampException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:StatisticsNotRequestedException" name="StatisticsNotRequestedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MissedArgumentException" name="MissedArgumentException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="reconnectStation">
+      <wsdl:input message="tns:reconnectStation" name="reconnectStation">
+    </wsdl:input>
+      <wsdl:output message="tns:reconnectStationResponse" name="reconnectStationResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:StationNotLoggedInException" name="StationNotLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ReconnectStationException" name="ReconnectStationException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getMySkillsIds">
+      <wsdl:input message="tns:getMySkillsIds" name="getMySkillsIds">
+    </wsdl:input>
+      <wsdl:output message="tns:getMySkillsIdsResponse" name="getMySkillsIdsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionNotInitializedException" name="SessionNotInitializedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="closeChatSession">
+      <wsdl:input message="tns:closeChatSession" name="closeChatSession">
+    </wsdl:input>
+      <wsdl:output message="tns:closeChatSessionResponse" name="closeChatSessionResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionNotInitializedException" name="SessionNotInitializedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WSChatException" name="WSChatException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MissedArgumentException" name="MissedArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getColumnNames">
+      <wsdl:input message="tns:getColumnNames" name="getColumnNames">
+    </wsdl:input>
+      <wsdl:output message="tns:getColumnNamesResponse" name="getColumnNamesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionNotInitializedException" name="SessionNotInitializedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MissedArgumentException" name="MissedArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sendBroadcastMessages">
+      <wsdl:input message="tns:sendBroadcastMessages" name="sendBroadcastMessages">
+    </wsdl:input>
+      <wsdl:output message="tns:sendBroadcastMessagesResponse" name="sendBroadcastMessagesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionNotInitializedException" name="SessionNotInitializedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WSChatException" name="WSChatException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MissedArgumentException" name="MissedArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sendInfoMessage">
+      <wsdl:input message="tns:sendInfoMessage" name="sendInfoMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:sendInfoMessageResponse" name="sendInfoMessageResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionNotInitializedException" name="SessionNotInitializedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WSChatException" name="WSChatException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MissedArgumentException" name="MissedArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getStatistics">
+      <wsdl:input message="tns:getStatistics" name="getStatistics">
+    </wsdl:input>
+      <wsdl:output message="tns:getStatisticsResponse" name="getStatisticsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UnknownColumnException" name="UnknownColumnException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionNotInitializedException" name="SessionNotInitializedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MissedArgumentException" name="MissedArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeUserFromChat">
+      <wsdl:input message="tns:removeUserFromChat" name="removeUserFromChat">
+    </wsdl:input>
+      <wsdl:output message="tns:removeUserFromChatResponse" name="removeUserFromChatResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionNotInitializedException" name="SessionNotInitializedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WSChatException" name="WSChatException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MissedArgumentException" name="MissedArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getLoggedInUsers">
+      <wsdl:input message="tns:getLoggedInUsers" name="getLoggedInUsers">
+    </wsdl:input>
+      <wsdl:output message="tns:getLoggedInUsersResponse" name="getLoggedInUsersResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionNotInitializedException" name="SessionNotInitializedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCallCountersState">
+      <wsdl:input message="tns:getCallCountersState" name="getCallCountersState">
+    </wsdl:input>
+      <wsdl:output message="tns:getCallCountersStateResponse" name="getCallCountersStateResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sendMsgToChat">
+      <wsdl:input message="tns:sendMsgToChat" name="sendMsgToChat">
+    </wsdl:input>
+      <wsdl:output message="tns:sendMsgToChatResponse" name="sendMsgToChatResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionNotInitializedException" name="SessionNotInitializedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WSChatException" name="WSChatException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MissedArgumentException" name="MissedArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getUserLimits">
+      <wsdl:input message="tns:getUserLimits" name="getUserLimits">
+    </wsdl:input>
+      <wsdl:output message="tns:getUserLimitsResponse" name="getUserLimitsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaign">
+      <wsdl:input message="tns:startCampaign" name="startCampaign">
+    </wsdl:input>
+      <wsdl:output message="tns:startCampaignResponse" name="startCampaignResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ConcurrentModificationException" name="ConcurrentModificationException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CampaignNotFoundException" name="CampaignNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CampaignStateUpdateException" name="CampaignStateUpdateException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MissedArgumentException" name="MissedArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getMonitoringSupervisors">
+      <wsdl:input message="tns:getMonitoringSupervisors" name="getMonitoringSupervisors">
+    </wsdl:input>
+      <wsdl:output message="tns:getMonitoringSupervisorsResponse" name="getMonitoringSupervisorsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:StationNotLoggedInException" name="StationNotLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AgentNotFoundException" name="AgentNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MissedArgumentException" name="MissedArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="receiveMessages">
+      <wsdl:input message="tns:receiveMessages" name="receiveMessages">
+    </wsdl:input>
+      <wsdl:output message="tns:receiveMessagesResponse" name="receiveMessagesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionNotInitializedException" name="SessionNotInitializedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="resetCampaignDispositions">
+      <wsdl:input message="tns:resetCampaignDispositions" name="resetCampaignDispositions">
+    </wsdl:input>
+      <wsdl:output message="tns:resetCampaignDispositionsResponse" name="resetCampaignDispositionsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ConcurrentModificationException" name="ConcurrentModificationException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CampaignNotFoundException" name="CampaignNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WrongCampaignStateException" name="WrongCampaignStateException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DispositionNotFoundException" name="DispositionNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MissedArgumentException" name="MissedArgumentException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="stopMonitoring">
+      <wsdl:input message="tns:stopMonitoring" name="stopMonitoring">
+    </wsdl:input>
+      <wsdl:output message="tns:stopMonitoringResponse" name="stopMonitoringResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:StationNotLoggedInException" name="StationNotLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AgentMonitorException" name="AgentMonitorException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AgentNotFoundException" name="AgentNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MissedArgumentException" name="MissedArgumentException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="forceStopCampaign">
+      <wsdl:input message="tns:forceStopCampaign" name="forceStopCampaign">
+    </wsdl:input>
+      <wsdl:output message="tns:forceStopCampaignResponse" name="forceStopCampaignResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ConcurrentModificationException" name="ConcurrentModificationException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CampaignNotFoundException" name="CampaignNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CampaignStateUpdateException" name="CampaignStateUpdateException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MissedArgumentException" name="MissedArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startMonitoring">
+      <wsdl:input message="tns:startMonitoring" name="startMonitoring">
+    </wsdl:input>
+      <wsdl:output message="tns:startMonitoringResponse" name="startMonitoringResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:StationNotLoggedInException" name="StationNotLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AgentMonitorException" name="AgentMonitorException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AgentNotFoundException" name="AgentNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MissedArgumentException" name="MissedArgumentException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getApiVersions">
+      <wsdl:input message="tns:getApiVersions" name="getApiVersions">
+    </wsdl:input>
+      <wsdl:output message="tns:getApiVersionsResponse" name="getApiVersionsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MissedArgumentException" name="MissedArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IncorrectArgumentException" name="IncorrectArgumentException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createChatSession">
+      <wsdl:input message="tns:createChatSession" name="createChatSession">
+    </wsdl:input>
+      <wsdl:output message="tns:createChatSessionResponse" name="createChatSessionResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ServerException" name="ServerException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserAlreadyLoggedInException" name="UserAlreadyLoggedInException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AccessDisallowedException" name="AccessDisallowedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionNotInitializedException" name="SessionNotInitializedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserLimitReachedException" name="UserLimitReachedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ServiceUnavailableException" name="ServiceUnavailableException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WSChatException" name="WSChatException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:OperationsLimitExceededException" name="OperationsLimitExceededException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SessionClosedException" name="SessionClosedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:InvalidAccountException" name="InvalidAccountException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WsSupervisorServiceSoapBinding" type="tns:WsSupervisor">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="acceptChatInvite">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="acceptChatInvite">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="acceptChatInviteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionNotInitializedException">
+        <soap:fault name="SessionNotInitializedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WSChatException">
+        <soap:fault name="WSChatException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MissedArgumentException">
+        <soap:fault name="MissedArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="closeSession">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="closeSession">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="closeSessionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMyGroupIds">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getMyGroupIds">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMyGroupIdsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionNotInitializedException">
+        <soap:fault name="SessionNotInitializedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSessionParameters">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSessionParameters">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSessionParametersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionNotInitializedException">
+        <soap:fault name="SessionNotInitializedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getMyPermissions">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getMyPermissions">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMyPermissionsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionNotInitializedException">
+        <soap:fault name="SessionNotInitializedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDispositionsNames">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getDispositionsNames">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDispositionsNamesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionNotInitializedException">
+        <soap:fault name="SessionNotInitializedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setSessionParameters">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="setSessionParameters">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setSessionParametersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MissedArgumentException">
+        <soap:fault name="MissedArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="loginStation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="loginStation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="loginStationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="StationNotFoundException">
+        <soap:fault name="StationNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MissedArgumentException">
+        <soap:fault name="MissedArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="resetCampaign">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="resetCampaign">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="resetCampaignResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ConcurrentModificationException">
+        <soap:fault name="ConcurrentModificationException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CampaignNotFoundException">
+        <soap:fault name="CampaignNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CampaignStateUpdateException">
+        <soap:fault name="CampaignStateUpdateException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MissedArgumentException">
+        <soap:fault name="MissedArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WrongCampaignTypeException">
+        <soap:fault name="WrongCampaignTypeException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sendChatInvite">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sendChatInvite">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendChatInviteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionNotInitializedException">
+        <soap:fault name="SessionNotInitializedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WSChatException">
+        <soap:fault name="WSChatException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MissedArgumentException">
+        <soap:fault name="MissedArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="stopCampaign">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="stopCampaign">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="stopCampaignResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ConcurrentModificationException">
+        <soap:fault name="ConcurrentModificationException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CampaignNotFoundException">
+        <soap:fault name="CampaignNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CampaignStateUpdateException">
+        <soap:fault name="CampaignStateUpdateException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MissedArgumentException">
+        <soap:fault name="MissedArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getStatisticsUpdate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getStatisticsUpdate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getStatisticsUpdateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionNotInitializedException">
+        <soap:fault name="SessionNotInitializedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ConfigurationChangedException">
+        <soap:fault name="ConfigurationChangedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UnknownTimestampException">
+        <soap:fault name="UnknownTimestampException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="StatisticsNotRequestedException">
+        <soap:fault name="StatisticsNotRequestedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MissedArgumentException">
+        <soap:fault name="MissedArgumentException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="reconnectStation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="reconnectStation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="reconnectStationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="StationNotLoggedInException">
+        <soap:fault name="StationNotLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ReconnectStationException">
+        <soap:fault name="ReconnectStationException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getMySkillsIds">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getMySkillsIds">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMySkillsIdsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionNotInitializedException">
+        <soap:fault name="SessionNotInitializedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="closeChatSession">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="closeChatSession">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="closeChatSessionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionNotInitializedException">
+        <soap:fault name="SessionNotInitializedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WSChatException">
+        <soap:fault name="WSChatException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MissedArgumentException">
+        <soap:fault name="MissedArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getColumnNames">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getColumnNames">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getColumnNamesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionNotInitializedException">
+        <soap:fault name="SessionNotInitializedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MissedArgumentException">
+        <soap:fault name="MissedArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sendBroadcastMessages">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sendBroadcastMessages">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendBroadcastMessagesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionNotInitializedException">
+        <soap:fault name="SessionNotInitializedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WSChatException">
+        <soap:fault name="WSChatException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MissedArgumentException">
+        <soap:fault name="MissedArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sendInfoMessage">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sendInfoMessage">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendInfoMessageResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionNotInitializedException">
+        <soap:fault name="SessionNotInitializedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WSChatException">
+        <soap:fault name="WSChatException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MissedArgumentException">
+        <soap:fault name="MissedArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getStatistics">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getStatistics">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getStatisticsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UnknownColumnException">
+        <soap:fault name="UnknownColumnException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionNotInitializedException">
+        <soap:fault name="SessionNotInitializedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MissedArgumentException">
+        <soap:fault name="MissedArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeUserFromChat">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removeUserFromChat">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeUserFromChatResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionNotInitializedException">
+        <soap:fault name="SessionNotInitializedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WSChatException">
+        <soap:fault name="WSChatException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MissedArgumentException">
+        <soap:fault name="MissedArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getLoggedInUsers">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getLoggedInUsers">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLoggedInUsersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionNotInitializedException">
+        <soap:fault name="SessionNotInitializedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCallCountersState">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCallCountersState">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCallCountersStateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sendMsgToChat">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sendMsgToChat">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendMsgToChatResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionNotInitializedException">
+        <soap:fault name="SessionNotInitializedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WSChatException">
+        <soap:fault name="WSChatException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MissedArgumentException">
+        <soap:fault name="MissedArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getUserLimits">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUserLimits">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUserLimitsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startCampaign">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="startCampaign">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="startCampaignResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ConcurrentModificationException">
+        <soap:fault name="ConcurrentModificationException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CampaignNotFoundException">
+        <soap:fault name="CampaignNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CampaignStateUpdateException">
+        <soap:fault name="CampaignStateUpdateException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MissedArgumentException">
+        <soap:fault name="MissedArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getMonitoringSupervisors">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getMonitoringSupervisors">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMonitoringSupervisorsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="StationNotLoggedInException">
+        <soap:fault name="StationNotLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AgentNotFoundException">
+        <soap:fault name="AgentNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MissedArgumentException">
+        <soap:fault name="MissedArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="receiveMessages">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="receiveMessages">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="receiveMessagesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionNotInitializedException">
+        <soap:fault name="SessionNotInitializedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="resetCampaignDispositions">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="resetCampaignDispositions">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="resetCampaignDispositionsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ConcurrentModificationException">
+        <soap:fault name="ConcurrentModificationException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CampaignNotFoundException">
+        <soap:fault name="CampaignNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WrongCampaignStateException">
+        <soap:fault name="WrongCampaignStateException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DispositionNotFoundException">
+        <soap:fault name="DispositionNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MissedArgumentException">
+        <soap:fault name="MissedArgumentException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="stopMonitoring">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="stopMonitoring">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="stopMonitoringResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="StationNotLoggedInException">
+        <soap:fault name="StationNotLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AgentMonitorException">
+        <soap:fault name="AgentMonitorException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AgentNotFoundException">
+        <soap:fault name="AgentNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MissedArgumentException">
+        <soap:fault name="MissedArgumentException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="forceStopCampaign">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="forceStopCampaign">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="forceStopCampaignResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ConcurrentModificationException">
+        <soap:fault name="ConcurrentModificationException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CampaignNotFoundException">
+        <soap:fault name="CampaignNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CampaignStateUpdateException">
+        <soap:fault name="CampaignStateUpdateException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MissedArgumentException">
+        <soap:fault name="MissedArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startMonitoring">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="startMonitoring">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="startMonitoringResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="StationNotLoggedInException">
+        <soap:fault name="StationNotLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AgentMonitorException">
+        <soap:fault name="AgentMonitorException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AgentNotFoundException">
+        <soap:fault name="AgentNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MissedArgumentException">
+        <soap:fault name="MissedArgumentException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getApiVersions">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getApiVersions">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getApiVersionsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MissedArgumentException">
+        <soap:fault name="MissedArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IncorrectArgumentException">
+        <soap:fault name="IncorrectArgumentException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createChatSession">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createChatSession">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createChatSessionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServerException">
+        <soap:fault name="ServerException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyLoggedInException">
+        <soap:fault name="UserAlreadyLoggedInException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AccessDisallowedException">
+        <soap:fault name="AccessDisallowedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionNotInitializedException">
+        <soap:fault name="SessionNotInitializedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserLimitReachedException">
+        <soap:fault name="UserLimitReachedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ServiceUnavailableException">
+        <soap:fault name="ServiceUnavailableException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WSChatException">
+        <soap:fault name="WSChatException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="OperationsLimitExceededException">
+        <soap:fault name="OperationsLimitExceededException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SessionClosedException">
+        <soap:fault name="SessionClosedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidAccountException">
+        <soap:fault name="InvalidAccountException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WsSupervisorService">
+    <wsdl:port binding="tns:WsSupervisorServiceSoapBinding" name="WsSupervisorPort">
+      <soap:address location="http://api.five9.com/wssupervisor/v9_5/%20SupervisorWebService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
