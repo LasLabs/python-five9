@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.tests.test_five9 &#8212; five9 0.0.1b37 documentation</title>
+    <title>five9.tests.test_five9 &#8212; five9 0.0.1b39 documentation</title>
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.0.1b37',
+        VERSION:     '0.0.1b39',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -58,6 +58,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;password&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">five9</span> <span class="o">=</span> <span class="n">Five9</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">password</span><span class="p">)</span></div>
 
+    <span class="k">def</span> <span class="nf">_test_cached_client</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_type</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">mock</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="p">,</span> <span class="s1">&#39;_get_authenticated_client&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">mk</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="p">,</span> <span class="n">client_type</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">response</span><span class="p">,</span> <span class="n">mk</span>
+
 <div class="viewcode-block" id="TestFive9.test_init_username"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_five9.TestFive9.test_init_username">[docs]</a>    <span class="k">def</span> <span class="nf">test_init_username</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;It should assign the username during init.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span></div>
@@ -87,17 +92,15 @@
 
 <div class="viewcode-block" id="TestFive9.test_configuration"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_five9.TestFive9.test_configuration">[docs]</a>    <span class="k">def</span> <span class="nf">test_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;It should return an authenticated configuration service.&quot;&quot;&quot;</span>
-        <span class="k">with</span> <span class="n">mock</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="p">,</span> <span class="s1">&#39;_get_authenticated_client&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">mk</span><span class="p">:</span>
-            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="o">.</span><span class="n">configuration</span>
-            <span class="n">mk</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="o">.</span><span class="n">WSDL_CONFIGURATION</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">mk</span><span class="p">()</span><span class="o">.</span><span class="n">service</span><span class="p">)</span></div>
+        <span class="n">response</span><span class="p">,</span> <span class="n">mk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_test_cached_client</span><span class="p">(</span><span class="s1">&#39;configuration&#39;</span><span class="p">)</span>
+        <span class="n">mk</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="o">.</span><span class="n">WSDL_CONFIGURATION</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">mk</span><span class="p">()</span><span class="o">.</span><span class="n">service</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TestFive9.test_supervisor"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_five9.TestFive9.test_supervisor">[docs]</a>    <span class="k">def</span> <span class="nf">test_supervisor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;It should return an authenticated supervisor service.&quot;&quot;&quot;</span>
-        <span class="k">with</span> <span class="n">mock</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="p">,</span> <span class="s1">&#39;_get_authenticated_client&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">mk</span><span class="p">:</span>
-            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="o">.</span><span class="n">supervisor</span>
-            <span class="n">mk</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="o">.</span><span class="n">WSDL_SUPERVISOR</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">mk</span><span class="p">()</span><span class="o">.</span><span class="n">service</span><span class="p">)</span></div></div>
+        <span class="n">response</span><span class="p">,</span> <span class="n">mk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_test_cached_client</span><span class="p">(</span><span class="s1">&#39;supervisor&#39;</span><span class="p">)</span>
+        <span class="n">mk</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="o">.</span><span class="n">WSDL_SUPERVISOR</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">mk</span><span class="p">()</span><span class="o">.</span><span class="n">service</span><span class="p">)</span></div></div>
 </pre></div>
 
           </div>
@@ -137,8 +140,7 @@
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../five9.html">five9 package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../AdminWebService.html">Admin Web Service</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../SupervisorWebService.html">Supervisor Web Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup.html">setup module</a></li>
 </ul>
 
 
