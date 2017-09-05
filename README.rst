@@ -1,4 +1,4 @@
-|License MIT| | |Build Status| | |Codecov Status| | |Code Climate|
+|License MIT| | |Build Status| | |Coverage| | |Code Climate|
 
 ============
 Python Five9

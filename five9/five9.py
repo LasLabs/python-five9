@@ -29,11 +29,7 @@ class Five9(object):
             AdminWebService: New or existing session with the Five9 Admin Web
             Services API.
         """
-        if not self._api_configuration:
-            self._api_configuration = self._get_authenticated_client(
-                self.WSDL_CONFIGURATION,
-            )
-        return self._api_configuration.service
+        return self._cached_client('configuration')
 
     @property
     def supervisor(self):
@@ -43,11 +39,7 @@ class Five9(object):
             SupervisorWebService: New or existing session with the Five9
             Statistics API.
         """
-        if not self._api_supervisor:
-            self._api_supervisor = self._get_authenticated_client(
-                self.WSDL_SUPERVISOR,
-            )
-        return self._api_supervisor.service
+        return self._cached_client('supervisor')
 
     def __init__(self, username, password):
         self.username = username
@@ -75,3 +67,11 @@ class Five9(object):
         session = requests.Session()
         session.auth = self.auth
         return session
+
+    def _cached_client(self, client_type):
+        attribute = '_api_%s' % client_type
+        if not getattr(self, attribute, None):
+            wsdl = getattr(self, 'WSDL_%s' % client_type.upper())
+            client = self._get_authenticated_client(wsdl)
+            setattr(self, attribute, client)
+        return getattr(self, attribute).service
