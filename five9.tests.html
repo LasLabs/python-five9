@@ -1,0 +1,190 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>five9.tests package &#8212; five9 0.0.1b37 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1b37',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Admin Web Service" href="AdminWebService.html" />
+    <link rel="prev" title="five9 package" href="five9.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="five9-tests-package">
+<h1>five9.tests package<a class="headerlink" href="#five9-tests-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-five9.tests.test_five9">
+<span id="five9-tests-test-five9-module"></span><h2>five9.tests.test_five9 module<a class="headerlink" href="#module-five9.tests.test_five9" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="five9.tests.test_five9.TestFive9">
+<em class="property">class </em><code class="descclassname">five9.tests.test_five9.</code><code class="descname">TestFive9</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_five9.html#TestFive9"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_five9.TestFive9" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="method">
+<dt id="five9.tests.test_five9.TestFive9.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_five9.html#TestFive9.setUp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_five9.TestFive9.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.test_five9.TestFive9.test_configuration">
+<code class="descname">test_configuration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_five9.html#TestFive9.test_configuration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_five9.TestFive9.test_configuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>It should return an authenticated configuration service.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.test_five9.TestFive9.test_get_authenticated_client">
+<code class="descname">test_get_authenticated_client</code><span class="sig-paren">(</span><em>*args</em>, <em>**keywargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_five9.html#TestFive9.test_get_authenticated_client"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_five9.TestFive9.test_get_authenticated_client" title="Permalink to this definition">¶</a></dt>
+<dd><p>It should return a zeep client.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.test_five9.TestFive9.test_get_authenticated_session">
+<code class="descname">test_get_authenticated_session</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_five9.html#TestFive9.test_get_authenticated_session"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_five9.TestFive9.test_get_authenticated_session" title="Permalink to this definition">¶</a></dt>
+<dd><p>It should return a requests session with authentication.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.test_five9.TestFive9.test_init_authentication">
+<code class="descname">test_init_authentication</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_five9.html#TestFive9.test_init_authentication"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_five9.TestFive9.test_init_authentication" title="Permalink to this definition">¶</a></dt>
+<dd><p>It should create a BasicAuth object with proper args.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.test_five9.TestFive9.test_init_username">
+<code class="descname">test_init_username</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_five9.html#TestFive9.test_init_username"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_five9.TestFive9.test_init_username" title="Permalink to this definition">¶</a></dt>
+<dd><p>It should assign the username during init.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.test_five9.TestFive9.test_supervisor">
+<code class="descname">test_supervisor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_five9.html#TestFive9.test_supervisor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_five9.TestFive9.test_supervisor" title="Permalink to this definition">¶</a></dt>
+<dd><p>It should return an authenticated supervisor service.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-five9.tests">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-five9.tests" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">five9</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=LasLabs&repo=python-five9&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+    
+
+<p>
+<a href="https://travis-ci.org/LasLabs/python-five9">
+    <img
+        alt="https://secure.travis-ci.org/LasLabs/python-five9.svg?branch=master"
+        src="https://secure.travis-ci.org/LasLabs/python-five9.svg?branch=master"
+    />
+</a>
+</p>
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="five9.html">five9 package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="five9.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">five9.tests package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-five9.tests.test_five9">five9.tests.test_five9 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-five9.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="five9.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="five9.html#module-five9.five9">five9.five9 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="five9.html#module-five9">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AdminWebService.html">Admin Web Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SupervisorWebService.html">Supervisor Web Service</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017 LasLabs Inc..
+      
+      |
+      <a href="_sources/five9.tests.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/LasLabs/python-five9" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

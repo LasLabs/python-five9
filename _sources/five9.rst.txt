@@ -1,29 +1,20 @@
 five9 package
 =============
 
+Subpackages
+-----------
+
+.. toctree::
+
+    five9.tests
+
 Submodules
 ----------
-
-five9\.exceptions module
-------------------------
-
-.. automodule:: five9.exceptions
-    :members:
-    :undoc-members:
-    :show-inheritance:
 
 five9\.five9 module
 -------------------
 
 .. automodule:: five9.five9
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-five9\.request\_paginator module
---------------------------------
-
-.. automodule:: five9.request_paginator
     :members:
     :undoc-members:
     :show-inheritance:

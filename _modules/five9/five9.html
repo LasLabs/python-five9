@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.five9 &#8212; Python Five9 0.0.1b10 documentation</title>
+    <title>five9.five9 &#8212; five9 0.0.1b37 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.0.1b10',
+        VERSION:     '0.0.1b37',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -46,13 +46,18 @@
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">zeep</span>
 
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="k">import</span> <span class="n">quote</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">urllib</span> <span class="k">import</span> <span class="n">quote</span>
+
 
 <div class="viewcode-block" id="Five9"><a class="viewcode-back" href="../../five9.html#five9.five9.Five9">[docs]</a><span class="k">class</span> <span class="nc">Five9</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="n">WSDL_CONFIGURATION</span> <span class="o">=</span> <span class="s1">&#39;https://api.five9.com/wsadmin/v9_5/&#39;</span> \
-                         <span class="s1">&#39;%20AdminWebService?wsdl&amp;user=</span><span class="si">%s</span><span class="s1">&#39;</span>
+                         <span class="s1">&#39;AdminWebService?wsdl&amp;user=</span><span class="si">%s</span><span class="s1">&#39;</span>
     <span class="n">WSDL_SUPERVISOR</span> <span class="o">=</span> <span class="s1">&#39;https://api.five9.com/wssupervisor/v9_5/&#39;</span> \
-                      <span class="s1">&#39;%20SupervisorWebService?wsdl&amp;user=</span><span class="si">%s</span><span class="s1">&#39;</span>
+                      <span class="s1">&#39;SupervisorWebService?wsdl&amp;user=</span><span class="si">%s</span><span class="s1">&#39;</span>
 
     <span class="n">_api_configuration</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">_api_supervisor</span> <span class="o">=</span> <span class="kc">None</span>
@@ -66,7 +71,9 @@
 <span class="sd">            Services API.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api_configuration</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_api_configuration</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_authenticated_client</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">WSDL_CONFIGURATION</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_api_configuration</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_authenticated_client</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">WSDL_CONFIGURATION</span><span class="p">,</span>
+            <span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api_configuration</span><span class="o">.</span><span class="n">service</span>
 
     <span class="nd">@property</span>
@@ -93,27 +100,22 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            zeep.Client: Authenticated API client.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">zeep</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span>
+            <span class="n">wsdl</span> <span class="o">%</span> <span class="n">quote</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">username</span><span class="p">),</span>
+            <span class="n">transport</span><span class="o">=</span><span class="n">zeep</span><span class="o">.</span><span class="n">Transport</span><span class="p">(</span>
+                <span class="n">session</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_authenticated_session</span><span class="p">(),</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_authenticated_session</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return an authenticated requests session.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            requests.Session: Authenticated session for use.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
         <span class="n">session</span><span class="o">.</span><span class="n">auth</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">auth</span>
-        <span class="k">return</span> <span class="n">zeep</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">wsdl</span><span class="p">,</span> <span class="n">transport</span><span class="o">=</span><span class="n">zeep</span><span class="o">.</span><span class="n">Transport</span><span class="p">(</span><span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">))</span>
-
-<div class="viewcode-block" id="Five9.call"><a class="viewcode-back" href="../../five9.html#five9.five9.Five9.call">[docs]</a>    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">output_type</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Call the remote endpoint and returns the result, if success.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            endpoint (str): Five9 endpoint to call (e.g. ``ndcs``).</span>
-<span class="sd">            output_type (type): Class type to output. Object will be</span>
-<span class="sd">                instantiated using the current row before output.</span>
-<span class="sd">            params: (dict|bytes) Data to be sent in the query string</span>
-<span class="sd">                for the Request.</span>
-<span class="sd">        Returns:</span>
-<span class="sd">            RequestPaginator: Iterator representing all pages of the call</span>
-<span class="sd">                result.</span>
-<span class="sd">        Raises:</span>
-<span class="sd">            Five9RemoteException: In the event of something that is TBD.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">endpoint</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">.json&#39;</span> <span class="o">%</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">API_BASE</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">RequestPaginator</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">output_type</span><span class="o">=</span><span class="n">output_type</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">session</span></div>
 </pre></div>
 
           </div>
@@ -121,7 +123,7 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../../index.html">Python Five9</a></h1>
+<h1 class="logo"><a href="../../index.html">five9</a></h1>
 
 
 
