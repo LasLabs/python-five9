@@ -1,30 +1,82 @@
-|License MIT| | |Build Status| | |Coveralls Status| | |Codecov Status| | |Code Climate|
+|License MIT| | |Build Status| | |Codecov Status| | |Code Climate|
 
 ============
 Python Five9
 ============
 
-This library allows you to interact with Five9 using Python.
+This library allows you to interact with the Five9 Settings and Statistics Web
+Services using Python.
+
+* `Read The API Documentation <https://laslabs.github.io/python-five9>`_
 
 Installation
 ============
 
-* Install Python requirements ``pip install -r ./requirements``
+Installation is easiest using Pip and PyPi::
 
-Setup
-=====
+   pip install five9
 
-* 
+If you would like to contribute, or prefer Git::
+
+   git clone https://github.com/LasLabs/python-five9.git
+   cd python-five9
+   pip install -r requirements.txt
+   pip install .
 
 Usage
 =====
 
-* `Read The API Documentation <https://laslabs.github.io/python-five9>`_
+Connect
+-------
 
-Known Issues / Road Map
-=======================
+.. code-block:: python
 
--  Installation, setup, usage - in ReadMe
+   from five9 import Five9
+
+   client = Five9('user', 'password')
+
+Configuration Web Services
+--------------------------
+
+Documentation:
+
+* `Five9 <http://webapps.five9.com/assets/files/for_customers/documentation/apis/config-webservices-api-reference-guide.pdf>`_
+* `API Docs <https://laslabs.github.io/python-five9/AdminWebService.html>`_
+
+Example:
+
+.. code-block:: python
+
+   client.configuration.getSkills()
+   # Returns
+   [{
+       'description': None,
+       'id': 266184L,
+       'messageOfTheDay': None,
+       'name': 'TestSkill',
+       'routeVoiceMails': False
+   }]
+
+Statistics Web Services
+-----------------------
+
+Documentation:
+
+* `Five9 <http://webapps.five9.com/assets/files/for_customers/documentation/apis/statistics-webservices-api-reference-guide.pdf>`_
+* `API Docs <https://laslabs.github.io/python-five9/SupervisorWebService.html>`_
+
+Example:
+
+.. code-block:: python
+
+   # Setup a session - required for most things
+   client.supervisor.setSessionParameters({
+       'forceLogoutSession': True,
+       'rollingPeriod': 'Minutes30',
+       'shiftStart': 28800000,
+       'statisticsRange': 'CurrentWeek',
+       'timeZone': -25200000,
+   })
 
 Credits
 =======
@@ -50,9 +102,7 @@ This module is maintained by LasLabs Inc.
 
 .. |Build Status| image:: https://api.travis-ci.org/LasLabs/python-five9.svg?branch=master
    :target: https://travis-ci.org/LasLabs/python-five9
-.. |Coveralls Status| image:: https://coveralls.io/repos/LasLabs/python-five9/badge.svg?branch=master
-   :target: https://coveralls.io/r/LasLabs/python-five9?branch=master
-.. |Codecov Status| image:: https://codecov.io/gh/LasLabs/python-five9/branch/master/graph/badge.svg
+.. |Coverage| image:: https://codecov.io/gh/LasLabs/python-five9/branch/master/graph/badge.svg
    :target: https://codecov.io/gh/LasLabs/python-five9
 .. |Code Climate| image:: https://codeclimate.com/github/LasLabs/python-five9/badges/gpa.svg
    :target: https://codeclimate.com/github/LasLabs/python-five9

@@ -1,0 +1,4 @@
+properties
+requests
+websocket-client
+zeep
