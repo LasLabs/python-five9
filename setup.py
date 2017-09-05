@@ -9,7 +9,7 @@ from unittest import TestLoader, TextTestRunner
 from os import environ, path
 
 
-PROJECT = 'python-five9'
+PROJECT = 'five9'
 SHORT_DESC = 'This library allows for you to integrate with Five9 Cloud ' \
              'Contact Center using Python.'
 README_FILE = 'README.rst'

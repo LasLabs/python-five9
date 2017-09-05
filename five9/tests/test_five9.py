@@ -17,6 +17,11 @@ class TestFive9(unittest.TestCase):
         self.password = 'password'
         self.five9 = Five9(self.user, self.password)
 
+    def _test_cached_client(self, client_type):
+        with mock.patch.object(self.five9, '_get_authenticated_client') as mk:
+            response = getattr(self.five9, client_type)
+        return response, mk
+
     def test_init_username(self):
         """It should assign the username during init."""
         self.assertEqual(self.five9.username, self.user)
@@ -46,14 +51,12 @@ class TestFive9(unittest.TestCase):
 
     def test_configuration(self):
         """It should return an authenticated configuration service."""
-        with mock.patch.object(self.five9, '_get_authenticated_client') as mk:
-            response = self.five9.configuration
-            mk.assert_called_once_with(self.five9.WSDL_CONFIGURATION)
-            self.assertEqual(response, mk().service)
+        response, mk = self._test_cached_client('configuration')
+        mk.assert_called_once_with(self.five9.WSDL_CONFIGURATION)
+        self.assertEqual(response, mk().service)
 
     def test_supervisor(self):
         """It should return an authenticated supervisor service."""
-        with mock.patch.object(self.five9, '_get_authenticated_client') as mk:
-            response = self.five9.supervisor
-            mk.assert_called_once_with(self.five9.WSDL_SUPERVISOR)
-            self.assertEqual(response, mk().service)
+        response, mk = self._test_cached_client('supervisor')
+        mk.assert_called_once_with(self.five9.WSDL_SUPERVISOR)
+        self.assertEqual(response, mk().service)
