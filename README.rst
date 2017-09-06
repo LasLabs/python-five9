@@ -76,9 +76,13 @@ by changing the proper instance variable on the `Five9` object:
 | Five9 Parameter      | Instance Variable      | Default       |
 +======================+========================+===============+
 | `forceLogoutSession` | `force_logout_session` | `True`        |
++----------------------+------------------------+---------------+
 | `rollingPeriod`      | `rolling_period`       | `Minutes30`   |
++----------------------+------------------------+---------------+
 | `statisticsRange`    | `statistics_range`     | `CurrentWeek` |
++----------------------+------------------------+---------------+
 | `shiftStart`         | `shift_start_hour`     | `8`           |
++----------------------+------------------------+---------------+
 | `timeZone`           | `time_zone_offset`     | `-7`          |
 +----------------------+------------------------+---------------+
 
