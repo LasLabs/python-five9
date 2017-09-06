@@ -60,3 +60,16 @@ class TestFive9(unittest.TestCase):
         response, mk = self._test_cached_client('supervisor')
         mk.assert_called_once_with(self.five9.WSDL_SUPERVISOR)
         self.assertEqual(response, mk().service)
+
+    def test_supervisor_session(self):
+        """It should automatically create a supervisor session."""
+        response, _ = self._test_cached_client('supervisor')
+        response.setSessionParameters.assert_called_once_with(
+            self.five9._api_supervisor_session,
+        )
+
+    def test_supervisor_session_cached(self):
+        """It should use a cached supervisor session after initial."""
+        response, _ = self._test_cached_client('supervisor')
+        self._test_cached_client('supervisor')
+        response.setSessionParameters.assert_called_once()

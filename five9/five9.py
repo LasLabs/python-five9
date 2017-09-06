@@ -18,8 +18,17 @@ class Five9(object):
     WSDL_SUPERVISOR = 'https://api.five9.com/wssupervisor/v9_5/' \
                       'SupervisorWebService?wsdl&user=%s'
 
+    # These attributes are used to create the supervisor session.
+    force_logout_session = True
+    rolling_period = 'Minutes30'
+    statistics_range = 'CurrentWeek'
+    shift_start_hour = 8
+    time_zone_offset = -7
+
+    # API Objects
     _api_configuration = None
     _api_supervisor = None
+    _api_supervisor_session = None
 
     @property
     def configuration(self):
@@ -39,7 +48,12 @@ class Five9(object):
             SupervisorWebService: New or existing session with the Five9
             Statistics API.
         """
-        return self._cached_client('supervisor')
+        supervisor = self._cached_client('supervisor')
+        if not self._api_supervisor_session:
+            self._api_supervisor_session = self.__create_supervisor_session(
+                supervisor,
+            )
+        return supervisor
 
     def __init__(self, username, password):
         self.username = username
@@ -75,3 +89,27 @@ class Five9(object):
             client = self._get_authenticated_client(wsdl)
             setattr(self, attribute, client)
         return getattr(self, attribute).service
+
+    def __create_supervisor_session(self, supervisor):
+        """Create a new session on the supervisor service.
+
+        This is required in order to use most methods for the supervisor,
+        so it is called implicitly when generating a supervisor session.
+        """
+        session_params = {
+            'forceLogoutSession': self.force_logout_session,
+            'rollingPeriod': self.rolling_period,
+            'statisticsRange': self.statistics_range,
+            'shiftStart': self.__to_milliseconds(
+                self.shift_start_hour,
+            ),
+            'timeZone': self.__to_milliseconds(
+                self.time_zone_offset,
+            ),
+        }
+        supervisor.setSessionParameters(session_params)
+        return session_params
+
+    @staticmethod
+    def __to_milliseconds(hour):
+        return hour * 60 * 60 * 1000

@@ -43,7 +43,7 @@ Documentation:
 * `Five9 <http://webapps.five9.com/assets/files/for_customers/documentation/apis/config-webservices-api-reference-guide.pdf>`_
 * `API Docs <https://laslabs.github.io/python-five9/AdminWebService.html>`_
 
-Example:
+Example Use:
 
 .. code-block:: python
 
@@ -65,18 +65,43 @@ Documentation:
 * `Five9 <http://webapps.five9.com/assets/files/for_customers/documentation/apis/statistics-webservices-api-reference-guide.pdf>`_
 * `API Docs <https://laslabs.github.io/python-five9/SupervisorWebService.html>`_
 
-Example:
+A supervisor session is required in order to perform most actions provided in the
+Supervisor Web Service. Due to this, a session is implicitly created before the
+supervisor is used.
+
+The session is created with the following defaults. You can change the parameters
+by changing the proper instance variable on the `Five9` object:
+
++----------------------+------------------------+---------------+
+| Five9 Parameter      | Instance Variable      | Default       |
++======================+========================+===============+
+| `forceLogoutSession` | `force_logout_session` | `True`        |
+| `rollingPeriod`      | `rolling_period`       | `Minutes30`   |
+| `statisticsRange`    | `statistics_range`     | `CurrentWeek` |
+| `shiftStart`         | `shift_start_hour`     | `8`           |
+| `timeZone`           | `time_zone_offset`     | `-7`          |
++----------------------+------------------------+---------------+
+
+Example Use:
 
 .. code-block:: python
 
    # Setup a session - required for most things
-   client.supervisor.setSessionParameters({
-       'forceLogoutSession': True,
-       'rollingPeriod': 'Minutes30',
-       'shiftStart': 28800000,
-       'statisticsRange': 'CurrentWeek',
-       'timeZone': -25200000,
-   })
+   client.supervisor.getUserLimits()
+   # Returns
+   {
+       'mobileLimit': 0L,
+       'mobileLoggedin': 0L,
+       'supervisorLimit': 1L,
+       'supervisorsLoggedin': 1L
+   }
+
+Known Issues / Roadmap
+======================
+
+* The supervisor session options should be represented in a class and documented,
+  instead of the mostly undocumented free-form dictionary mapped to instance
+  variables.
 
 Credits
 =======
