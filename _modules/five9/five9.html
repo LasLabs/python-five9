@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.five9 &#8212; Python Five9 0.0.1b44 documentation</title>
+    <title>five9.five9 &#8212; Python Five9 0.0.1b54 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.0.1b44',
+        VERSION:     '0.0.1b54',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -59,8 +59,17 @@
     <span class="n">WSDL_SUPERVISOR</span> <span class="o">=</span> <span class="s1">&#39;https://api.five9.com/wssupervisor/v9_5/&#39;</span> \
                       <span class="s1">&#39;SupervisorWebService?wsdl&amp;user=</span><span class="si">%s</span><span class="s1">&#39;</span>
 
+    <span class="c1"># These attributes are used to create the supervisor session.</span>
+    <span class="n">force_logout_session</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">rolling_period</span> <span class="o">=</span> <span class="s1">&#39;Minutes30&#39;</span>
+    <span class="n">statistics_range</span> <span class="o">=</span> <span class="s1">&#39;CurrentWeek&#39;</span>
+    <span class="n">shift_start_hour</span> <span class="o">=</span> <span class="mi">8</span>
+    <span class="n">time_zone_offset</span> <span class="o">=</span> <span class="o">-</span><span class="mi">7</span>
+
+    <span class="c1"># API Objects</span>
     <span class="n">_api_configuration</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">_api_supervisor</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">_api_supervisor_session</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -80,7 +89,12 @@
 <span class="sd">            SupervisorWebService: New or existing session with the Five9</span>
 <span class="sd">            Statistics API.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_client</span><span class="p">(</span><span class="s1">&#39;supervisor&#39;</span><span class="p">)</span>
+        <span class="n">supervisor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_client</span><span class="p">(</span><span class="s1">&#39;supervisor&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api_supervisor_session</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_api_supervisor_session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__create_supervisor_session</span><span class="p">(</span>
+                <span class="n">supervisor</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">supervisor</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="n">username</span>
@@ -115,7 +129,31 @@
             <span class="n">wsdl</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;WSDL_</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">client_type</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
             <span class="n">client</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_authenticated_client</span><span class="p">(</span><span class="n">wsdl</span><span class="p">)</span>
             <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">)</span><span class="o">.</span><span class="n">service</span></div>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">)</span><span class="o">.</span><span class="n">service</span>
+
+    <span class="k">def</span> <span class="nf">__create_supervisor_session</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">supervisor</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a new session on the supervisor service.</span>
+
+<span class="sd">        This is required in order to use most methods for the supervisor,</span>
+<span class="sd">        so it is called implicitly when generating a supervisor session.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">session_params</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;forceLogoutSession&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">force_logout_session</span><span class="p">,</span>
+            <span class="s1">&#39;rollingPeriod&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rolling_period</span><span class="p">,</span>
+            <span class="s1">&#39;statisticsRange&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">statistics_range</span><span class="p">,</span>
+            <span class="s1">&#39;shiftStart&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__to_milliseconds</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">shift_start_hour</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="s1">&#39;timeZone&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__to_milliseconds</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">time_zone_offset</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">}</span>
+        <span class="n">supervisor</span><span class="o">.</span><span class="n">setSessionParameters</span><span class="p">(</span><span class="n">session_params</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">session_params</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">__to_milliseconds</span><span class="p">(</span><span class="n">hour</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">hour</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span></div>
 </pre></div>
 
           </div>
