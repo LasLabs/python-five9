@@ -61,29 +61,8 @@ class Five9(object):
         self.username = username
         self.auth = requests.auth.HTTPBasicAuth(username, password)
 
-    @classmethod
-    def create_criteria(cls, query):
-        """Return a criteria from a dictionary containing a query.
-
-        Query should be a dictionary, keyed by field name. If the value is
-        a list, it will be divided into multiple criteria as required.
-        """
-        criteria = []
-        for name, value in query.items():
-            if isinstance(value, list):
-                for inner_value in value:
-                    criteria += cls.create_criteria({name: inner_value})
-            else:
-                criteria.append({
-                    'criteria': {
-                        'field': name,
-                        'value': value,
-                    },
-                })
-        return criteria
-
-    @classmethod
-    def create_mapping(cls, record, keys):
+    @staticmethod
+    def create_mapping(record, keys):
         """Create a field mapping for use in API updates and creates.
 
         Args:
@@ -113,6 +92,80 @@ class Five9(object):
             'data': ordered,
             'fields': list(ordered.values()),
         }
+
+    @staticmethod
+    def parse_response(fields, records):
+        """Parse an API response into usable objects.
+
+        Args:
+            fields (list[str]): List of strings indicating the fields that
+                are represented in the records, in the order presented in
+                the records.::
+
+                [
+                    'number1',
+                    'number2',
+                    'number3',
+                    'first_name',
+                    'last_name',
+                    'company',
+                    'street',
+                    'city',
+                    'state',
+                    'zip',
+                ]
+
+            records (list[dict]): A really crappy data structure representing
+                records as returned by Five9::
+
+                    [
+                        {
+                            'values': {
+                                'data': [
+                                    '8881234567',
+                                    None,
+                                    None,
+                                    'Dave',
+                                    'Lasley',
+                                    'LasLabs Inc',
+                                    None,
+                                    'Las Vegas',
+                                    'NV',
+                                    '89123',
+                                ]
+                            }
+                        }
+                    ]
+
+        Returns:
+            list[dict]: List of parsed records.
+        """
+        data = [i['values']['data'] for i in records]
+        return [
+            {fields[idx]: row for idx, row in enumerate(d)}
+            for d in data
+        ]
+
+    @classmethod
+    def create_criteria(cls, query):
+        """Return a criteria from a dictionary containing a query.
+
+        Query should be a dictionary, keyed by field name. If the value is
+        a list, it will be divided into multiple criteria as required.
+        """
+        criteria = []
+        for name, value in query.items():
+            if isinstance(value, list):
+                for inner_value in value:
+                    criteria += cls.create_criteria({name: inner_value})
+            else:
+                criteria.append({
+                    'criteria': {
+                        'field': name,
+                        'value': value,
+                    },
+                })
+        return criteria
 
     def _get_authenticated_client(self, wsdl):
         """Return an authenticated SOAP client.

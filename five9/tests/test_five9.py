@@ -62,6 +62,18 @@ class TestFive9(unittest.TestCase):
         }
         self.assertDictEqual(result, expect)
 
+    def test_parse_response(self):
+        """It should return the proper record."""
+        expect = [
+            OrderedDict([('first_name', 'Test'), ('last_name', 'User')]),
+            OrderedDict([('first_name', 'First'), ('last_name', 'Last')]),
+        ]
+        fields = ['first_name', 'last_name']
+        records = [{'values': {'data': list(e.values())}} for e in expect]
+        response = self.five9.parse_response(fields, records)
+        for idx, row in enumerate(response):
+            self.assertDictEqual(row, expect[idx])
+
     def _test_cached_client(self, client_type):
         with mock.patch.object(self.five9, '_get_authenticated_client') as mk:
             response = getattr(self.five9, client_type)
