@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.tests.test_five9 &#8212; Python Five9 0.0.2b72 documentation</title>
+    <title>five9.tests.test_five9 &#8212; Python Five9 0.0.2b79 documentation</title>
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.0.2b72',
+        VERSION:     '0.0.2b79',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -102,6 +102,18 @@
             <span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Test&#39;</span><span class="p">,</span> <span class="s1">&#39;User&#39;</span><span class="p">],</span>
         <span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertDictEqual</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">expect</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestFive9.test_parse_response"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_five9.TestFive9.test_parse_response">[docs]</a>    <span class="k">def</span> <span class="nf">test_parse_response</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;It should return the proper record.&quot;&quot;&quot;</span>
+        <span class="n">expect</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;first_name&#39;</span><span class="p">,</span> <span class="s1">&#39;Test&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;last_name&#39;</span><span class="p">,</span> <span class="s1">&#39;User&#39;</span><span class="p">)]),</span>
+            <span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;first_name&#39;</span><span class="p">,</span> <span class="s1">&#39;First&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;last_name&#39;</span><span class="p">,</span> <span class="s1">&#39;Last&#39;</span><span class="p">)]),</span>
+        <span class="p">]</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;first_name&#39;</span><span class="p">,</span> <span class="s1">&#39;last_name&#39;</span><span class="p">]</span>
+        <span class="n">records</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;values&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">values</span><span class="p">())}}</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">expect</span><span class="p">]</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="o">.</span><span class="n">parse_response</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="n">records</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertDictEqual</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">expect</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span></div>
 
     <span class="k">def</span> <span class="nf">_test_cached_client</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_type</span><span class="p">):</span>
         <span class="k">with</span> <span class="n">mock</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="p">,</span> <span class="s1">&#39;_get_authenticated_client&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">mk</span><span class="p">:</span>
