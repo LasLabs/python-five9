@@ -43,7 +43,7 @@ Documentation:
 * `Five9 <http://webapps.five9.com/assets/files/for_customers/documentation/apis/config-webservices-api-reference-guide.pdf>`_
 * `API Docs <https://laslabs.github.io/python-five9/AdminWebService.html>`_
 
-Example Use:
+Example - Get All Skills:
 
 .. code-block:: python
 
@@ -56,6 +56,50 @@ Example Use:
        'name': 'TestSkill',
        'routeVoiceMails': False
    }]
+
+Example - Create a contact field to track modified time:
+
+.. code-block:: python
+
+   client.configuration.createContactField({
+       'name': 'modified_at',
+       'displayAs': 'Invisible',
+       'mapTo': 'LastModifiedDateTime',
+       'type': 'DATE_TIME',
+       'system': True,
+   })
+
+Example - Search for a contact by first and last name:
+
+.. code-block:: python
+
+   criteria = client.create_criteria({
+       'first_name': 'Test',
+       'last_name': 'User',
+   })
+   client.configuration.getContactRecords(criteria)
+
+Example - Update a contact using their first and last name as the search keys:
+
+.. code-block:: python
+
+   contact = {
+       'first_name': 'Test',
+       'last_name': 'User',
+       'city': 'Las Vegas',
+       'state': 'NV',
+       'number1': '1234567890',
+   }
+   mapping = client.create_mapping(contact, keys=['first_name', 'last_name'])
+   client.configuration.updateCrmRecord(
+       record={'fields': mapping['fields']},
+       crmUpdateSettings={
+           'fieldsMapping': mapping['field_mappings'],
+           'skipHeaderLine': True,
+           'crmAddMode': 'DONT_ADD',
+           'crmUpdateMode': 'UPDATE_SOLE_MATCHES',
+       }
+   )
 
 Statistics Web Services
 -----------------------
