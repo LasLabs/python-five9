@@ -71,7 +71,8 @@ Example - Create a contact field to track modified time:
        'system': True,
    })
 
-Example - Search for a contact by first and last name:
+Example - Search for a contact by first and last name and get a list of ``dict``s
+representing the result:
 
 .. code-block:: python
 
@@ -79,7 +80,9 @@ Example - Search for a contact by first and last name:
        'first_name': 'Test',
        'last_name': 'User',
    })
-   client.configuration.getContactRecords(criteria)
+   result = client.configuration.getContactRecords(criteria)
+   # The above result is basically unusable. Parse into a list of dicts::
+   client.parse_records(result['fields'], result['records'])
 
 Example - Update a contact using their first and last name as the search keys:
 
