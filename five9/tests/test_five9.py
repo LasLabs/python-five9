@@ -6,6 +6,8 @@ import mock
 import requests
 import unittest
 
+from collections import OrderedDict
+
 from ..five9 import Five9
 
 
@@ -16,6 +18,49 @@ class TestFive9(unittest.TestCase):
         self.user = 'username@something.com'
         self.password = 'password'
         self.five9 = Five9(self.user, self.password)
+
+    def test_create_criteria_flat(self):
+        """It should return the proper criteria for the flat inputs."""
+        data = {
+            'first_name': 'Test',
+            'last_name': 'User',
+            'number1': 1234567890,
+        }
+        result = self.five9.create_criteria(data)
+        self.assertEqual(len(result), len(data))
+        for key, value in data.items():
+            criteria = {'criteria': {'field': key, 'value': value}}
+            self.assertIn(criteria, result)
+
+    def test_create_criteria_list(self):
+        """It should create multiple criteria for a list."""
+        data = {
+            'first_name': ['Test1', 'Test2'],
+        }
+        result = self.five9.create_criteria({
+            'first_name': ['Test1', 'Test2'],
+        })
+        self.assertEqual(len(result), 2)
+        for name in data['first_name']:
+            criteria = {'criteria': {'field': 'first_name', 'value': name}}
+            self.assertIn(criteria, result)
+
+    def test_create_mapping(self):
+        """It should output the proper mapping."""
+        record = OrderedDict([
+            ('first_name', 'Test'),
+            ('last_name', 'User'),
+        ])
+        result = self.five9.create_mapping(record, ['last_name'])
+        expect = {
+            'field_mappings': [
+                {'columnNumber': 1, 'fieldName': 'first_name', 'key': False},
+                {'columnNumber': 2, 'fieldName': 'last_name', 'key': True},
+            ],
+            'data': record,
+            'fields': ['Test', 'User'],
+        }
+        self.assertDictEqual(result, expect)
 
     def _test_cached_client(self, client_type):
         with mock.patch.object(self.five9, '_get_authenticated_client') as mk:

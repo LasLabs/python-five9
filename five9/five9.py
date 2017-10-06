@@ -5,6 +5,8 @@
 import requests
 import zeep
 
+from collections import OrderedDict
+
 try:
     from urllib.parse import quote
 except ImportError:
@@ -58,6 +60,59 @@ class Five9(object):
     def __init__(self, username, password):
         self.username = username
         self.auth = requests.auth.HTTPBasicAuth(username, password)
+
+    @classmethod
+    def create_criteria(cls, query):
+        """Return a criteria from a dictionary containing a query.
+
+        Query should be a dictionary, keyed by field name. If the value is
+        a list, it will be divided into multiple criteria as required.
+        """
+        criteria = []
+        for name, value in query.items():
+            if isinstance(value, list):
+                for inner_value in value:
+                    criteria += cls.create_criteria({name: inner_value})
+            else:
+                criteria.append({
+                    'criteria': {
+                        'field': name,
+                        'value': value,
+                    },
+                })
+        return criteria
+
+    @classmethod
+    def create_mapping(cls, record, keys):
+        """Create a field mapping for use in API updates and creates.
+
+        Args:
+            record (BaseModel): Record that should be mapped.
+            keys (list[str]): Fields that should be mapped as keys.
+
+        Returns:
+            dict: Dictionary with keys:
+
+                * ``field_mappings``: Field mappings as required by API.
+                * ``data``: Ordered data dictionary for input record.
+        """
+
+        ordered = OrderedDict()
+        field_mappings = []
+
+        for key, value in record.items():
+            ordered[key] = value
+            field_mappings.append({
+                'columnNumber': len(ordered),  # Five9 is not zero indexed.
+                'fieldName': key,
+                'key': key in keys,
+            })
+
+        return {
+            'field_mappings': field_mappings,
+            'data': ordered,
+            'fields': list(ordered.values()),
+        }
 
     def _get_authenticated_client(self, wsdl):
         """Return an authenticated SOAP client.
