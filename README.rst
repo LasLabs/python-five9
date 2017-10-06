@@ -1,4 +1,6 @@
-|License MIT| | |Build Status| | |Coverage| | |Code Climate|
+|License MIT| | |PyPi Package| | |PyPi Versions|
+
+|Build Status| | |Test Coverage| | |Code Climate|
 
 ============
 Python Five9
@@ -173,12 +175,18 @@ Maintainer
 
 This module is maintained by LasLabs Inc.
 
-.. |Build Status| image:: https://api.travis-ci.org/LasLabs/python-five9.svg?branch=master
+.. |Build Status| image:: https://img.shields.io/travis/LasLabs/python-five9/master.svg
    :target: https://travis-ci.org/LasLabs/python-five9
-.. |Coverage| image:: https://codecov.io/gh/LasLabs/python-five9/branch/master/graph/badge.svg
+.. |Test Coverage| image:: https://img.shields.io/codecov/c/github/LasLabs/python-five9/master.svg
    :target: https://codecov.io/gh/LasLabs/python-five9
-.. |Code Climate| image:: https://codeclimate.com/github/LasLabs/python-five9/badges/gpa.svg
+.. |Code Climate| image:: https://img.shields.io/codeclimate/github/LasLabs/python-five9.svg
    :target: https://codeclimate.com/github/LasLabs/python-five9
-.. |License MIT| image:: https://img.shields.io/badge/license-MIT-blue.svg
+.. |License MIT| image:: https://img.shields.io/github/license/laslabs/python-five9.svg
    :target: https://opensource.org/licenses/MIT
    :alt: License: MIT
+.. |PyPi Package| image:: https://img.shields.io/pypi/v/five9.svg
+   :target: https://pypi.python.org/pypi/five9
+   :alt: PyPi Package
+.. |PyPi Versions| image:: https://img.shields.io/pypi/pyversions/five9.svg
+   :target: https://pypi.python.org/pypi/five9
+   :alt: PyPi Versions
