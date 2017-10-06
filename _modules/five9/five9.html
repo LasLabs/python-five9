@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.five9 &#8212; Python Five9 0.0.1b57 documentation</title>
+    <title>five9.five9 &#8212; Python Five9 0.0.2b69 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.0.1b57',
+        VERSION:     '0.0.2b69',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -45,6 +45,8 @@
 
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">zeep</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">OrderedDict</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="k">import</span> <span class="n">quote</span>
@@ -99,6 +101,59 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="n">username</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">auth</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Five9.create_criteria"><a class="viewcode-back" href="../../five9.html#five9.five9.Five9.create_criteria">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">create_criteria</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a criteria from a dictionary containing a query.</span>
+
+<span class="sd">        Query should be a dictionary, keyed by field name. If the value is</span>
+<span class="sd">        a list, it will be divided into multiple criteria as required.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">criteria</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">query</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">inner_value</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+                    <span class="n">criteria</span> <span class="o">+=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">create_criteria</span><span class="p">({</span><span class="n">name</span><span class="p">:</span> <span class="n">inner_value</span><span class="p">})</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">criteria</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                    <span class="s1">&#39;criteria&#39;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s1">&#39;field&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+                        <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">value</span><span class="p">,</span>
+                    <span class="p">},</span>
+                <span class="p">})</span>
+        <span class="k">return</span> <span class="n">criteria</span></div>
+
+<div class="viewcode-block" id="Five9.create_mapping"><a class="viewcode-back" href="../../five9.html#five9.five9.Five9.create_mapping">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">create_mapping</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">record</span><span class="p">,</span> <span class="n">keys</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a field mapping for use in API updates and creates.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            record (BaseModel): Record that should be mapped.</span>
+<span class="sd">            keys (list[str]): Fields that should be mapped as keys.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Dictionary with keys:</span>
+
+<span class="sd">                * ``field_mappings``: Field mappings as required by API.</span>
+<span class="sd">                * ``data``: Ordered data dictionary for input record.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">ordered</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+        <span class="n">field_mappings</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">record</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">ordered</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="n">field_mappings</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s1">&#39;columnNumber&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">ordered</span><span class="p">),</span>  <span class="c1"># Five9 is not zero indexed.</span>
+                <span class="s1">&#39;fieldName&#39;</span><span class="p">:</span> <span class="n">key</span><span class="p">,</span>
+                <span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">,</span>
+            <span class="p">})</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;field_mappings&#39;</span><span class="p">:</span> <span class="n">field_mappings</span><span class="p">,</span>
+            <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">ordered</span><span class="p">,</span>
+            <span class="s1">&#39;fields&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">ordered</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span>
+        <span class="p">}</span></div>
 
     <span class="k">def</span> <span class="nf">_get_authenticated_client</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wsdl</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an authenticated SOAP client.</span>
