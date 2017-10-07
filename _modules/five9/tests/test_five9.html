@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.tests.test_five9 &#8212; Python Five9 0.0.2b79 documentation</title>
+    <title>five9.tests.test_five9 &#8212; Python Five9 0.0.2b87 documentation</title>
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.0.2b79',
+        VERSION:     '0.0.2b87',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -45,20 +45,13 @@
 
 <span class="kn">import</span> <span class="nn">mock</span>
 <span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">unittest</span>
 
 <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">OrderedDict</span>
 
-<span class="kn">from</span> <span class="nn">..five9</span> <span class="k">import</span> <span class="n">Five9</span>
+<span class="kn">from</span> <span class="nn">.common</span> <span class="k">import</span> <span class="n">Common</span>
 
 
-<div class="viewcode-block" id="TestFive9"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_five9.TestFive9">[docs]</a><span class="k">class</span> <span class="nc">TestFive9</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
-
-<div class="viewcode-block" id="TestFive9.setUp"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_five9.TestFive9.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">TestFive9</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="s1">&#39;username@something.com&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;password&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">five9</span> <span class="o">=</span> <span class="n">Five9</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">password</span><span class="p">)</span></div>
+<div class="viewcode-block" id="TestFive9"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_five9.TestFive9">[docs]</a><span class="k">class</span> <span class="nc">TestFive9</span><span class="p">(</span><span class="n">Common</span><span class="p">):</span>
 
 <div class="viewcode-block" id="TestFive9.test_create_criteria_flat"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_five9.TestFive9.test_create_criteria_flat">[docs]</a>    <span class="k">def</span> <span class="nf">test_create_criteria_flat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;It should return the proper criteria for the flat inputs.&quot;&quot;&quot;</span>

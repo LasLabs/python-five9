@@ -1,0 +1,30 @@
+five9\.models package
+=====================
+
+Submodules
+----------
+
+five9\.models\.key\_value\_pair module
+--------------------------------------
+
+.. automodule:: five9.models.key_value_pair
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+five9\.models\.web\_connector module
+------------------------------------
+
+.. automodule:: five9.models.web_connector
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: five9.models
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -1,0 +1,466 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>five9.models package &#8212; Python Five9 0.0.2b87 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.2b87',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="five9.tests package" href="five9.tests.html" />
+    <link rel="prev" title="five9 package" href="five9.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="five9-models-package">
+<h1>five9.models package<a class="headerlink" href="#five9-models-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-five9.models.key_value_pair">
+<span id="five9-models-key-value-pair-module"></span><h2>five9.models.key_value_pair module<a class="headerlink" href="#module-five9.models.key_value_pair" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="five9.models.key_value_pair.KeyValuePair">
+<em class="property">class </em><code class="descclassname">five9.models.key_value_pair.</code><code class="descname">KeyValuePair</code><span class="sig-paren">(</span><em>key</em>, <em>value</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/key_value_pair.html#KeyValuePair"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.key_value_pair.KeyValuePair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">properties.base.base.HasProperties</span></code></p>
+<p><strong>Required Properties:</strong></p>
+<ul class="simple">
+<li><strong>key</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Name used to identify the pair., a unicode string</li>
+<li><strong>value</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Value that corresponds to the name., a unicode string</li>
+</ul>
+<dl class="attribute">
+<dt id="five9.models.key_value_pair.KeyValuePair.key">
+<code class="descname">key</code><a class="headerlink" href="#five9.models.key_value_pair.KeyValuePair.key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name used to identify the pair.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.key_value_pair.KeyValuePair.value">
+<code class="descname">value</code><a class="headerlink" href="#five9.models.key_value_pair.KeyValuePair.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Value that corresponds to the name.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-five9.models.web_connector">
+<span id="five9-models-web-connector-module"></span><h2>five9.models.web_connector module<a class="headerlink" href="#module-five9.models.web_connector" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="five9.models.web_connector.WebConnector">
+<em class="property">class </em><code class="descclassname">five9.models.web_connector.</code><code class="descname">WebConnector</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/web_connector.html#WebConnector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.web_connector.WebConnector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">properties.base.base.HasProperties</span></code></p>
+<p>Contains the configuration details of a web connector.</p>
+<p><strong>Required Properties:</strong></p>
+<ul class="simple">
+<li><strong>addWorksheet</strong> (<code class="xref py py-class docutils literal"><span class="pre">Bool</span></code>): Applies only to POST requests. Whether to pass worksheet answers as parameters., a boolean</li>
+<li><strong>agentApplication</strong> (<code class="xref py py-class docutils literal"><span class="pre">StringChoice</span></code>): If <code class="docutils literal"><span class="pre">executeInBrowser==True</span></code>, this parameter specifies whether to open the URL in an external or an embedded browser., either “EmbeddedBrowser” (Embedded browser window.) or “ExternalBrowser” (External browser window.), Default: EmbeddedBrowser</li>
+<li><strong>clearTriggerDispositions</strong> (<code class="xref py py-class docutils literal"><span class="pre">Bool</span></code>): When modifying an existing connector, whether to clear the existing triggers., a boolean</li>
+<li><strong>constants</strong> (<a class="reference internal" href="#five9.models.key_value_pair.KeyValuePair" title="five9.models.key_value_pair.KeyValuePair"><code class="xref py py-class docutils literal"><span class="pre">a</span> <span class="pre">list</span> <span class="pre">of</span> <span class="pre">KeyValuePair</span></code></a>): List of parameters passed with constant values., a list (each item is an instance of KeyValuePair)</li>
+<li><strong>ctiWebServices</strong> (<code class="xref py py-class docutils literal"><span class="pre">StringChoice</span></code>): In the Internet Explorer toolbar, whether to open the HTTP request in the current or a new browser window., either “CurrentBrowserWindow” (Current browser window.) or “NewBrowserWindow” (New browser window.), Default: CurrentBrowserWindow</li>
+<li><strong>description</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Purpose of the connector., a unicode string</li>
+<li><strong>executeInBrowser</strong> (<code class="xref py py-class docutils literal"><span class="pre">Bool</span></code>): When enabling the agent to view or enter data, whether to open the URL in an embedded or external browser window., a boolean</li>
+<li><strong>name</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Name of the connector, a unicode string</li>
+<li><strong>postConstants</strong> (<a class="reference internal" href="#five9.models.key_value_pair.KeyValuePair" title="five9.models.key_value_pair.KeyValuePair"><code class="xref py py-class docutils literal"><span class="pre">a</span> <span class="pre">list</span> <span class="pre">of</span> <span class="pre">KeyValuePair</span></code></a>): When using the POST method, constant parameters to pass in the URL., a list (each item is an instance of KeyValuePair)</li>
+<li><strong>postMethod</strong> (<code class="xref py py-class docutils literal"><span class="pre">Bool</span></code>): Whether the HTTP request type is POST., a boolean</li>
+<li><strong>postVariables</strong> (<a class="reference internal" href="#five9.models.key_value_pair.KeyValuePair" title="five9.models.key_value_pair.KeyValuePair"><code class="xref py py-class docutils literal"><span class="pre">a</span> <span class="pre">list</span> <span class="pre">of</span> <span class="pre">KeyValuePair</span></code></a>): When using the POST method, variable parameters to pass in the URL., a list (each item is an instance of KeyValuePair)</li>
+<li><strong>startPageText</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): When using the POST method, enables the administrator to enter text to be displayed in the browser (or agent Browser tab) while waiting for the completion of the connector., a unicode string</li>
+<li><strong>trigger</strong> (<code class="xref py py-class docutils literal"><span class="pre">StringChoice</span></code>): Available trigger during a call when the request is sent., any of “OnCallAccepted” (Triggered when the call is accepted.), “OnCallDisconnected” (Triggered when the call is disconnected.), “ManuallyStarted” (Connector is started manually.), “ManuallyStartedAllowDuringPreviews” (Connector is started manually during call preview.), “OnPreview” (Triggered when the call is previewed.), “OnContactSelection” (Triggered when a contact is selected.), “OnWarmTransferInitiation” (Triggered when a warm transfer is initiated.), “OnCallDispositioned” (Triggered when a disposition is selected.), “OnChatArrival” (Triggered when a chat message is delivered to an agent.), “OnChatTransfer” (Triggered when a chat session is transferred.), “OnChatTermination” (Triggered when the customer or the agent closed the session, but the agent has not yet set the disposition.), “OnChatClose” (Triggered when the disposition is set.), “OnEmailArrival” (Triggered when an email message is delivered to the agent.), “OnEmailTransfer” (Triggered when an email message is transferred.), “OnEmailClose” (Triggered when the disposition is set.)</li>
+<li><strong>triggerDispositions</strong> (<code class="xref py py-class docutils literal"><span class="pre">a</span> <span class="pre">list</span> <span class="pre">of</span> <span class="pre">String</span></code>): When the trigger is OnCallDispositioned, specifies the trigger dispositions., a list (each item is a unicode string)</li>
+<li><strong>url</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): URI of the external web site., a unicode string</li>
+<li><strong>variables</strong> (<a class="reference internal" href="#five9.models.key_value_pair.KeyValuePair" title="five9.models.key_value_pair.KeyValuePair"><code class="xref py py-class docutils literal"><span class="pre">a</span> <span class="pre">list</span> <span class="pre">of</span> <span class="pre">KeyValuePair</span></code></a>): When using the POST method, connectors can include worksheet data as parameter values. The variable placeholder values are surrounded by &#64; signs. For example, the parameter ANI has the value &#64;Call.ANI&#64;, a list (each item is an instance of KeyValuePair)</li>
+</ul>
+<dl class="attribute">
+<dt id="five9.models.web_connector.WebConnector.addWorksheet">
+<code class="descname">addWorksheet</code><a class="headerlink" href="#five9.models.web_connector.WebConnector.addWorksheet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies only to POST requests. Whether to pass worksheet answers as parameters.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.web_connector.WebConnector.agentApplication">
+<code class="descname">agentApplication</code><a class="headerlink" href="#five9.models.web_connector.WebConnector.agentApplication" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <code class="docutils literal"><span class="pre">executeInBrowser==True</span></code>, this parameter specifies whether to open the URL in an external or an embedded browser.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.web_connector.WebConnector.clearTriggerDispositions">
+<code class="descname">clearTriggerDispositions</code><a class="headerlink" href="#five9.models.web_connector.WebConnector.clearTriggerDispositions" title="Permalink to this definition">¶</a></dt>
+<dd><p>When modifying an existing connector, whether to clear the existing triggers.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.web_connector.WebConnector.constants">
+<code class="descname">constants</code><a class="headerlink" href="#five9.models.web_connector.WebConnector.constants" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of parameters passed with constant values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.models.web_connector.WebConnector.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>five9</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/web_connector.html#WebConnector.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.web_connector.WebConnector.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a web connector on Five9.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.five9.Five9" title="five9.five9.Five9"><em>Five9</em></a>) – The authenticated Five9 object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.web_connector.WebConnector.ctiWebServices">
+<code class="descname">ctiWebServices</code><a class="headerlink" href="#five9.models.web_connector.WebConnector.ctiWebServices" title="Permalink to this definition">¶</a></dt>
+<dd><p>In the Internet Explorer toolbar, whether to open the HTTP request in the current or a new browser window.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.web_connector.WebConnector.description">
+<code class="descname">description</code><a class="headerlink" href="#five9.models.web_connector.WebConnector.description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Purpose of the connector.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.web_connector.WebConnector.executeInBrowser">
+<code class="descname">executeInBrowser</code><a class="headerlink" href="#five9.models.web_connector.WebConnector.executeInBrowser" title="Permalink to this definition">¶</a></dt>
+<dd><p>When enabling the agent to view or enter data, whether to open the URL in an embedded or external browser window.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.web_connector.WebConnector.name">
+<code class="descname">name</code><a class="headerlink" href="#five9.models.web_connector.WebConnector.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the connector</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.web_connector.WebConnector.postConstants">
+<code class="descname">postConstants</code><a class="headerlink" href="#five9.models.web_connector.WebConnector.postConstants" title="Permalink to this definition">¶</a></dt>
+<dd><p>When using the POST method, constant parameters to pass in the URL.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.web_connector.WebConnector.postMethod">
+<code class="descname">postMethod</code><a class="headerlink" href="#five9.models.web_connector.WebConnector.postMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the HTTP request type is POST.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.web_connector.WebConnector.postVariables">
+<code class="descname">postVariables</code><a class="headerlink" href="#five9.models.web_connector.WebConnector.postVariables" title="Permalink to this definition">¶</a></dt>
+<dd><p>When using the POST method, variable parameters to pass in the URL.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.web_connector.WebConnector.startPageText">
+<code class="descname">startPageText</code><a class="headerlink" href="#five9.models.web_connector.WebConnector.startPageText" title="Permalink to this definition">¶</a></dt>
+<dd><p>When using the POST method, enables the administrator to enter text to be displayed in the browser (or agent Browser tab) while waiting for the completion of the connector.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.web_connector.WebConnector.trigger">
+<code class="descname">trigger</code><a class="headerlink" href="#five9.models.web_connector.WebConnector.trigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Available trigger during a call when the request is sent.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.web_connector.WebConnector.triggerDispositions">
+<code class="descname">triggerDispositions</code><a class="headerlink" href="#five9.models.web_connector.WebConnector.triggerDispositions" title="Permalink to this definition">¶</a></dt>
+<dd><p>When the trigger is OnCallDispositioned, specifies the trigger dispositions.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.web_connector.WebConnector.url">
+<code class="descname">url</code><a class="headerlink" href="#five9.models.web_connector.WebConnector.url" title="Permalink to this definition">¶</a></dt>
+<dd><p>URI of the external web site.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.web_connector.WebConnector.variables">
+<code class="descname">variables</code><a class="headerlink" href="#five9.models.web_connector.WebConnector.variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>When using the POST method, connectors can include worksheet data as parameter values. The variable placeholder values are surrounded by &#64; signs. For example, the parameter ANI has the value &#64;Call.ANI&#64;</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-five9.models">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-five9.models" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="five9.models.KeyValuePair">
+<em class="property">class </em><code class="descclassname">five9.models.</code><code class="descname">KeyValuePair</code><span class="sig-paren">(</span><em>key</em>, <em>value</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/key_value_pair.html#KeyValuePair"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.KeyValuePair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">properties.base.base.HasProperties</span></code></p>
+<p><strong>Required Properties:</strong></p>
+<ul class="simple">
+<li><strong>key</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Name used to identify the pair., a unicode string</li>
+<li><strong>value</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Value that corresponds to the name., a unicode string</li>
+</ul>
+<dl class="attribute">
+<dt id="five9.models.KeyValuePair.key">
+<code class="descname">key</code><a class="headerlink" href="#five9.models.KeyValuePair.key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name used to identify the pair.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.KeyValuePair.value">
+<code class="descname">value</code><a class="headerlink" href="#five9.models.KeyValuePair.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Value that corresponds to the name.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="five9.models.WebConnector">
+<em class="property">class </em><code class="descclassname">five9.models.</code><code class="descname">WebConnector</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/web_connector.html#WebConnector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.WebConnector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">properties.base.base.HasProperties</span></code></p>
+<p>Contains the configuration details of a web connector.</p>
+<p><strong>Required Properties:</strong></p>
+<ul class="simple">
+<li><strong>addWorksheet</strong> (<code class="xref py py-class docutils literal"><span class="pre">Bool</span></code>): Applies only to POST requests. Whether to pass worksheet answers as parameters., a boolean</li>
+<li><strong>agentApplication</strong> (<code class="xref py py-class docutils literal"><span class="pre">StringChoice</span></code>): If <code class="docutils literal"><span class="pre">executeInBrowser==True</span></code>, this parameter specifies whether to open the URL in an external or an embedded browser., either “EmbeddedBrowser” (Embedded browser window.) or “ExternalBrowser” (External browser window.), Default: EmbeddedBrowser</li>
+<li><strong>clearTriggerDispositions</strong> (<code class="xref py py-class docutils literal"><span class="pre">Bool</span></code>): When modifying an existing connector, whether to clear the existing triggers., a boolean</li>
+<li><strong>constants</strong> (<a class="reference internal" href="#five9.models.KeyValuePair" title="five9.models.KeyValuePair"><code class="xref py py-class docutils literal"><span class="pre">a</span> <span class="pre">list</span> <span class="pre">of</span> <span class="pre">KeyValuePair</span></code></a>): List of parameters passed with constant values., a list (each item is an instance of KeyValuePair)</li>
+<li><strong>ctiWebServices</strong> (<code class="xref py py-class docutils literal"><span class="pre">StringChoice</span></code>): In the Internet Explorer toolbar, whether to open the HTTP request in the current or a new browser window., either “CurrentBrowserWindow” (Current browser window.) or “NewBrowserWindow” (New browser window.), Default: CurrentBrowserWindow</li>
+<li><strong>description</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Purpose of the connector., a unicode string</li>
+<li><strong>executeInBrowser</strong> (<code class="xref py py-class docutils literal"><span class="pre">Bool</span></code>): When enabling the agent to view or enter data, whether to open the URL in an embedded or external browser window., a boolean</li>
+<li><strong>name</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Name of the connector, a unicode string</li>
+<li><strong>postConstants</strong> (<a class="reference internal" href="#five9.models.KeyValuePair" title="five9.models.KeyValuePair"><code class="xref py py-class docutils literal"><span class="pre">a</span> <span class="pre">list</span> <span class="pre">of</span> <span class="pre">KeyValuePair</span></code></a>): When using the POST method, constant parameters to pass in the URL., a list (each item is an instance of KeyValuePair)</li>
+<li><strong>postMethod</strong> (<code class="xref py py-class docutils literal"><span class="pre">Bool</span></code>): Whether the HTTP request type is POST., a boolean</li>
+<li><strong>postVariables</strong> (<a class="reference internal" href="#five9.models.KeyValuePair" title="five9.models.KeyValuePair"><code class="xref py py-class docutils literal"><span class="pre">a</span> <span class="pre">list</span> <span class="pre">of</span> <span class="pre">KeyValuePair</span></code></a>): When using the POST method, variable parameters to pass in the URL., a list (each item is an instance of KeyValuePair)</li>
+<li><strong>startPageText</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): When using the POST method, enables the administrator to enter text to be displayed in the browser (or agent Browser tab) while waiting for the completion of the connector., a unicode string</li>
+<li><strong>trigger</strong> (<code class="xref py py-class docutils literal"><span class="pre">StringChoice</span></code>): Available trigger during a call when the request is sent., any of “OnCallAccepted” (Triggered when the call is accepted.), “OnCallDisconnected” (Triggered when the call is disconnected.), “ManuallyStarted” (Connector is started manually.), “ManuallyStartedAllowDuringPreviews” (Connector is started manually during call preview.), “OnPreview” (Triggered when the call is previewed.), “OnContactSelection” (Triggered when a contact is selected.), “OnWarmTransferInitiation” (Triggered when a warm transfer is initiated.), “OnCallDispositioned” (Triggered when a disposition is selected.), “OnChatArrival” (Triggered when a chat message is delivered to an agent.), “OnChatTransfer” (Triggered when a chat session is transferred.), “OnChatTermination” (Triggered when the customer or the agent closed the session, but the agent has not yet set the disposition.), “OnChatClose” (Triggered when the disposition is set.), “OnEmailArrival” (Triggered when an email message is delivered to the agent.), “OnEmailTransfer” (Triggered when an email message is transferred.), “OnEmailClose” (Triggered when the disposition is set.)</li>
+<li><strong>triggerDispositions</strong> (<code class="xref py py-class docutils literal"><span class="pre">a</span> <span class="pre">list</span> <span class="pre">of</span> <span class="pre">String</span></code>): When the trigger is OnCallDispositioned, specifies the trigger dispositions., a list (each item is a unicode string)</li>
+<li><strong>url</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): URI of the external web site., a unicode string</li>
+<li><strong>variables</strong> (<a class="reference internal" href="#five9.models.KeyValuePair" title="five9.models.KeyValuePair"><code class="xref py py-class docutils literal"><span class="pre">a</span> <span class="pre">list</span> <span class="pre">of</span> <span class="pre">KeyValuePair</span></code></a>): When using the POST method, connectors can include worksheet data as parameter values. The variable placeholder values are surrounded by &#64; signs. For example, the parameter ANI has the value &#64;Call.ANI&#64;, a list (each item is an instance of KeyValuePair)</li>
+</ul>
+<dl class="attribute">
+<dt id="five9.models.WebConnector.addWorksheet">
+<code class="descname">addWorksheet</code><a class="headerlink" href="#five9.models.WebConnector.addWorksheet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies only to POST requests. Whether to pass worksheet answers as parameters.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.WebConnector.agentApplication">
+<code class="descname">agentApplication</code><a class="headerlink" href="#five9.models.WebConnector.agentApplication" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <code class="docutils literal"><span class="pre">executeInBrowser==True</span></code>, this parameter specifies whether to open the URL in an external or an embedded browser.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.WebConnector.clearTriggerDispositions">
+<code class="descname">clearTriggerDispositions</code><a class="headerlink" href="#five9.models.WebConnector.clearTriggerDispositions" title="Permalink to this definition">¶</a></dt>
+<dd><p>When modifying an existing connector, whether to clear the existing triggers.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.WebConnector.constants">
+<code class="descname">constants</code><a class="headerlink" href="#five9.models.WebConnector.constants" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of parameters passed with constant values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.models.WebConnector.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>five9</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/web_connector.html#WebConnector.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.WebConnector.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a web connector on Five9.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.five9.Five9" title="five9.five9.Five9"><em>Five9</em></a>) – The authenticated Five9 object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.WebConnector.ctiWebServices">
+<code class="descname">ctiWebServices</code><a class="headerlink" href="#five9.models.WebConnector.ctiWebServices" title="Permalink to this definition">¶</a></dt>
+<dd><p>In the Internet Explorer toolbar, whether to open the HTTP request in the current or a new browser window.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.WebConnector.description">
+<code class="descname">description</code><a class="headerlink" href="#five9.models.WebConnector.description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Purpose of the connector.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.WebConnector.executeInBrowser">
+<code class="descname">executeInBrowser</code><a class="headerlink" href="#five9.models.WebConnector.executeInBrowser" title="Permalink to this definition">¶</a></dt>
+<dd><p>When enabling the agent to view or enter data, whether to open the URL in an embedded or external browser window.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.WebConnector.name">
+<code class="descname">name</code><a class="headerlink" href="#five9.models.WebConnector.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the connector</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.WebConnector.postConstants">
+<code class="descname">postConstants</code><a class="headerlink" href="#five9.models.WebConnector.postConstants" title="Permalink to this definition">¶</a></dt>
+<dd><p>When using the POST method, constant parameters to pass in the URL.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.WebConnector.postMethod">
+<code class="descname">postMethod</code><a class="headerlink" href="#five9.models.WebConnector.postMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the HTTP request type is POST.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.WebConnector.postVariables">
+<code class="descname">postVariables</code><a class="headerlink" href="#five9.models.WebConnector.postVariables" title="Permalink to this definition">¶</a></dt>
+<dd><p>When using the POST method, variable parameters to pass in the URL.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.WebConnector.startPageText">
+<code class="descname">startPageText</code><a class="headerlink" href="#five9.models.WebConnector.startPageText" title="Permalink to this definition">¶</a></dt>
+<dd><p>When using the POST method, enables the administrator to enter text to be displayed in the browser (or agent Browser tab) while waiting for the completion of the connector.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.WebConnector.trigger">
+<code class="descname">trigger</code><a class="headerlink" href="#five9.models.WebConnector.trigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Available trigger during a call when the request is sent.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.WebConnector.triggerDispositions">
+<code class="descname">triggerDispositions</code><a class="headerlink" href="#five9.models.WebConnector.triggerDispositions" title="Permalink to this definition">¶</a></dt>
+<dd><p>When the trigger is OnCallDispositioned, specifies the trigger dispositions.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.WebConnector.url">
+<code class="descname">url</code><a class="headerlink" href="#five9.models.WebConnector.url" title="Permalink to this definition">¶</a></dt>
+<dd><p>URI of the external web site.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.models.WebConnector.variables">
+<code class="descname">variables</code><a class="headerlink" href="#five9.models.WebConnector.variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>When using the POST method, connectors can include worksheet data as parameter values. The variable placeholder values are surrounded by &#64; signs. For example, the parameter ANI has the value &#64;Call.ANI&#64;</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Python Five9</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=LasLabs&repo=python-five9&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+    
+
+<p>
+<a href="https://travis-ci.org/LasLabs/python-five9">
+    <img
+        alt="https://secure.travis-ci.org/LasLabs/python-five9.svg?branch=master"
+        src="https://secure.travis-ci.org/LasLabs/python-five9.svg?branch=master"
+    />
+</a>
+</p>
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="five9.html">five9 package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="five9.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">five9.models package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-five9.models.key_value_pair">five9.models.key_value_pair module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-five9.models.web_connector">five9.models.web_connector module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-five9.models">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="five9.tests.html">five9.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="five9.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="five9.html#module-five9.five9">five9.five9 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="five9.html#module-five9">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AdminWebService.html">Admin Web Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SupervisorWebService.html">Supervisor Web Service</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017 LasLabs Inc..
+      
+      |
+      <a href="_sources/five9.models.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/LasLabs/python-five9" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

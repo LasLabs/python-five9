@@ -1,0 +1,256 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>five9.models.web_connector &#8212; Python Five9 0.0.2b87 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.0.2b87',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for five9.models.web_connector</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright 2017-TODAY LasLabs Inc.</span>
+<span class="c1"># License MIT (https://opensource.org/licenses/MIT).</span>
+
+<span class="kn">import</span> <span class="nn">properties</span>
+
+<span class="kn">from</span> <span class="nn">.key_value_pair</span> <span class="k">import</span> <span class="n">KeyValuePair</span>
+
+
+<div class="viewcode-block" id="WebConnector"><a class="viewcode-back" href="../../../five9.models.html#five9.models.web_connector.WebConnector">[docs]</a><span class="k">class</span> <span class="nc">WebConnector</span><span class="p">(</span><span class="n">properties</span><span class="o">.</span><span class="n">HasProperties</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Contains the configuration details of a web connector.&quot;&quot;&quot;</span>
+
+    <span class="n">addWorksheet</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">Bool</span><span class="p">(</span>
+        <span class="s1">&#39;Applies only to POST requests. Whether to pass worksheet &#39;</span>
+        <span class="s1">&#39;answers as parameters.&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">agentApplication</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">StringChoice</span><span class="p">(</span>
+        <span class="s1">&#39;If ``executeInBrowser==True``, this parameter specifies whether &#39;</span>
+        <span class="s1">&#39;to open the URL in an external or an embedded browser.&#39;</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="s1">&#39;EmbeddedBrowser&#39;</span><span class="p">,</span>
+        <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;EmbeddedBrowser&#39;</span><span class="p">,</span> <span class="s1">&#39;ExternalBrowser&#39;</span><span class="p">],</span>
+        <span class="n">descriptions</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;EmbeddedBrowser&#39;</span><span class="p">:</span> <span class="s1">&#39;Embedded browser window.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ExternalBrowser&#39;</span><span class="p">:</span> <span class="s1">&#39;External browser window.&#39;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+    <span class="n">clearTriggerDispositions</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">Bool</span><span class="p">(</span>
+        <span class="s1">&#39;When modifying an existing connector, whether to clear the existing &#39;</span>
+        <span class="s1">&#39;triggers.&#39;</span>
+    <span class="p">)</span>
+    <span class="n">constants</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">List</span><span class="p">(</span>
+        <span class="s1">&#39;List of parameters passed with constant values.&#39;</span><span class="p">,</span>
+        <span class="n">prop</span><span class="o">=</span><span class="n">KeyValuePair</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">ctiWebServices</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">StringChoice</span><span class="p">(</span>
+        <span class="s1">&#39;In the Internet Explorer toolbar, whether to open the HTTP request &#39;</span>
+        <span class="s1">&#39;in the current or a new browser window.&#39;</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="s1">&#39;CurrentBrowserWindow&#39;</span><span class="p">,</span>
+        <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CurrentBrowserWindow&#39;</span><span class="p">,</span> <span class="s1">&#39;NewBrowserWindow&#39;</span><span class="p">],</span>
+        <span class="n">descriptions</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;CurrentBrowserWindow&#39;</span><span class="p">:</span> <span class="s1">&#39;Current browser window.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;NewBrowserWindow&#39;</span><span class="p">:</span> <span class="s1">&#39;New browser window.&#39;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">String</span><span class="p">(</span>
+        <span class="s1">&#39;Purpose of the connector.&#39;</span><span class="p">,</span>
+        <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">executeInBrowser</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">Bool</span><span class="p">(</span>
+        <span class="s1">&#39;When enabling the agent to view or enter data, whether to open &#39;</span>
+        <span class="s1">&#39;the URL in an embedded or external browser window.&#39;</span><span class="p">,</span>
+        <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">String</span><span class="p">(</span>
+        <span class="s1">&#39;Name of the connector&#39;</span><span class="p">,</span>
+        <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">postConstants</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">List</span><span class="p">(</span>
+        <span class="s1">&#39;When using the POST method, constant parameters to pass in the URL.&#39;</span><span class="p">,</span>
+        <span class="n">prop</span><span class="o">=</span><span class="n">KeyValuePair</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">postMethod</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">Bool</span><span class="p">(</span>
+        <span class="s1">&#39;Whether the HTTP request type is POST.&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">postVariables</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">List</span><span class="p">(</span>
+        <span class="s1">&#39;When using the POST method, variable parameters to pass in the URL.&#39;</span><span class="p">,</span>
+        <span class="n">prop</span><span class="o">=</span><span class="n">KeyValuePair</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">startPageText</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">String</span><span class="p">(</span>
+        <span class="s1">&#39;When using the POST method, enables the administrator to enter text &#39;</span>
+        <span class="s1">&#39;to be displayed in the browser (or agent Browser tab) while waiting &#39;</span>
+        <span class="s1">&#39;for the completion of the connector.&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">trigger</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">StringChoice</span><span class="p">(</span>
+        <span class="s1">&#39;Available trigger during a call when the request is sent.&#39;</span><span class="p">,</span>
+        <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;OnCallAccepted&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;OnCallDisconnected&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;ManuallyStarted&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;ManuallyStartedAllowDuringPreviews&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;OnPreview&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;OnContactSelection&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;OnWarmTransferInitiation&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;OnCallDispositioned&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;OnChatArrival&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;OnChatTransfer&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;OnChatTermination&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;OnChatClose&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;OnEmailArrival&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;OnEmailTransfer&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;OnEmailClose&#39;</span><span class="p">,</span>
+                 <span class="p">],</span>
+        <span class="n">descriptions</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;OnCallAccepted&#39;</span><span class="p">:</span> <span class="s1">&#39;Triggered when the call is accepted.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;OnCallDisconnected&#39;</span><span class="p">:</span> <span class="s1">&#39;Triggered when the call is disconnected.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ManuallyStarted&#39;</span><span class="p">:</span> <span class="s1">&#39;Connector is started manually.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ManuallyStartedAllowDuringPreviews&#39;</span><span class="p">:</span> <span class="s1">&#39;Connector is started &#39;</span>
+                                                  <span class="s1">&#39;manually during call &#39;</span>
+                                                  <span class="s1">&#39;preview.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;OnPreview&#39;</span><span class="p">:</span> <span class="s1">&#39;Triggered when the call is previewed.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;OnContactSelection&#39;</span><span class="p">:</span> <span class="s1">&#39;Triggered when a contact is selected.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;OnWarmTransferInitiation&#39;</span><span class="p">:</span> <span class="s1">&#39;Triggered when a warm transfer is &#39;</span>
+                                        <span class="s1">&#39;initiated.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;OnCallDispositioned&#39;</span><span class="p">:</span> <span class="s1">&#39;Triggered when a disposition is &#39;</span>
+                                   <span class="s1">&#39;selected.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;OnChatArrival&#39;</span><span class="p">:</span> <span class="s1">&#39;Triggered when a chat message is delivered to &#39;</span>
+                             <span class="s1">&#39;an agent.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;OnChatTransfer&#39;</span><span class="p">:</span> <span class="s1">&#39;Triggered when a chat session is transferred.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;OnChatTermination&#39;</span><span class="p">:</span> <span class="s1">&#39;Triggered when the customer or the agent &#39;</span>
+                                 <span class="s1">&#39;closed the session, but the agent has not &#39;</span>
+                                 <span class="s1">&#39;yet set the disposition.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;OnChatClose&#39;</span><span class="p">:</span> <span class="s1">&#39;Triggered when the disposition is set.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;OnEmailArrival&#39;</span><span class="p">:</span> <span class="s1">&#39;Triggered when an email message is delivered &#39;</span>
+                              <span class="s1">&#39;to the agent.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;OnEmailTransfer&#39;</span><span class="p">:</span> <span class="s1">&#39;Triggered when an email message is &#39;</span>
+                               <span class="s1">&#39;transferred.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;OnEmailClose&#39;</span><span class="p">:</span> <span class="s1">&#39;Triggered when the disposition is set.&#39;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+    <span class="n">triggerDispositions</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">List</span><span class="p">(</span>
+        <span class="s1">&#39;When the trigger is OnCallDispositioned, specifies the trigger &#39;</span>
+        <span class="s1">&#39;dispositions.&#39;</span><span class="p">,</span>
+        <span class="n">prop</span><span class="o">=</span><span class="n">properties</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s1">&#39;Disposition Name.&#39;</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">String</span><span class="p">(</span>
+        <span class="s1">&#39;URI of the external web site.&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">variables</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">List</span><span class="p">(</span>
+        <span class="s1">&#39;When using the POST method, connectors can include worksheet data &#39;</span>
+        <span class="s1">&#39;as parameter values. The variable placeholder values are surrounded &#39;</span>
+        <span class="s1">&#39;by @ signs. For example, the parameter ANI has the value @Call.ANI@&#39;</span><span class="p">,</span>
+        <span class="n">prop</span><span class="o">=</span><span class="n">KeyValuePair</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<div class="viewcode-block" id="WebConnector.create"><a class="viewcode-back" href="../../../five9.models.html#five9.models.web_connector.WebConnector.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">five9</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a web connector on Five9.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            five9 (Five9): The authenticated Five9 object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">five9</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">createWebConnector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">serialize</span><span class="p">())</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Python Five9</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=LasLabs&repo=python-five9&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+    
+
+<p>
+<a href="https://travis-ci.org/LasLabs/python-five9">
+    <img
+        alt="https://secure.travis-ci.org/LasLabs/python-five9.svg?branch=master"
+        src="https://secure.travis-ci.org/LasLabs/python-five9.svg?branch=master"
+    />
+</a>
+</p>
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../five9.html">five9 package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../AdminWebService.html">Admin Web Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../SupervisorWebService.html">Supervisor Web Service</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017 LasLabs Inc..
+      
+    </div>
+
+    
+    <a href="https://github.com/LasLabs/python-five9" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

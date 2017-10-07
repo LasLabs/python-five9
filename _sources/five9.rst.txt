@@ -6,6 +6,7 @@ Subpackages
 
 .. toctree::
 
+    five9.models
     five9.tests
 
 Submodules

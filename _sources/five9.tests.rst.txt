@@ -4,10 +4,34 @@ five9\.tests package
 Submodules
 ----------
 
+five9\.tests\.common module
+---------------------------
+
+.. automodule:: five9.tests.common
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 five9\.tests\.test\_five9 module
 --------------------------------
 
 .. automodule:: five9.tests.test_five9
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+five9\.tests\.test\_key\_value\_pair module
+-------------------------------------------
+
+.. automodule:: five9.tests.test_key_value_pair
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+five9\.tests\.test\_web\_connector module
+-----------------------------------------
+
+.. automodule:: five9.tests.test_web_connector
     :members:
     :undoc-members:
     :show-inheritance:
