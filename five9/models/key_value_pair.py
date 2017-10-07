@@ -4,8 +4,10 @@
 
 import properties
 
+from .base_model import BaseModel
 
-class KeyValuePair(properties.HasProperties):
+
+class KeyValuePair(BaseModel):
 
     key = properties.String(
         'Name used to identify the pair.',
