@@ -4,20 +4,13 @@
 
 import mock
 import requests
-import unittest
 
 from collections import OrderedDict
 
-from ..five9 import Five9
+from .common import Common
 
 
-class TestFive9(unittest.TestCase):
-
-    def setUp(self):
-        super(TestFive9, self).setUp()
-        self.user = 'username@something.com'
-        self.password = 'password'
-        self.five9 = Five9(self.user, self.password)
+class TestFive9(Common):
 
     def test_create_criteria_flat(self):
         """It should return the proper criteria for the flat inputs."""
