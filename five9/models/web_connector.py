@@ -4,10 +4,11 @@
 
 import properties
 
+from .base_model import BaseModel
 from .key_value_pair import KeyValuePair
 
 
-class WebConnector(properties.HasProperties):
+class WebConnector(BaseModel):
     """Contains the configuration details of a web connector."""
 
     addWorksheet = properties.Bool(
