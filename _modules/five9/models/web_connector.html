@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.models.web_connector &#8212; Python Five9 0.0.2b87 documentation</title>
+    <title>five9.models.web_connector &#8212; Python Five9 0.0.2b90 documentation</title>
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.0.2b87',
+        VERSION:     '0.0.2b90',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -45,10 +45,11 @@
 
 <span class="kn">import</span> <span class="nn">properties</span>
 
+<span class="kn">from</span> <span class="nn">.base_model</span> <span class="k">import</span> <span class="n">BaseModel</span>
 <span class="kn">from</span> <span class="nn">.key_value_pair</span> <span class="k">import</span> <span class="n">KeyValuePair</span>
 
 
-<div class="viewcode-block" id="WebConnector"><a class="viewcode-back" href="../../../five9.models.html#five9.models.web_connector.WebConnector">[docs]</a><span class="k">class</span> <span class="nc">WebConnector</span><span class="p">(</span><span class="n">properties</span><span class="o">.</span><span class="n">HasProperties</span><span class="p">):</span>
+<div class="viewcode-block" id="WebConnector"><a class="viewcode-back" href="../../../five9.models.html#five9.models.web_connector.WebConnector">[docs]</a><span class="k">class</span> <span class="nc">WebConnector</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Contains the configuration details of a web connector.&quot;&quot;&quot;</span>
 
     <span class="n">addWorksheet</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">Bool</span><span class="p">(</span>

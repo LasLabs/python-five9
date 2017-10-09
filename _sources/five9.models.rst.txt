@@ -4,6 +4,14 @@ five9\.models package
 Submodules
 ----------
 
+five9\.models\.base\_model module
+---------------------------------
+
+.. automodule:: five9.models.base_model
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 five9\.models\.key\_value\_pair module
 --------------------------------------
 
