@@ -1,4 +1,5 @@
 properties
 requests
+six
 websocket-client
 zeep

@@ -4,6 +4,8 @@
 
 import properties
 
+from six import string_types
+
 from .base_model import BaseModel
 from .key_value_pair import KeyValuePair
 
@@ -148,15 +150,19 @@ class WebConnector(BaseModel):
         Args:
             five9 (five9.Five9): The authenticated Five9 remote.
             filters (dict): A dictionary of search parameters, keyed by the
-                name of the field to search.
+                name of the field to search. This should conform to the
+                schema defined in :func:`five9.Five9.create_criteria`.
 
         Returns:
             list[BaseModel]: A list of records representing the result.
         """
         assert filters.get(cls.__uid_field__) is not None
-        results = five9.configuration.getWebConnectors(
-            filters[cls.__uid_field__],
-        )
+        if isinstance(filters[cls.__uid_field__], string_types):
+            filters = filters[cls.__uid_field__]
+        else:
+            filters = filters[cls.__uid_field__]
+            filters = r'(%s)' % ('|'.join(filters))
+        results = five9.configuration.getWebConnectors(filters)
         return [cls(**row) for row in results]
 
     def delete(self, five9):
