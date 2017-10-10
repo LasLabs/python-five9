@@ -40,7 +40,8 @@ class BaseModel(properties.HasProperties):
         Args:
             five9 (five9.Five9): The authenticated Five9 remote.
             filters (dict): A dictionary of search parameters, keyed by the
-                name of the field to search.
+                name of the field to search. This should conform to the
+                schema defined in :func:`five9.Five9.create_criteria`.
 
         Returns:
             list[BaseModel]: A list of records representing the result.

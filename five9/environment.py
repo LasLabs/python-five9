@@ -88,15 +88,21 @@ class Environment(object):
 
     @Api.model
     def create(self, data, refresh=False):
+        """Create the data on the remote, optionally refreshing."""
         self.__model__.create(self.__five9__, data)
         if refresh:
             return self.read(data[self.__model__.__name__])
         else:
-            return self.__class__(
-                self.__five9__,
-                self.__model__,
-                records=[self.__model__.deserialize(data)],
-            )
+            return self.new(data)
+
+    @Api.model
+    def new(self, data):
+        """Create a new memory record, but do not create on the remote."""
+        return self.__class__(
+            self.__five9__,
+            self.__model__,
+            records=[self.__model__.deserialize(data)],
+        )
 
     @Api.model
     def read(self, external_id):

@@ -33,10 +33,18 @@ class TestWebConnector(unittest.TestCase):
             WebConnector.search(self.five9, filter)
 
     def test_search(self):
-        """It should search the remote and return the results."""
+        """It should search the remote for the name."""
         WebConnector.search(self.five9, self.data)
         self.five9.configuration.getWebConnectors.assert_called_once_with(
             self.data['name'],
+        )
+
+    def test_search_multiple(self):
+        """It should search the remote for the conjoined names."""
+        self.data['name'] = ['Test1', 'Test2']
+        WebConnector.search(self.five9, self.data)
+        self.five9.configuration.getWebConnectors.assert_called_once_with(
+            r'(Test1|Test2)',
         )
 
     def test_search_return(self):
