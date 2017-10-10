@@ -12,6 +12,8 @@ try:
 except ImportError:
     from urllib import quote
 
+from .environment import Environment
+
 
 class Five9(object):
 
@@ -60,6 +62,7 @@ class Five9(object):
     def __init__(self, username, password):
         self.username = username
         self.auth = requests.auth.HTTPBasicAuth(username, password)
+        self.env = Environment(self)
 
     @staticmethod
     def create_mapping(record, keys):

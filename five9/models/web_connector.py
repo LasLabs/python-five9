@@ -135,10 +135,42 @@ class WebConnector(BaseModel):
         prop=KeyValuePair,
     )
 
-    def create(self, five9):
-        """Create a web connector on Five9.
+    @classmethod
+    def create(cls, five9, data, refresh=False):
+        return cls._call_and_serialize(
+            five9.configuration.createWebConnector, data, refresh,
+        )
+
+    @classmethod
+    def search(cls, five9, filters):
+        """Search for a record on the remote and return the results.
 
         Args:
-            five9 (Five9): The authenticated Five9 object.
+            five9 (five9.Five9): The authenticated Five9 remote.
+            filters (dict): A dictionary of search parameters, keyed by the
+                name of the field to search.
+
+        Returns:
+            list[BaseModel]: A list of records representing the result.
         """
-        five9.configuration.createWebConnector(self.serialize())
+        assert filters.get(cls.__uid_field__) is not None
+        results = five9.configuration.getWebConnectors(
+            filters[cls.__uid_field__],
+        )
+        return [cls(**row) for row in results]
+
+    def delete(self, five9):
+        """Delete the record from the remote.
+
+        Args:
+            five9 (five9.Five9): The authenticated Five9 remote.
+        """
+        five9.configuration.deleteWebConnector(self.name)
+
+    def update(self, five9):
+        """Update the record on the remote.
+
+        Args:
+            five9 (five9.Five9): The authenticated Five9 remote.
+        """
+        five9.configuration.modifyWebConnector(self.serialize())
