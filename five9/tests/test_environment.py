@@ -84,9 +84,9 @@ class TestEnvironment(unittest.TestCase):
         self.model.read.assert_called_once_with(self.five9, expect)
         self.assertEqual(res, self.model.read())
 
-    def test_update(self):
-        """It should iterate and update the recordset."""
-        self._test_iter_method('update')
+    def test_write(self):
+        """It should iterate and write the recordset."""
+        self._test_iter_method('write')
 
     def test_delete(self):
         """It should iterate and delete the recordset."""

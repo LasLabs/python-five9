@@ -57,3 +57,11 @@ class TestBaseModel(unittest.TestCase):
             deserialize.assert_called_once_with(data)
             self.assertEqual(self.called_with, data)
             self.assertEqual(result, deserialize())
+
+    def test_update(self):
+        """It should set the attributes to the provided values."""
+        data = {'test1': 12345, 'test2': 54321}
+        record = BaseModel()
+        record.update(data)
+        for key, value in data.items():
+            self.assertEqual(getattr(record, key), value)

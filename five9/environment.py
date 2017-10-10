@@ -106,15 +106,19 @@ class Environment(object):
 
     @Api.model
     def read(self, external_id):
+        """Perform a lookup on the current model for the provided external ID.
+        """
         return self.__model__.read(self.__five9__, external_id)
 
     @Api.recordset
-    def update(self):
-        return [record.update(self.__five9__) for record in self.__records__]
+    def write(self):
+        """Write the records to the remote."""
+        return self._iter_call('write')
 
     @Api.recordset
     def delete(self):
-        return [record.delete(self.__five9__) for record in self.__records__]
+        """Delete the records from the remote."""
+        return self._iter_call('delete')
 
     @Api.model
     def search(self, filters):
@@ -131,3 +135,9 @@ class Environment(object):
         return self.__class__(
             self.__five9__, self.__model__, records,
         )
+
+    @Api.recordset
+    def _iter_call(self, method_name):
+        return [
+            getattr(r, method_name)(self.__five9__) for r in self.__records__
+        ]
