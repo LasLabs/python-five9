@@ -173,7 +173,7 @@ class WebConnector(BaseModel):
         """
         five9.configuration.deleteWebConnector(self.name)
 
-    def update(self, five9):
+    def write(self, five9):
         """Update the record on the remote.
 
         Args:

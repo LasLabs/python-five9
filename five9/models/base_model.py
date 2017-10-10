@@ -73,8 +73,17 @@ class BaseModel(properties.HasProperties):
         """
         raise NotImplementedError()
 
-    def update(self, five9):
-        """Update the record on the remote.
+    def update(self, data):
+        """Update the current memory record with the given data dict.
+
+        Args:
+            data (dict): Data dictionary to update the record attributes with.
+        """
+        for key, value in data.items():
+            setattr(self, key, value)
+
+    def write(self, five9):
+        """Write the record to the remote.
 
         Args:
             five9 (five9.Five9): The authenticated Five9 remote.

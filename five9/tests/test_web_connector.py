@@ -66,9 +66,9 @@ class TestWebConnector(unittest.TestCase):
             self.data['name'],
         )
 
-    def test_update(self):
-        """It should call the update method on the API."""
-        WebConnector(**self.data).update(self.five9)
+    def test_write(self):
+        """It should call the write method on the API."""
+        WebConnector(**self.data).write(self.five9)
         self.five9.configuration.modifyWebConnector.assert_called_once_with(
             WebConnector(**self.data).serialize(),
         )
