@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.models.base_model &#8212; Python Five9 0.0.2b108 documentation</title>
+    <title>five9.models.base_model &#8212; Python Five9 0.0.3b113 documentation</title>
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.0.2b108',
+        VERSION:     '0.0.3b113',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -114,8 +114,17 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="BaseModel.update"><a class="viewcode-back" href="../../../five9.models.html#five9.models.base_model.BaseModel.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">five9</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Update the record on the remote.</span>
+<div class="viewcode-block" id="BaseModel.update"><a class="viewcode-back" href="../../../five9.models.html#five9.models.base_model.BaseModel.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update the current memory record with the given data dict.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data (dict): Data dictionary to update the record attributes with.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BaseModel.write"><a class="viewcode-back" href="../../../five9.models.html#five9.models.base_model.BaseModel.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">five9</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write the record to the remote.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            five9 (five9.Five9): The authenticated Five9 remote.</span>

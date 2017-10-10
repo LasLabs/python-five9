@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.tests.test_web_connector &#8212; Python Five9 0.0.2b108 documentation</title>
+    <title>five9.tests.test_web_connector &#8212; Python Five9 0.0.3b113 documentation</title>
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.0.2b108',
+        VERSION:     '0.0.3b113',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -107,9 +107,9 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="TestWebConnector.test_update"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_web_connector.TestWebConnector.test_update">[docs]</a>    <span class="k">def</span> <span class="nf">test_update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;It should call the update method on the API.&quot;&quot;&quot;</span>
-        <span class="n">WebConnector</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="p">)</span>
+<div class="viewcode-block" id="TestWebConnector.test_write"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_web_connector.TestWebConnector.test_write">[docs]</a>    <span class="k">def</span> <span class="nf">test_write</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;It should call the write method on the API.&quot;&quot;&quot;</span>
+        <span class="n">WebConnector</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">modifyWebConnector</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span>
             <span class="n">WebConnector</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">serialize</span><span class="p">(),</span>
         <span class="p">)</span></div></div>

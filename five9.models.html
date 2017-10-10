@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.models package &#8212; Python Five9 0.0.2b108 documentation</title>
+    <title>five9.models package &#8212; Python Five9 0.0.3b113 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.0.2b108',
+        VERSION:     '0.0.3b113',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -153,8 +153,22 @@ schema defined in <a class="reference internal" href="five9.html#five9.Five9.cre
 
 <dl class="method">
 <dt id="five9.models.base_model.BaseModel.update">
-<code class="descname">update</code><span class="sig-paren">(</span><em>five9</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/base_model.html#BaseModel.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.base_model.BaseModel.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update the record on the remote.</p>
+<code class="descname">update</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/base_model.html#BaseModel.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.base_model.BaseModel.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the current memory record with the given data dict.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) – Data dictionary to update the record attributes with.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.models.base_model.BaseModel.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>five9</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/base_model.html#BaseModel.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.base_model.BaseModel.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the record to the remote.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -349,20 +363,6 @@ schema defined in <a class="reference internal" href="five9.html#five9.Five9.cre
 <dd><p>When the trigger is OnCallDispositioned, specifies the trigger dispositions.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="five9.models.web_connector.WebConnector.update">
-<code class="descname">update</code><span class="sig-paren">(</span><em>five9</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/web_connector.html#WebConnector.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.web_connector.WebConnector.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update the record on the remote.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 <dl class="attribute">
 <dt id="five9.models.web_connector.WebConnector.url">
 <code class="descname">url</code><a class="headerlink" href="#five9.models.web_connector.WebConnector.url" title="Permalink to this definition">¶</a></dt>
@@ -373,6 +373,20 @@ schema defined in <a class="reference internal" href="five9.html#five9.Five9.cre
 <dt id="five9.models.web_connector.WebConnector.variables">
 <code class="descname">variables</code><a class="headerlink" href="#five9.models.web_connector.WebConnector.variables" title="Permalink to this definition">¶</a></dt>
 <dd><p>When using the POST method, connectors can include worksheet data as parameter values. The variable placeholder values are surrounded by &#64; signs. For example, the parameter ANI has the value &#64;Call.ANI&#64;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.models.web_connector.WebConnector.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>five9</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/web_connector.html#WebConnector.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.web_connector.WebConnector.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the record on the remote.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -556,20 +570,6 @@ schema defined in <a class="reference internal" href="five9.html#five9.Five9.cre
 <dd><p>When the trigger is OnCallDispositioned, specifies the trigger dispositions.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="five9.models.WebConnector.update">
-<code class="descname">update</code><span class="sig-paren">(</span><em>five9</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/web_connector.html#WebConnector.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.WebConnector.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update the record on the remote.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 <dl class="attribute">
 <dt id="five9.models.WebConnector.url">
 <code class="descname">url</code><a class="headerlink" href="#five9.models.WebConnector.url" title="Permalink to this definition">¶</a></dt>
@@ -580,6 +580,20 @@ schema defined in <a class="reference internal" href="five9.html#five9.Five9.cre
 <dt id="five9.models.WebConnector.variables">
 <code class="descname">variables</code><a class="headerlink" href="#five9.models.WebConnector.variables" title="Permalink to this definition">¶</a></dt>
 <dd><p>When using the POST method, connectors can include worksheet data as parameter values. The variable placeholder values are surrounded by &#64; signs. For example, the parameter ANI has the value &#64;Call.ANI&#64;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.models.WebConnector.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>five9</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/web_connector.html#WebConnector.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.WebConnector.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the record on the remote.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>

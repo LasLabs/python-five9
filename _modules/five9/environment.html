@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.environment &#8212; Python Five9 0.0.2b108 documentation</title>
+    <title>five9.environment &#8212; Python Five9 0.0.3b113 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.0.2b108',
+        VERSION:     '0.0.3b113',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -147,15 +147,19 @@
 
 <div class="viewcode-block" id="Environment.read"><a class="viewcode-back" href="../../five9.html#five9.environment.Environment.read">[docs]</a>    <span class="nd">@Api</span><span class="o">.</span><span class="n">model</span>
     <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">external_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Perform a lookup on the current model for the provided external ID.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__model__</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__five9__</span><span class="p">,</span> <span class="n">external_id</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Environment.update"><a class="viewcode-back" href="../../five9.html#five9.environment.Environment.update">[docs]</a>    <span class="nd">@Api</span><span class="o">.</span><span class="n">recordset</span>
-    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">record</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__five9__</span><span class="p">)</span> <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__records__</span><span class="p">]</span></div>
+<div class="viewcode-block" id="Environment.write"><a class="viewcode-back" href="../../five9.html#five9.environment.Environment.write">[docs]</a>    <span class="nd">@Api</span><span class="o">.</span><span class="n">recordset</span>
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write the records to the remote.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_iter_call</span><span class="p">(</span><span class="s1">&#39;write&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Environment.delete"><a class="viewcode-back" href="../../five9.html#five9.environment.Environment.delete">[docs]</a>    <span class="nd">@Api</span><span class="o">.</span><span class="n">recordset</span>
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">record</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__five9__</span><span class="p">)</span> <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__records__</span><span class="p">]</span></div>
+        <span class="sd">&quot;&quot;&quot;Delete the records from the remote.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_iter_call</span><span class="p">(</span><span class="s1">&#39;delete&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Environment.search"><a class="viewcode-back" href="../../five9.html#five9.environment.Environment.search">[docs]</a>    <span class="nd">@Api</span><span class="o">.</span><span class="n">model</span>
     <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filters</span><span class="p">):</span>
@@ -171,7 +175,13 @@
         <span class="n">records</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__model__</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">filters</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__five9__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__model__</span><span class="p">,</span> <span class="n">records</span><span class="p">,</span>
-        <span class="p">)</span></div></div>
+        <span class="p">)</span></div>
+
+    <span class="nd">@Api</span><span class="o">.</span><span class="n">recordset</span>
+    <span class="k">def</span> <span class="nf">_iter_call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method_name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="nb">getattr</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">method_name</span><span class="p">)(</span><span class="bp">self</span><span class="o">.</span><span class="n">__five9__</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__records__</span>
+        <span class="p">]</span></div>
 </pre></div>
 
           </div>

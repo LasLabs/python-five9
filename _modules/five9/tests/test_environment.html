@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.tests.test_environment &#8212; Python Five9 0.0.2b108 documentation</title>
+    <title>five9.tests.test_environment &#8212; Python Five9 0.0.3b113 documentation</title>
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.0.2b108',
+        VERSION:     '0.0.3b113',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -125,9 +125,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="p">,</span> <span class="n">expect</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">read</span><span class="p">())</span></div>
 
-<div class="viewcode-block" id="TestEnvironment.test_update"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_environment.TestEnvironment.test_update">[docs]</a>    <span class="k">def</span> <span class="nf">test_update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;It should iterate and update the recordset.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_test_iter_method</span><span class="p">(</span><span class="s1">&#39;update&#39;</span><span class="p">)</span></div>
+<div class="viewcode-block" id="TestEnvironment.test_write"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_environment.TestEnvironment.test_write">[docs]</a>    <span class="k">def</span> <span class="nf">test_write</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;It should iterate and write the recordset.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_test_iter_method</span><span class="p">(</span><span class="s1">&#39;write&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TestEnvironment.test_delete"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_environment.TestEnvironment.test_delete">[docs]</a>    <span class="k">def</span> <span class="nf">test_delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;It should iterate and delete the recordset.&quot;&quot;&quot;</span>
