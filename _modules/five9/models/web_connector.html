@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.models.web_connector &#8212; Python Five9 0.0.2b103 documentation</title>
+    <title>five9.models.web_connector &#8212; Python Five9 0.0.2b108 documentation</title>
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.0.2b103',
+        VERSION:     '0.0.2b108',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -44,6 +44,8 @@
 <span class="c1"># License MIT (https://opensource.org/licenses/MIT).</span>
 
 <span class="kn">import</span> <span class="nn">properties</span>
+
+<span class="kn">from</span> <span class="nn">six</span> <span class="k">import</span> <span class="n">string_types</span>
 
 <span class="kn">from</span> <span class="nn">.base_model</span> <span class="k">import</span> <span class="n">BaseModel</span>
 <span class="kn">from</span> <span class="nn">.key_value_pair</span> <span class="k">import</span> <span class="n">KeyValuePair</span>
@@ -189,15 +191,19 @@
 <span class="sd">        Args:</span>
 <span class="sd">            five9 (five9.Five9): The authenticated Five9 remote.</span>
 <span class="sd">            filters (dict): A dictionary of search parameters, keyed by the</span>
-<span class="sd">                name of the field to search.</span>
+<span class="sd">                name of the field to search. This should conform to the</span>
+<span class="sd">                schema defined in :func:`five9.Five9.create_criteria`.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            list[BaseModel]: A list of records representing the result.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">assert</span> <span class="n">filters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">__uid_field__</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-        <span class="n">results</span> <span class="o">=</span> <span class="n">five9</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">getWebConnectors</span><span class="p">(</span>
-            <span class="n">filters</span><span class="p">[</span><span class="bp">cls</span><span class="o">.</span><span class="n">__uid_field__</span><span class="p">],</span>
-        <span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filters</span><span class="p">[</span><span class="bp">cls</span><span class="o">.</span><span class="n">__uid_field__</span><span class="p">],</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="n">filters</span> <span class="o">=</span> <span class="n">filters</span><span class="p">[</span><span class="bp">cls</span><span class="o">.</span><span class="n">__uid_field__</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">filters</span> <span class="o">=</span> <span class="n">filters</span><span class="p">[</span><span class="bp">cls</span><span class="o">.</span><span class="n">__uid_field__</span><span class="p">]</span>
+            <span class="n">filters</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;(</span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">filters</span><span class="p">))</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">five9</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">getWebConnectors</span><span class="p">(</span><span class="n">filters</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">[</span><span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="WebConnector.delete"><a class="viewcode-back" href="../../../five9.models.html#five9.models.web_connector.WebConnector.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">five9</span><span class="p">):</span>

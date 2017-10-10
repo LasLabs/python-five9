@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.tests.test_web_connector &#8212; Python Five9 0.0.2b103 documentation</title>
+    <title>five9.tests.test_web_connector &#8212; Python Five9 0.0.2b108 documentation</title>
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.0.2b103',
+        VERSION:     '0.0.2b108',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -74,10 +74,18 @@
             <span class="n">WebConnector</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TestWebConnector.test_search"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_web_connector.TestWebConnector.test_search">[docs]</a>    <span class="k">def</span> <span class="nf">test_search</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;It should search the remote and return the results.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;It should search the remote for the name.&quot;&quot;&quot;</span>
         <span class="n">WebConnector</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">getWebConnectors</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestWebConnector.test_search_multiple"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_web_connector.TestWebConnector.test_search_multiple">[docs]</a>    <span class="k">def</span> <span class="nf">test_search_multiple</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;It should search the remote for the conjoined names.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Test1&#39;</span><span class="p">,</span> <span class="s1">&#39;Test2&#39;</span><span class="p">]</span>
+        <span class="n">WebConnector</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">getWebConnectors</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span>
+            <span class="sa">r</span><span class="s1">&#39;(Test1|Test2)&#39;</span><span class="p">,</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="TestWebConnector.test_search_return"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_web_connector.TestWebConnector.test_search_return">[docs]</a>    <span class="k">def</span> <span class="nf">test_search_return</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

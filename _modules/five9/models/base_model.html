@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.models.base_model &#8212; Python Five9 0.0.2b103 documentation</title>
+    <title>five9.models.base_model &#8212; Python Five9 0.0.2b108 documentation</title>
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.0.2b103',
+        VERSION:     '0.0.2b108',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -81,7 +81,8 @@
 <span class="sd">        Args:</span>
 <span class="sd">            five9 (five9.Five9): The authenticated Five9 remote.</span>
 <span class="sd">            filters (dict): A dictionary of search parameters, keyed by the</span>
-<span class="sd">                name of the field to search.</span>
+<span class="sd">                name of the field to search. This should conform to the</span>
+<span class="sd">                schema defined in :func:`five9.Five9.create_criteria`.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            list[BaseModel]: A list of records representing the result.</span>

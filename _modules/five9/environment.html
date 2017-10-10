@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.environment &#8212; Python Five9 0.0.2b103 documentation</title>
+    <title>five9.environment &#8212; Python Five9 0.0.2b108 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.0.2b103',
+        VERSION:     '0.0.2b108',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -129,15 +129,21 @@
 
 <div class="viewcode-block" id="Environment.create"><a class="viewcode-back" href="../../five9.html#five9.environment.Environment.create">[docs]</a>    <span class="nd">@Api</span><span class="o">.</span><span class="n">model</span>
     <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create the data on the remote, optionally refreshing.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__model__</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__five9__</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">refresh</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__model__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">])</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">__five9__</span><span class="p">,</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">__model__</span><span class="p">,</span>
-                <span class="n">records</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__model__</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">data</span><span class="p">)],</span>
-            <span class="p">)</span></div>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Environment.new"><a class="viewcode-back" href="../../five9.html#five9.environment.Environment.new">[docs]</a>    <span class="nd">@Api</span><span class="o">.</span><span class="n">model</span>
+    <span class="k">def</span> <span class="nf">new</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a new memory record, but do not create on the remote.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__five9__</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__model__</span><span class="p">,</span>
+            <span class="n">records</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__model__</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">data</span><span class="p">)],</span>
+        <span class="p">)</span></div>
 
 <div class="viewcode-block" id="Environment.read"><a class="viewcode-back" href="../../five9.html#five9.environment.Environment.read">[docs]</a>    <span class="nd">@Api</span><span class="o">.</span><span class="n">model</span>
     <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">external_id</span><span class="p">):</span>
