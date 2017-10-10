@@ -12,6 +12,22 @@ Subpackages
 Submodules
 ----------
 
+five9\.environment module
+-------------------------
+
+.. automodule:: five9.environment
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+five9\.exceptions module
+------------------------
+
+.. automodule:: five9.exceptions
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 five9\.five9 module
 -------------------
 

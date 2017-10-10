@@ -12,6 +12,30 @@ five9\.tests\.common module
     :undoc-members:
     :show-inheritance:
 
+five9\.tests\.test\_api module
+------------------------------
+
+.. automodule:: five9.tests.test_api
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+five9\.tests\.test\_base\_model module
+--------------------------------------
+
+.. automodule:: five9.tests.test_base_model
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+five9\.tests\.test\_environment module
+--------------------------------------
+
+.. automodule:: five9.tests.test_environment
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 five9\.tests\.test\_five9 module
 --------------------------------
 

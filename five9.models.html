@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.models package &#8212; Python Five9 0.0.2b90 documentation</title>
+    <title>five9.models package &#8212; Python Five9 0.0.2b103 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.0.2b90',
+        VERSION:     '0.0.2b103',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -53,7 +53,117 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">properties.base.base.HasProperties</span></code></p>
 <p>All models should be inherited from this.</p>
 <p>Currently it does nothing other than provide a common inheritance point
-within this library.</p>
+within this library, plus a CRUD skeleton.</p>
+<dl class="classmethod">
+<dt id="five9.models.base_model.BaseModel.create">
+<em class="property">classmethod </em><code class="descname">create</code><span class="sig-paren">(</span><em>five9</em>, <em>data</em>, <em>refresh=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/base_model.html#BaseModel.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.base_model.BaseModel.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a record on Five9.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</li>
+<li><strong>data</strong> (<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) – A data dictionary that can be fed to <code class="docutils literal"><span class="pre">deserialize</span></code>.</li>
+<li><strong>refresh</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a><em>, </em><em>optional</em>) – Set to <code class="docutils literal"><span class="pre">True</span></code> to get the record data
+from Five9 before returning the record.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>The newly created record. If <code class="docutils literal"><span class="pre">refresh</span></code> is <code class="docutils literal"><span class="pre">True</span></code>,</dt>
+<dd><p class="first last">this will be fetched from Five9. Otherwise, it’s the data
+record that was sent to the server.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#five9.models.base_model.BaseModel" title="five9.models.base_model.BaseModel">BaseModel</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.models.base_model.BaseModel.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>five9</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/base_model.html#BaseModel.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.base_model.BaseModel.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the record from the remote.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="five9.models.base_model.BaseModel.read">
+<em class="property">classmethod </em><code class="descname">read</code><span class="sig-paren">(</span><em>five9</em>, <em>external_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/base_model.html#BaseModel.read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.base_model.BaseModel.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a record singleton for the ID.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</li>
+<li><strong>external_id</strong> (<em>mixed</em>) – The identified on Five9. This should be the
+value that is in the <code class="docutils literal"><span class="pre">__uid_field__</span></code> field on the record.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The record, if found. Otherwise <code class="docutils literal"><span class="pre">None</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#five9.models.base_model.BaseModel" title="five9.models.base_model.BaseModel">BaseModel</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="five9.models.base_model.BaseModel.search">
+<em class="property">classmethod </em><code class="descname">search</code><span class="sig-paren">(</span><em>five9</em>, <em>filters</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/base_model.html#BaseModel.search"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.base_model.BaseModel.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for a record on the remote and return the results.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</li>
+<li><strong>filters</strong> (<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) – A dictionary of search parameters, keyed by the
+name of the field to search.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of records representing the result.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[<a class="reference internal" href="#five9.models.base_model.BaseModel" title="five9.models.base_model.BaseModel">BaseModel</a>]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.models.base_model.BaseModel.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>five9</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/base_model.html#BaseModel.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.base_model.BaseModel.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the record on the remote.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -133,24 +243,29 @@ within this library.</p>
 <dd><p>List of parameters passed with constant values.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="classmethod">
 <dt id="five9.models.web_connector.WebConnector.create">
-<code class="descname">create</code><span class="sig-paren">(</span><em>five9</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/web_connector.html#WebConnector.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.web_connector.WebConnector.create" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a web connector on Five9.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.five9.Five9" title="five9.five9.Five9"><em>Five9</em></a>) – The authenticated Five9 object.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+<em class="property">classmethod </em><code class="descname">create</code><span class="sig-paren">(</span><em>five9</em>, <em>data</em>, <em>refresh=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/web_connector.html#WebConnector.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.web_connector.WebConnector.create" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="five9.models.web_connector.WebConnector.ctiWebServices">
 <code class="descname">ctiWebServices</code><a class="headerlink" href="#five9.models.web_connector.WebConnector.ctiWebServices" title="Permalink to this definition">¶</a></dt>
 <dd><p>In the Internet Explorer toolbar, whether to open the HTTP request in the current or a new browser window.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.models.web_connector.WebConnector.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>five9</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/web_connector.html#WebConnector.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.web_connector.WebConnector.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the record from the remote.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
@@ -189,6 +304,31 @@ within this library.</p>
 <dd><p>When using the POST method, variable parameters to pass in the URL.</p>
 </dd></dl>
 
+<dl class="classmethod">
+<dt id="five9.models.web_connector.WebConnector.search">
+<em class="property">classmethod </em><code class="descname">search</code><span class="sig-paren">(</span><em>five9</em>, <em>filters</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/web_connector.html#WebConnector.search"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.web_connector.WebConnector.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for a record on the remote and return the results.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</li>
+<li><strong>filters</strong> (<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) – A dictionary of search parameters, keyed by the
+name of the field to search.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of records representing the result.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[<a class="reference internal" href="#five9.models.base_model.BaseModel" title="five9.models.base_model.BaseModel">BaseModel</a>]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="five9.models.web_connector.WebConnector.startPageText">
 <code class="descname">startPageText</code><a class="headerlink" href="#five9.models.web_connector.WebConnector.startPageText" title="Permalink to this definition">¶</a></dt>
@@ -205,6 +345,20 @@ within this library.</p>
 <dt id="five9.models.web_connector.WebConnector.triggerDispositions">
 <code class="descname">triggerDispositions</code><a class="headerlink" href="#five9.models.web_connector.WebConnector.triggerDispositions" title="Permalink to this definition">¶</a></dt>
 <dd><p>When the trigger is OnCallDispositioned, specifies the trigger dispositions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.models.web_connector.WebConnector.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>five9</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/web_connector.html#WebConnector.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.web_connector.WebConnector.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the record on the remote.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
@@ -295,24 +449,29 @@ within this library.</p>
 <dd><p>List of parameters passed with constant values.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="classmethod">
 <dt id="five9.models.WebConnector.create">
-<code class="descname">create</code><span class="sig-paren">(</span><em>five9</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/web_connector.html#WebConnector.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.WebConnector.create" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a web connector on Five9.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.five9.Five9" title="five9.five9.Five9"><em>Five9</em></a>) – The authenticated Five9 object.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+<em class="property">classmethod </em><code class="descname">create</code><span class="sig-paren">(</span><em>five9</em>, <em>data</em>, <em>refresh=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/web_connector.html#WebConnector.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.WebConnector.create" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="five9.models.WebConnector.ctiWebServices">
 <code class="descname">ctiWebServices</code><a class="headerlink" href="#five9.models.WebConnector.ctiWebServices" title="Permalink to this definition">¶</a></dt>
 <dd><p>In the Internet Explorer toolbar, whether to open the HTTP request in the current or a new browser window.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.models.WebConnector.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>five9</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/web_connector.html#WebConnector.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.WebConnector.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the record from the remote.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
@@ -351,6 +510,31 @@ within this library.</p>
 <dd><p>When using the POST method, variable parameters to pass in the URL.</p>
 </dd></dl>
 
+<dl class="classmethod">
+<dt id="five9.models.WebConnector.search">
+<em class="property">classmethod </em><code class="descname">search</code><span class="sig-paren">(</span><em>five9</em>, <em>filters</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/web_connector.html#WebConnector.search"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.WebConnector.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for a record on the remote and return the results.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</li>
+<li><strong>filters</strong> (<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) – A dictionary of search parameters, keyed by the
+name of the field to search.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of records representing the result.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[<a class="reference internal" href="#five9.models.base_model.BaseModel" title="five9.models.base_model.BaseModel">BaseModel</a>]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="five9.models.WebConnector.startPageText">
 <code class="descname">startPageText</code><a class="headerlink" href="#five9.models.WebConnector.startPageText" title="Permalink to this definition">¶</a></dt>
@@ -367,6 +551,20 @@ within this library.</p>
 <dt id="five9.models.WebConnector.triggerDispositions">
 <code class="descname">triggerDispositions</code><a class="headerlink" href="#five9.models.WebConnector.triggerDispositions" title="Permalink to this definition">¶</a></dt>
 <dd><p>When the trigger is OnCallDispositioned, specifies the trigger dispositions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.models.WebConnector.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>five9</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/web_connector.html#WebConnector.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.WebConnector.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the record on the remote.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
@@ -437,6 +635,8 @@ within this library.</p>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="five9.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="five9.html#module-five9.environment">five9.environment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="five9.html#module-five9.exceptions">five9.exceptions module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="five9.html#module-five9.five9">five9.five9 module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="five9.html#module-five9">Module contents</a></li>
 </ul>

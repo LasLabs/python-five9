@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9 package &#8212; Python Five9 0.0.2b90 documentation</title>
+    <title>five9 package &#8212; Python Five9 0.0.2b103 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.0.2b90',
+        VERSION:     '0.0.2b103',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -57,6 +57,9 @@
 <li class="toctree-l1"><a class="reference internal" href="five9.tests.html">five9.tests package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="five9.tests.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="five9.tests.html#module-five9.tests.common">five9.tests.common module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="five9.tests.html#module-five9.tests.test_api">five9.tests.test_api module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="five9.tests.html#module-five9.tests.test_base_model">five9.tests.test_base_model module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="five9.tests.html#module-five9.tests.test_environment">five9.tests.test_environment module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="five9.tests.html#module-five9.tests.test_five9">five9.tests.test_five9 module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="five9.tests.html#module-five9.tests.test_key_value_pair">five9.tests.test_key_value_pair module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="five9.tests.html#module-five9.tests.test_web_connector">five9.tests.test_web_connector module</a></li>
@@ -68,6 +71,77 @@
 </div>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-five9.environment">
+<span id="five9-environment-module"></span><h2>five9.environment module<a class="headerlink" href="#module-five9.environment" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="five9.environment.Api">
+<em class="property">class </em><code class="descclassname">five9.environment.</code><code class="descname">Api</code><a class="reference internal" href="_modules/five9/environment.html#Api"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.environment.Api" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>This is a set of decorators for model validators.</p>
+<dl class="staticmethod">
+<dt id="five9.environment.Api.model">
+<em class="property">static </em><code class="descname">model</code><span class="sig-paren">(</span><em>method</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/environment.html#Api.model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.environment.Api.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this to decorate methods that expect a model.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="five9.environment.Api.recordset">
+<em class="property">static </em><code class="descname">recordset</code><span class="sig-paren">(</span><em>method</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/environment.html#Api.recordset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.environment.Api.recordset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this to decorate methods that expect a record set.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="five9.environment.Environment">
+<em class="property">class </em><code class="descclassname">five9.environment.</code><code class="descname">Environment</code><span class="sig-paren">(</span><em>five9</em>, <em>model=None</em>, <em>records=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/environment.html#Environment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.environment.Environment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Represents a container for models with a back-reference to Five9.</p>
+<dl class="method">
+<dt id="five9.environment.Environment.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/environment.html#Environment.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.environment.Environment.create" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="five9.environment.Environment.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/environment.html#Environment.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.environment.Environment.delete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="five9.environment.Environment.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/environment.html#Environment.read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.environment.Environment.read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="five9.environment.Environment.search">
+<code class="descname">search</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/environment.html#Environment.search"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.environment.Environment.search" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="five9.environment.Environment.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/environment.html#Environment.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.environment.Environment.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-five9.exceptions">
+<span id="five9-exceptions-module"></span><h2>five9.exceptions module<a class="headerlink" href="#module-five9.exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="five9.exceptions.Five9Exception">
+<em class="property">exception </em><code class="descclassname">five9.exceptions.</code><code class="descname">Five9Exception</code><a class="reference internal" href="_modules/five9/exceptions.html#Five9Exception"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.exceptions.Five9Exception" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/exceptions.html#exceptions.Exception" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></a></p>
+<p>Base Five9 Exceptions.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="five9.exceptions.ValidationError">
+<em class="property">exception </em><code class="descclassname">five9.exceptions.</code><code class="descname">ValidationError</code><a class="reference internal" href="_modules/five9/exceptions.html#ValidationError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.exceptions.ValidationError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#five9.exceptions.Five9Exception" title="five9.exceptions.Five9Exception"><code class="xref py py-class docutils literal"><span class="pre">five9.exceptions.Five9Exception</span></code></a></p>
+<p>Indicated an error validating user supplied data.</p>
+</dd></dl>
+
 </div>
 <div class="section" id="module-five9.five9">
 <span id="five9-five9-module"></span><h2>five9.five9 module<a class="headerlink" href="#module-five9.five9" title="Permalink to this headline">¶</a></h2>
@@ -477,6 +551,8 @@ Statistics API.</td>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-five9.environment">five9.environment module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-five9.exceptions">five9.exceptions module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-five9.five9">five9.five9 module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-five9">Module contents</a></li>
 </ul>

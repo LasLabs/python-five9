@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.tests.test_web_connector &#8212; Python Five9 0.0.2b90 documentation</title>
+    <title>five9.tests.test_web_connector &#8212; Python Five9 0.0.2b103 documentation</title>
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.0.2b90',
+        VERSION:     '0.0.2b103',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -53,18 +53,57 @@
 
 <div class="viewcode-block" id="TestWebConnector.setUp"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_web_connector.TestWebConnector.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">TestWebConnector</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">connector</span> <span class="o">=</span> <span class="n">WebConnector</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">,</span>
             <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">,</span>
             <span class="n">trigger</span><span class="o">=</span><span class="s1">&#39;OnCallAccepted&#39;</span><span class="p">,</span>
-        <span class="p">)</span></div>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">five9</span> <span class="o">=</span> <span class="n">mock</span><span class="o">.</span><span class="n">MagicMock</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="TestWebConnector.test_create"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_web_connector.TestWebConnector.test_create">[docs]</a>    <span class="k">def</span> <span class="nf">test_create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;It should use the proper method and args on the API with.&quot;&quot;&quot;</span>
-        <span class="n">five9</span> <span class="o">=</span> <span class="n">mock</span><span class="o">.</span><span class="n">MagicMock</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">five9</span><span class="p">)</span>
-        <span class="n">five9</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">createWebConnector</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">serialize</span><span class="p">(),</span>
+        <span class="n">WebConnector</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">createWebConnector</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestWebConnector.test_search_assert"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_web_connector.TestWebConnector.test_search_assert">[docs]</a>    <span class="k">def</span> <span class="nf">test_search_assert</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;It should raise AssertionError when no name in filter.&quot;&quot;&quot;</span>
+        <span class="nb">filter</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;test&#39;</span><span class="p">:</span> <span class="mi">1234</span><span class="p">}</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">AssertionError</span><span class="p">):</span>
+            <span class="n">WebConnector</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestWebConnector.test_search"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_web_connector.TestWebConnector.test_search">[docs]</a>    <span class="k">def</span> <span class="nf">test_search</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;It should search the remote and return the results.&quot;&quot;&quot;</span>
+        <span class="n">WebConnector</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">getWebConnectors</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestWebConnector.test_search_return"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_web_connector.TestWebConnector.test_search_return">[docs]</a>    <span class="k">def</span> <span class="nf">test_search_return</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;It should return a list of the result objects.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">getWebConnectors</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">WebConnector</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">expect</span> <span class="o">=</span> <span class="n">WebConnector</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">serialize</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertIsInstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">WebConnector</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertDictEqual</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">serialize</span><span class="p">(),</span> <span class="n">expect</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestWebConnector.test_delete"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_web_connector.TestWebConnector.test_delete">[docs]</a>    <span class="k">def</span> <span class="nf">test_delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;It should call the delete method and args on the API.&quot;&quot;&quot;</span>
+        <span class="n">WebConnector</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">deleteWebConnector</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestWebConnector.test_update"><a class="viewcode-back" href="../../../five9.tests.html#five9.tests.test_web_connector.TestWebConnector.test_update">[docs]</a>    <span class="k">def</span> <span class="nf">test_update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;It should call the update method on the API.&quot;&quot;&quot;</span>
+        <span class="n">WebConnector</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">five9</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">modifyWebConnector</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span>
+            <span class="n">WebConnector</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">serialize</span><span class="p">(),</span>
         <span class="p">)</span></div></div>
 </pre></div>
 

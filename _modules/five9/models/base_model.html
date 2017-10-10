@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.models.base_model &#8212; Python Five9 0.0.2b90 documentation</title>
+    <title>five9.models.base_model &#8212; Python Five9 0.0.2b103 documentation</title>
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.0.2b90',
+        VERSION:     '0.0.2b103',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -50,8 +50,99 @@
     <span class="sd">&quot;&quot;&quot;All models should be inherited from this.</span>
 
 <span class="sd">    Currently it does nothing other than provide a common inheritance point</span>
-<span class="sd">    within this library.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
+<span class="sd">    within this library, plus a CRUD skeleton.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># This is the attribute on Five9 that serves as the UID for Five9.</span>
+    <span class="c1"># Typically this is ``name``.</span>
+    <span class="n">__uid_field__</span> <span class="o">=</span> <span class="s1">&#39;name&#39;</span>
+
+<div class="viewcode-block" id="BaseModel.create"><a class="viewcode-back" href="../../../five9.models.html#five9.models.base_model.BaseModel.create">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">five9</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a record on Five9.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            five9 (five9.Five9): The authenticated Five9 remote.</span>
+<span class="sd">            data (dict): A data dictionary that can be fed to ``deserialize``.</span>
+<span class="sd">            refresh (bool, optional): Set to ``True`` to get the record data</span>
+<span class="sd">                from Five9 before returning the record.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            BaseModel: The newly created record. If ``refresh`` is ``True``,</span>
+<span class="sd">                this will be fetched from Five9. Otherwise, it&#39;s the data</span>
+<span class="sd">                record that was sent to the server.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="BaseModel.search"><a class="viewcode-back" href="../../../five9.models.html#five9.models.base_model.BaseModel.search">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">five9</span><span class="p">,</span> <span class="n">filters</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Search for a record on the remote and return the results.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            five9 (five9.Five9): The authenticated Five9 remote.</span>
+<span class="sd">            filters (dict): A dictionary of search parameters, keyed by the</span>
+<span class="sd">                name of the field to search.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list[BaseModel]: A list of records representing the result.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="BaseModel.read"><a class="viewcode-back" href="../../../five9.models.html#five9.models.base_model.BaseModel.read">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">five9</span><span class="p">,</span> <span class="n">external_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a record singleton for the ID.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            five9 (five9.Five9): The authenticated Five9 remote.</span>
+<span class="sd">            external_id (mixed): The identified on Five9. This should be the</span>
+<span class="sd">                value that is in the ``__uid_field__`` field on the record.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            BaseModel: The record, if found. Otherwise ``None``</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">five9</span><span class="p">,</span> <span class="p">{</span><span class="bp">cls</span><span class="o">.</span><span class="n">__uid_field__</span><span class="p">:</span> <span class="n">external_id</span><span class="p">})</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="BaseModel.delete"><a class="viewcode-back" href="../../../five9.models.html#five9.models.base_model.BaseModel.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">five9</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Delete the record from the remote.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            five9 (five9.Five9): The authenticated Five9 remote.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="BaseModel.update"><a class="viewcode-back" href="../../../five9.models.html#five9.models.base_model.BaseModel.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">five9</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update the record on the remote.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            five9 (five9.Five9): The authenticated Five9 remote.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_call_and_serialize</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Call the remote method with data, and optionally refresh.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            method (callable): The method on the Authenticated Five9 object</span>
+<span class="sd">                that should be called.</span>
+<span class="sd">            data (dict): A data dictionary that will be passed as the first</span>
+<span class="sd">                and only position argument to ``method``.</span>
+<span class="sd">            refresh (bool, optional): Set to ``True`` to get the record data</span>
+<span class="sd">                from Five9 before returning the record.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            BaseModel: The newly created record. If ``refresh`` is ``True``,</span>
+<span class="sd">                this will be fetched from Five9. Otherwise, it&#39;s the data</span>
+<span class="sd">                record that was sent to the server.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">method</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">refresh</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">method</span><span class="o">.</span><span class="vm">__self__</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="bp">cls</span><span class="o">.</span><span class="n">__uid_field__</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
 </pre></div>
 
           </div>
