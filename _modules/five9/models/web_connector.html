@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.models.web_connector &#8212; Python Five9 0.0.3b113 documentation</title>
+    <title>five9.models.web_connector &#8212; Python Five9 0.0.3b118 documentation</title>
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.0.3b113',
+        VERSION:     '0.0.3b118',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -48,6 +48,7 @@
 <span class="kn">from</span> <span class="nn">six</span> <span class="k">import</span> <span class="n">string_types</span>
 
 <span class="kn">from</span> <span class="nn">.base_model</span> <span class="k">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span> <span class="nn">.disposition</span> <span class="k">import</span> <span class="n">Disposition</span>
 <span class="kn">from</span> <span class="nn">.key_value_pair</span> <span class="k">import</span> <span class="n">KeyValuePair</span>
 
 
@@ -166,7 +167,7 @@
     <span class="n">triggerDispositions</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">List</span><span class="p">(</span>
         <span class="s1">&#39;When the trigger is OnCallDispositioned, specifies the trigger &#39;</span>
         <span class="s1">&#39;dispositions.&#39;</span><span class="p">,</span>
-        <span class="n">prop</span><span class="o">=</span><span class="n">properties</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="s1">&#39;Disposition Name.&#39;</span><span class="p">),</span>
+        <span class="n">prop</span><span class="o">=</span><span class="n">Disposition</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">url</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">String</span><span class="p">(</span>
         <span class="s1">&#39;URI of the external web site.&#39;</span><span class="p">,</span>

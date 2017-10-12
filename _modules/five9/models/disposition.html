@@ -1,0 +1,166 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>five9.models.disposition &#8212; Python Five9 0.0.3b118 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.0.3b118',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for five9.models.disposition</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright 2017-TODAY LasLabs Inc.</span>
+<span class="c1"># License MIT (https://opensource.org/licenses/MIT).</span>
+
+<span class="kn">import</span> <span class="nn">properties</span>
+
+<span class="kn">from</span> <span class="nn">.base_model</span> <span class="k">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span> <span class="nn">.disposition_type</span> <span class="k">import</span> <span class="n">DispositionType</span>
+<span class="kn">from</span> <span class="nn">.disposition_type_params</span> <span class="k">import</span> <span class="n">DispositionTypeParams</span>
+
+
+<div class="viewcode-block" id="Disposition"><a class="viewcode-back" href="../../../five9.models.html#five9.models.disposition.Disposition">[docs]</a><span class="k">class</span> <span class="nc">Disposition</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+
+    <span class="n">agentMustCompleteWorksheet</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">Bool</span><span class="p">(</span>
+        <span class="s1">&#39;Whether the agent needs to complete a worksheet before selecting &#39;</span>
+        <span class="s1">&#39;a disposition.&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">agentMustConfirm</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">Bool</span><span class="p">(</span>
+        <span class="s1">&#39;Whether the agent is prompted to confirm the selection of the &#39;</span>
+        <span class="s1">&#39;disposition.&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">String</span><span class="p">(</span>
+        <span class="s1">&#39;Description of the disposition.&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">String</span><span class="p">(</span>
+        <span class="s1">&#39;Name of the disposition.&#39;</span><span class="p">,</span>
+        <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">resetAttemptsCounter</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">Bool</span><span class="p">(</span>
+        <span class="s1">&#39;Whether assigning the disposition resets the number of dialing &#39;</span>
+        <span class="s1">&#39;attempts for this contact.&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">sendEmailNotification</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">Bool</span><span class="p">(</span>
+        <span class="s1">&#39;Whether call details are sent as an email notification when the &#39;</span>
+        <span class="s1">&#39;disposition is used by an agent.&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">sendIMNotification</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">Bool</span><span class="p">(</span>
+        <span class="s1">&#39;Whether call details are sent as an instant message in the Five9 &#39;</span>
+        <span class="s1">&#39;system when the disposition is used by an agent.&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">trackAsFirstCallResolution</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">Bool</span><span class="p">(</span>
+        <span class="s1">&#39;Whether the call is included in the first call resolution &#39;</span>
+        <span class="s1">&#39;statistics (customer</span><span class="se">\&#39;</span><span class="s1">s needs addressed in the first call). Used &#39;</span>
+        <span class="s1">&#39;primarily for inbound campaigns.&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="nb">type</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">Instance</span><span class="p">(</span>
+        <span class="s1">&#39;Disposition type.&#39;</span><span class="p">,</span>
+        <span class="n">instance_class</span><span class="o">=</span><span class="n">DispositionType</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">typeParameters</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">Instance</span><span class="p">(</span>
+        <span class="s1">&#39;Parameters that apply to the disposition type.&#39;</span><span class="p">,</span>
+        <span class="n">instance_class</span><span class="o">=</span><span class="n">DispositionTypeParams</span><span class="p">,</span>
+    <span class="p">)</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Python Five9</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=LasLabs&repo=python-five9&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+    
+
+<p>
+<a href="https://travis-ci.org/LasLabs/python-five9">
+    <img
+        alt="https://secure.travis-ci.org/LasLabs/python-five9.svg?branch=master"
+        src="https://secure.travis-ci.org/LasLabs/python-five9.svg?branch=master"
+    />
+</a>
+</p>
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../five9.html">five9 package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../AdminWebService.html">Admin Web Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../SupervisorWebService.html">Supervisor Web Service</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017 LasLabs Inc..
+      
+    </div>
+
+    
+    <a href="https://github.com/LasLabs/python-five9" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

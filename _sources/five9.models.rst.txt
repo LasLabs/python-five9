@@ -12,10 +12,42 @@ five9\.models\.base\_model module
     :undoc-members:
     :show-inheritance:
 
+five9\.models\.disposition module
+---------------------------------
+
+.. automodule:: five9.models.disposition
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+five9\.models\.disposition\_type module
+---------------------------------------
+
+.. automodule:: five9.models.disposition_type
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+five9\.models\.disposition\_type\_params module
+-----------------------------------------------
+
+.. automodule:: five9.models.disposition_type_params
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 five9\.models\.key\_value\_pair module
 --------------------------------------
 
 .. automodule:: five9.models.key_value_pair
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+five9\.models\.timer module
+---------------------------
+
+.. automodule:: five9.models.timer
     :members:
     :undoc-members:
     :show-inheritance:
