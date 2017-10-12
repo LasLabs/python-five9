@@ -4,6 +4,8 @@
 
 import properties
 
+from six import string_types
+
 
 class BaseModel(properties.HasProperties):
     """All models should be inherited from this.
@@ -112,3 +114,31 @@ class BaseModel(properties.HasProperties):
             return cls.read(method.__self__, data[cls.__uid_field__])
         else:
             return cls.deserialize(data)
+
+    @classmethod
+    def _get_name_filters(cls, filters):
+        """Return a regex filter for the UID column only."""
+        assert filters.get(cls.__uid_field__) is not None
+        if isinstance(filters[cls.__uid_field__], string_types):
+            filters = filters[cls.__uid_field__]
+        else:
+            filters = filters[cls.__uid_field__]
+            filters = r'(%s)' % ('|'.join(filters))
+        return filters
+
+    @classmethod
+    def _name_search(cls, method, filters):
+        """Helper for search methods that use name filters.
+
+        Args:
+            method (callable): The Five9 API method to call with the name
+                filters.
+            filters (dict): A dictionary of search parameters, keyed by the
+                name of the field to search. This should conform to the
+                schema defined in :func:`five9.Five9.create_criteria`.
+
+        Returns:
+            list[BaseModel]: A list of records representing the result.
+        """
+        filters = cls._get_name_filters(filters)
+        return [cls(**row) for row in method(filters)]

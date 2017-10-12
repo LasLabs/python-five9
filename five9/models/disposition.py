@@ -51,3 +51,53 @@ class Disposition(BaseModel):
         'Parameters that apply to the disposition type.',
         instance_class=DispositionTypeParams,
     )
+
+    @classmethod
+    def create(cls, five9, data, refresh=False):
+        """Create a record on Five9.
+
+        Args:
+            five9 (five9.Five9): The authenticated Five9 remote.
+            data (dict): A data dictionary that can be fed to ``deserialize``.
+            refresh (bool, optional): Set to ``True`` to get the record data
+                from Five9 before returning the record.
+
+        Returns:
+            BaseModel: The newly created record. If ``refresh`` is ``True``,
+                this will be fetched from Five9. Otherwise, it's the data
+                record that was sent to the server.
+        """
+        return cls._call_and_serialize(
+            five9.configuration.createDisposition, data, refresh,
+        )
+
+    @classmethod
+    def search(cls, five9, filters):
+        """Search for a record on the remote and return the results.
+
+        Args:
+            five9 (five9.Five9): The authenticated Five9 remote.
+            filters (dict): A dictionary of search parameters, keyed by the
+                name of the field to search. This should conform to the
+                schema defined in :func:`five9.Five9.create_criteria`.
+
+        Returns:
+            list[BaseModel]: A list of records representing the result.
+        """
+        return cls._name_search(five9.configuration.getDispositions, filters)
+
+    def delete(self, five9):
+        """Delete the record from the remote.
+
+        Args:
+            five9 (five9.Five9): The authenticated Five9 remote.
+        """
+        five9.configuration.removeDisposition(self.name)
+
+    def write(self, five9):
+        """Update the record on the remote.
+
+        Args:
+            five9 (five9.Five9): The authenticated Five9 remote.
+        """
+        five9.configuration.modifyDisposition(self.serialize())
