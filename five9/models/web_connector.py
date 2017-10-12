@@ -7,6 +7,7 @@ import properties
 from six import string_types
 
 from .base_model import BaseModel
+from .disposition import Disposition
 from .key_value_pair import KeyValuePair
 
 
@@ -125,7 +126,7 @@ class WebConnector(BaseModel):
     triggerDispositions = properties.List(
         'When the trigger is OnCallDispositioned, specifies the trigger '
         'dispositions.',
-        prop=properties.String('Disposition Name.'),
+        prop=Disposition,
     )
     url = properties.String(
         'URI of the external web site.',
