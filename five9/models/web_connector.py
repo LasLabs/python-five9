@@ -4,8 +4,6 @@
 
 import properties
 
-from six import string_types
-
 from .base_model import BaseModel
 from .disposition import Disposition
 from .key_value_pair import KeyValuePair
@@ -157,14 +155,7 @@ class WebConnector(BaseModel):
         Returns:
             list[BaseModel]: A list of records representing the result.
         """
-        assert filters.get(cls.__uid_field__) is not None
-        if isinstance(filters[cls.__uid_field__], string_types):
-            filters = filters[cls.__uid_field__]
-        else:
-            filters = filters[cls.__uid_field__]
-            filters = r'(%s)' % ('|'.join(filters))
-        results = five9.configuration.getWebConnectors(filters)
-        return [cls(**row) for row in results]
+        return cls._name_search(five9.configuration.getWebConnectors, filters)
 
     def delete(self, five9):
         """Delete the record from the remote.
