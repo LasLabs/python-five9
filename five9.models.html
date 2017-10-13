@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.models package &#8212; Python Five9 0.0.3b118 documentation</title>
+    <title>five9.models package &#8212; Python Five9 0.0.3b125 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.0.3b118',
+        VERSION:     '0.0.3b125',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -213,6 +213,52 @@ schema defined in <a class="reference internal" href="five9.html#five9.Five9.cre
 <dd><p>Whether the agent is prompted to confirm the selection of the disposition.</p>
 </dd></dl>
 
+<dl class="classmethod">
+<dt id="five9.models.disposition.Disposition.create">
+<em class="property">classmethod </em><code class="descname">create</code><span class="sig-paren">(</span><em>five9</em>, <em>data</em>, <em>refresh=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/disposition.html#Disposition.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.disposition.Disposition.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a record on Five9.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</li>
+<li><strong>data</strong> (<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) – A data dictionary that can be fed to <code class="docutils literal"><span class="pre">deserialize</span></code>.</li>
+<li><strong>refresh</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a><em>, </em><em>optional</em>) – Set to <code class="docutils literal"><span class="pre">True</span></code> to get the record data
+from Five9 before returning the record.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>The newly created record. If <code class="docutils literal"><span class="pre">refresh</span></code> is <code class="docutils literal"><span class="pre">True</span></code>,</dt>
+<dd><p class="first last">this will be fetched from Five9. Otherwise, it’s the data
+record that was sent to the server.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#five9.models.base_model.BaseModel" title="five9.models.base_model.BaseModel">BaseModel</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.models.disposition.Disposition.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>five9</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/disposition.html#Disposition.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.disposition.Disposition.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the record from the remote.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="five9.models.disposition.Disposition.description">
 <code class="descname">description</code><a class="headerlink" href="#five9.models.disposition.Disposition.description" title="Permalink to this definition">¶</a></dt>
@@ -229,6 +275,32 @@ schema defined in <a class="reference internal" href="five9.html#five9.Five9.cre
 <dt id="five9.models.disposition.Disposition.resetAttemptsCounter">
 <code class="descname">resetAttemptsCounter</code><a class="headerlink" href="#five9.models.disposition.Disposition.resetAttemptsCounter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether assigning the disposition resets the number of dialing attempts for this contact.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="five9.models.disposition.Disposition.search">
+<em class="property">classmethod </em><code class="descname">search</code><span class="sig-paren">(</span><em>five9</em>, <em>filters</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/disposition.html#Disposition.search"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.disposition.Disposition.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for a record on the remote and return the results.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</li>
+<li><strong>filters</strong> (<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) – A dictionary of search parameters, keyed by the
+name of the field to search. This should conform to the
+schema defined in <a class="reference internal" href="five9.html#five9.Five9.create_criteria" title="five9.Five9.create_criteria"><code class="xref py py-func docutils literal"><span class="pre">five9.Five9.create_criteria()</span></code></a>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of records representing the result.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[<a class="reference internal" href="#five9.models.base_model.BaseModel" title="five9.models.base_model.BaseModel">BaseModel</a>]</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
@@ -259,6 +331,20 @@ schema defined in <a class="reference internal" href="five9.html#five9.Five9.cre
 <dt id="five9.models.disposition.Disposition.typeParameters">
 <code class="descname">typeParameters</code><a class="headerlink" href="#five9.models.disposition.Disposition.typeParameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parameters that apply to the disposition type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.models.disposition.Disposition.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>five9</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/disposition.html#Disposition.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.disposition.Disposition.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the record on the remote.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -646,6 +732,52 @@ schema defined in <a class="reference internal" href="five9.html#five9.Five9.cre
 <dd><p>Whether the agent is prompted to confirm the selection of the disposition.</p>
 </dd></dl>
 
+<dl class="classmethod">
+<dt id="five9.models.Disposition.create">
+<em class="property">classmethod </em><code class="descname">create</code><span class="sig-paren">(</span><em>five9</em>, <em>data</em>, <em>refresh=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/disposition.html#Disposition.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.Disposition.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a record on Five9.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</li>
+<li><strong>data</strong> (<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) – A data dictionary that can be fed to <code class="docutils literal"><span class="pre">deserialize</span></code>.</li>
+<li><strong>refresh</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a><em>, </em><em>optional</em>) – Set to <code class="docutils literal"><span class="pre">True</span></code> to get the record data
+from Five9 before returning the record.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>The newly created record. If <code class="docutils literal"><span class="pre">refresh</span></code> is <code class="docutils literal"><span class="pre">True</span></code>,</dt>
+<dd><p class="first last">this will be fetched from Five9. Otherwise, it’s the data
+record that was sent to the server.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#five9.models.base_model.BaseModel" title="five9.models.base_model.BaseModel">BaseModel</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.models.Disposition.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><em>five9</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/disposition.html#Disposition.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.Disposition.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the record from the remote.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="five9.models.Disposition.description">
 <code class="descname">description</code><a class="headerlink" href="#five9.models.Disposition.description" title="Permalink to this definition">¶</a></dt>
@@ -662,6 +794,32 @@ schema defined in <a class="reference internal" href="five9.html#five9.Five9.cre
 <dt id="five9.models.Disposition.resetAttemptsCounter">
 <code class="descname">resetAttemptsCounter</code><a class="headerlink" href="#five9.models.Disposition.resetAttemptsCounter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether assigning the disposition resets the number of dialing attempts for this contact.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="five9.models.Disposition.search">
+<em class="property">classmethod </em><code class="descname">search</code><span class="sig-paren">(</span><em>five9</em>, <em>filters</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/disposition.html#Disposition.search"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.Disposition.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for a record on the remote and return the results.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</li>
+<li><strong>filters</strong> (<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) – A dictionary of search parameters, keyed by the
+name of the field to search. This should conform to the
+schema defined in <a class="reference internal" href="five9.html#five9.Five9.create_criteria" title="five9.Five9.create_criteria"><code class="xref py py-func docutils literal"><span class="pre">five9.Five9.create_criteria()</span></code></a>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of records representing the result.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list[<a class="reference internal" href="#five9.models.base_model.BaseModel" title="five9.models.base_model.BaseModel">BaseModel</a>]</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
@@ -692,6 +850,20 @@ schema defined in <a class="reference internal" href="five9.html#five9.Five9.cre
 <dt id="five9.models.Disposition.typeParameters">
 <code class="descname">typeParameters</code><a class="headerlink" href="#five9.models.Disposition.typeParameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parameters that apply to the disposition type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.models.Disposition.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>five9</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/disposition.html#Disposition.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.Disposition.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the record on the remote.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>five9</strong> (<a class="reference internal" href="five9.html#five9.Five9" title="five9.Five9"><em>five9.Five9</em></a>) – The authenticated Five9 remote.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>

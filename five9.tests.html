@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.tests package &#8212; Python Five9 0.0.3b118 documentation</title>
+    <title>five9.tests package &#8212; Python Five9 0.0.3b125 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.0.3b118',
+        VERSION:     '0.0.3b125',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -55,6 +55,73 @@
 <dt id="five9.tests.common.Common.setUp">
 <code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/common.html#Common.setUp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.common.Common.setUp" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-five9.tests.common_crud">
+<span id="five9-tests-common-crud-module"></span><h2>five9.tests.common_crud module<a class="headerlink" href="#module-five9.tests.common_crud" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="five9.tests.common_crud.CommonCrud">
+<em class="property">class </em><code class="descclassname">five9.tests.common_crud.</code><code class="descname">CommonCrud</code><a class="reference internal" href="_modules/five9/tests/common_crud.html#CommonCrud"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.common_crud.CommonCrud" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="five9.tests.common_crud.CommonCrud.Model">
+<code class="descname">Model</code><a class="headerlink" href="#five9.tests.common_crud.CommonCrud.Model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">BaseModel</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.tests.common_crud.CommonCrud.five9_api">
+<code class="descname">five9_api</code><em class="property"> = 'configuration'</em><a class="headerlink" href="#five9.tests.common_crud.CommonCrud.five9_api" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.common_crud.CommonCrud.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/common_crud.html#CommonCrud.setUp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.common_crud.CommonCrud.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.common_crud.CommonCrud.test_create">
+<code class="descname">test_create</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/common_crud.html#CommonCrud.test_create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.common_crud.CommonCrud.test_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>It should use the proper method and args on the API with.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.common_crud.CommonCrud.test_delete">
+<code class="descname">test_delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/common_crud.html#CommonCrud.test_delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.common_crud.CommonCrud.test_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>It should call the delete method and args on the API.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.common_crud.CommonCrud.test_search">
+<code class="descname">test_search</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/common_crud.html#CommonCrud.test_search"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.common_crud.CommonCrud.test_search" title="Permalink to this definition">¶</a></dt>
+<dd><p>It should search the remote for the name.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.common_crud.CommonCrud.test_search_assert">
+<code class="descname">test_search_assert</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/common_crud.html#CommonCrud.test_search_assert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.common_crud.CommonCrud.test_search_assert" title="Permalink to this definition">¶</a></dt>
+<dd><p>It should raise AssertionError when no name in filter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.common_crud.CommonCrud.test_search_multiple">
+<code class="descname">test_search_multiple</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/common_crud.html#CommonCrud.test_search_multiple"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.common_crud.CommonCrud.test_search_multiple" title="Permalink to this definition">¶</a></dt>
+<dd><p>It should search the remote for the conjoined names.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.common_crud.CommonCrud.test_search_return">
+<code class="descname">test_search_return</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/common_crud.html#CommonCrud.test_search_return"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.common_crud.CommonCrud.test_search_return" title="Permalink to this definition">¶</a></dt>
+<dd><p>It should return a list of the result objects.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.common_crud.CommonCrud.test_write">
+<code class="descname">test_write</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/common_crud.html#CommonCrud.test_write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.common_crud.CommonCrud.test_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>It should call the write method on the API.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -165,6 +232,26 @@
 <code class="descname">test_update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_base_model.html#TestBaseModel.test_update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_base_model.TestBaseModel.test_update" title="Permalink to this definition">¶</a></dt>
 <dd><p>It should set the attributes to the provided values.</p>
 </dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-five9.tests.test_disposition">
+<span id="five9-tests-test-disposition-module"></span><h2>five9.tests.test_disposition module<a class="headerlink" href="#module-five9.tests.test_disposition" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="five9.tests.test_disposition.TestDisposition">
+<em class="property">class </em><code class="descclassname">five9.tests.test_disposition.</code><code class="descname">TestDisposition</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_disposition.html#TestDisposition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_disposition.TestDisposition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#five9.tests.common_crud.CommonCrud" title="five9.tests.common_crud.CommonCrud"><code class="xref py py-class docutils literal"><span class="pre">five9.tests.common_crud.CommonCrud</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="attribute">
+<dt id="five9.tests.test_disposition.TestDisposition.Model">
+<code class="descname">Model</code><a class="headerlink" href="#five9.tests.test_disposition.TestDisposition.Model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">Disposition</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.test_disposition.TestDisposition.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_disposition.html#TestDisposition.setUp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_disposition.TestDisposition.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -362,53 +449,17 @@
 <dl class="class">
 <dt id="five9.tests.test_web_connector.TestWebConnector">
 <em class="property">class </em><code class="descclassname">five9.tests.test_web_connector.</code><code class="descname">TestWebConnector</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_web_connector.html#TestWebConnector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_web_connector.TestWebConnector" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#five9.tests.common_crud.CommonCrud" title="five9.tests.common_crud.CommonCrud"><code class="xref py py-class docutils literal"><span class="pre">five9.tests.common_crud.CommonCrud</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="attribute">
+<dt id="five9.tests.test_web_connector.TestWebConnector.Model">
+<code class="descname">Model</code><a class="headerlink" href="#five9.tests.test_web_connector.TestWebConnector.Model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">WebConnector</span></code></p>
+</dd></dl>
+
 <dl class="method">
 <dt id="five9.tests.test_web_connector.TestWebConnector.setUp">
 <code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_web_connector.html#TestWebConnector.setUp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_web_connector.TestWebConnector.setUp" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="five9.tests.test_web_connector.TestWebConnector.test_create">
-<code class="descname">test_create</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_web_connector.html#TestWebConnector.test_create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_web_connector.TestWebConnector.test_create" title="Permalink to this definition">¶</a></dt>
-<dd><p>It should use the proper method and args on the API with.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="five9.tests.test_web_connector.TestWebConnector.test_delete">
-<code class="descname">test_delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_web_connector.html#TestWebConnector.test_delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_web_connector.TestWebConnector.test_delete" title="Permalink to this definition">¶</a></dt>
-<dd><p>It should call the delete method and args on the API.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="five9.tests.test_web_connector.TestWebConnector.test_search">
-<code class="descname">test_search</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_web_connector.html#TestWebConnector.test_search"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_web_connector.TestWebConnector.test_search" title="Permalink to this definition">¶</a></dt>
-<dd><p>It should search the remote for the name.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="five9.tests.test_web_connector.TestWebConnector.test_search_assert">
-<code class="descname">test_search_assert</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_web_connector.html#TestWebConnector.test_search_assert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_web_connector.TestWebConnector.test_search_assert" title="Permalink to this definition">¶</a></dt>
-<dd><p>It should raise AssertionError when no name in filter.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="five9.tests.test_web_connector.TestWebConnector.test_search_multiple">
-<code class="descname">test_search_multiple</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_web_connector.html#TestWebConnector.test_search_multiple"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_web_connector.TestWebConnector.test_search_multiple" title="Permalink to this definition">¶</a></dt>
-<dd><p>It should search the remote for the conjoined names.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="five9.tests.test_web_connector.TestWebConnector.test_search_return">
-<code class="descname">test_search_return</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_web_connector.html#TestWebConnector.test_search_return"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_web_connector.TestWebConnector.test_search_return" title="Permalink to this definition">¶</a></dt>
-<dd><p>It should return a list of the result objects.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="five9.tests.test_web_connector.TestWebConnector.test_write">
-<code class="descname">test_write</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_web_connector.html#TestWebConnector.test_write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_web_connector.TestWebConnector.test_write" title="Permalink to this definition">¶</a></dt>
-<dd><p>It should call the write method on the API.</p>
-</dd></dl>
 
 </dd></dl>
 
@@ -461,8 +512,10 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">five9.tests package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-five9.tests.common">five9.tests.common module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-five9.tests.common_crud">five9.tests.common_crud module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-five9.tests.test_api">five9.tests.test_api module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-five9.tests.test_base_model">five9.tests.test_base_model module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-five9.tests.test_disposition">five9.tests.test_disposition module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-five9.tests.test_environment">five9.tests.test_environment module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-five9.tests.test_five9">five9.tests.test_five9 module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-five9.tests.test_key_value_pair">five9.tests.test_key_value_pair module</a></li>

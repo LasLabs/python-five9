@@ -12,6 +12,14 @@ five9\.tests\.common module
     :undoc-members:
     :show-inheritance:
 
+five9\.tests\.common\_crud module
+---------------------------------
+
+.. automodule:: five9.tests.common_crud
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 five9\.tests\.test\_api module
 ------------------------------
 
@@ -24,6 +32,14 @@ five9\.tests\.test\_base\_model module
 --------------------------------------
 
 .. automodule:: five9.tests.test_base_model
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+five9\.tests\.test\_disposition module
+--------------------------------------
+
+.. automodule:: five9.tests.test_disposition
     :members:
     :undoc-members:
     :show-inheritance:
