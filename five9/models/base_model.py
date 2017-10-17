@@ -118,11 +118,8 @@ class BaseModel(properties.HasProperties):
     @classmethod
     def _get_name_filters(cls, filters):
         """Return a regex filter for the UID column only."""
-        assert filters.get(cls.__uid_field__) is not None
-        if isinstance(filters[cls.__uid_field__], string_types):
-            filters = filters[cls.__uid_field__]
-        else:
-            filters = filters[cls.__uid_field__]
+        filters = filters.get(cls.__uid_field__, '.*')
+        if not isinstance(filters, string_types):
             filters = r'(%s)' % ('|'.join(filters))
         return filters
 

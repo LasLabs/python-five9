@@ -39,12 +39,6 @@ class CommonCrud(object):
         self.Model.create(self.five9, self.data)
         self._get_method('create').assert_called_once_with(self.data)
 
-    def test_search_assert(self):
-        """It should raise AssertionError when no name in filter."""
-        filter = {'test': 1234}
-        with self.assertRaises(AssertionError):
-            self.Model.search(self.five9, filter)
-
     def test_search(self):
         """It should search the remote for the name."""
         self.Model.search(self.five9, self.data)
