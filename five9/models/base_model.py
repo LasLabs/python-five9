@@ -2,13 +2,9 @@
 # Copyright 2017-TODAY LasLabs Inc.
 # License MIT (https://opensource.org/licenses/MIT).
 
-import logging
-
 import properties
 
 from six import string_types
-
-_logger = logging.getLogger(__name__)
 
 
 class BaseModel(properties.HasProperties):
@@ -71,6 +67,13 @@ class BaseModel(properties.HasProperties):
             return None
         return results[0]
 
+    @staticmethod
+    def get_non_empty_vals(mapping):
+        """Return the mapping without any ``None`` values."""
+        return {
+            k: v for k, v in mapping.items() if v is not None
+        }
+
     def delete(self, five9):
         """Delete the record from the remote.
 
@@ -78,6 +81,13 @@ class BaseModel(properties.HasProperties):
             five9 (five9.Five9): The authenticated Five9 remote.
         """
         raise NotImplementedError()
+
+    def get(self, key, default=None):
+        """Return the field indicated by the key, if present."""
+        try:
+            return self.__getitem__(key)
+        except KeyError:
+            return default
 
     def update(self, data):
         """Update the current memory record with the given data dict.
@@ -123,7 +133,6 @@ class BaseModel(properties.HasProperties):
     def _get_name_filters(cls, filters):
         """Return a regex filter for the UID column only."""
         filters = filters.get(cls.__uid_field__)
-        _logger.debug('Get name filters with %s', filters)
         if not filters:
             filters = '.*'
         elif not isinstance(filters, string_types):
@@ -164,3 +173,32 @@ class BaseModel(properties.HasProperties):
             except AttributeError:
                 pass
         return res
+
+    def __getitem__(self, item):
+        """Return the field indicated by the key, if present.
+        This is better than using ``getattr`` because it will not expose any
+        properties that are not meant to be fields for the object.
+        Raises:
+            KeyError: In the event that the field doesn't exist.
+        """
+        self.__check_field(item)
+        return getattr(self, item)
+
+    def __setitem__(self, key, value):
+        """Return the field indicated by the key, if present.
+        This is better than using ``getattr`` because it will not expose any
+        properties that are not meant to be fields for the object.
+        Raises:
+            KeyError: In the event that the field doesn't exist.
+        """
+        self.__check_field(key)
+        return setattr(self, key, value)
+
+    def __check_field(self, key):
+        """Raises a KeyError if the field doesn't exist."""
+        if not self._props.get(key):
+            raise KeyError(
+                'The field "%s" does not exist on "%s"' % (
+                    key, self.__class__.__name__,
+                ),
+            )
