@@ -2,9 +2,13 @@
 # Copyright 2017-TODAY LasLabs Inc.
 # License MIT (https://opensource.org/licenses/MIT).
 
+import logging
+
 import properties
 
 from six import string_types
+
+_logger = logging.getLogger(__name__)
 
 
 class BaseModel(properties.HasProperties):
@@ -34,18 +38,6 @@ class BaseModel(properties.HasProperties):
                 record that was sent to the server.
         """
         raise NotImplementedError()
-
-    @classmethod
-    def deserialize(cls, value, trusted=False, verbose=True, **kwargs):
-        """Support deserialization of ``zeep`` objects."""
-        if not isinstance(value, dict):
-            try:
-                value = dict(value.__values__)
-            except AttributeError:
-                pass
-        return super(BaseModel, cls).deserialize(
-            value, trusted, verbose, **kwargs
-        )
 
     @classmethod
     def search(cls, five9, filters):
@@ -150,4 +142,19 @@ class BaseModel(properties.HasProperties):
             list[BaseModel]: A list of records representing the result.
         """
         filters = cls._get_name_filters(filters)
-        return [cls(**row) for row in method(filters)]
+        return [
+            cls(**cls._zeep_to_dict(row)) for row in method(filters)
+        ]
+
+    @classmethod
+    def _zeep_to_dict(cls, obj, clear_none=True):
+        """Convert a zeep object to a dictionary."""
+        res = dict(obj.__values__)
+        if clear_none:
+            res = {k: v for k, v in res.items() if v is not None}
+        for key, value in res.items():
+            try:
+                res[key] = cls._zeep_to_dict(value, clear_none)
+            except AttributeError:
+                pass
+        return res
