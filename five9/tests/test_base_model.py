@@ -78,7 +78,6 @@ class TestBaseModel(unittest.TestCase):
         for key, value in data.items():
             self.assertEqual(getattr(record, key), value)
 
-
     def test_get_non_empty_vals(self):
         """It should return the dict without NoneTypes."""
         expect = {

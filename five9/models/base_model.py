@@ -159,20 +159,19 @@ class BaseModel(properties.HasProperties):
         ]
 
     @classmethod
-    def _zeep_to_dict(cls, obj, clear_none=True):
+    def _zeep_to_dict(cls, obj):
         """Convert a zeep object to a dictionary."""
+
+        # Return the input object if not compatible
         try:
             res = dict(obj.__values__)
         except AttributeError:
             return obj
-        if clear_none:
-            res = {k: v for k, v in res.items() if v is not None}
-        for key, value in res.items():
-            try:
-                res[key] = cls._zeep_to_dict(value, clear_none)
-            except AttributeError:
-                pass
-        return res
+
+        res = cls.get_non_empty_vals(res)
+        return {
+            k: cls._zeep_to_dict(v) for k, v in res.items()
+        }
 
     def __getitem__(self, item):
         """Return the field indicated by the key, if present.
