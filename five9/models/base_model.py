@@ -122,8 +122,11 @@ class BaseModel(properties.HasProperties):
     @classmethod
     def _get_name_filters(cls, filters):
         """Return a regex filter for the UID column only."""
-        filters = filters.get(cls.__uid_field__, '.*')
-        if not isinstance(filters, string_types):
+        filters = filters.get(cls.__uid_field__)
+        _logger.debug('Get name filters with %s', filters)
+        if not filters:
+            filters = '.*'
+        elif not isinstance(filters, string_types):
             filters = r'(%s)' % ('|'.join(filters))
         return filters
 
@@ -149,7 +152,10 @@ class BaseModel(properties.HasProperties):
     @classmethod
     def _zeep_to_dict(cls, obj, clear_none=True):
         """Convert a zeep object to a dictionary."""
-        res = dict(obj.__values__)
+        try:
+            res = dict(obj.__values__)
+        except AttributeError:
+            return obj
         if clear_none:
             res = {k: v for k, v in res.items() if v is not None}
         for key, value in res.items():
