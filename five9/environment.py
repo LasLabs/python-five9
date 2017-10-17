@@ -131,7 +131,7 @@ class Environment(object):
         Returns:
             Environment: An environment representing the recordset.
         """
-        records = self.__model__.search(filters)
+        records = self.__model__.search(self.__five9__, filters)
         return self.__class__(
             self.__five9__, self.__model__, records,
         )
