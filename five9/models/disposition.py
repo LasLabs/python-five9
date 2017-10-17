@@ -5,7 +5,6 @@
 import properties
 
 from .base_model import BaseModel
-from .disposition_type import DispositionType
 from .disposition_type_params import DispositionTypeParams
 
 
@@ -43,9 +42,38 @@ class Disposition(BaseModel):
         'statistics (customer\'s needs addressed in the first call). Used '
         'primarily for inbound campaigns.',
     )
-    type = properties.Instance(
+    type = properties.StringChoice(
         'Disposition type.',
-        instance_class=DispositionType,
+        choices=['FinalDisp',
+                 'FinalApplyToCampaigns',
+                 'AddActiveNumber',
+                 'AddAndFinalize',
+                 'AddAllNumbers',
+                 'DoNotDial',
+                 'RedialNumber',
+                 ],
+        descriptions={
+            'FinalDisp':
+                'Any contact number of the contact is not dialed again by '
+                'the current campaign.',
+            'FinalApplyToCampaigns':
+                'Contact is not dialed again by any campaign that contains '
+                'the disposition.',
+            'AddActiveNumber':
+                'Adds the number dialed to the DNC list.',
+            'AddAndFinalize':
+                'Adds the call results to the campaign history. This record '
+                'is no longer dialing in this campaign. Does not add the '
+                'contact\'s other phone numbers to the DNC list.',
+            'AddAllNumbers':
+                'Adds all the contact\'s phone numbers to the DNC list.',
+            'DoNotDial':
+                'Number is not dialed in the campaign, but other numbers '
+                'from the CRM record can be dialed.',
+            'RedialNumber':
+                'Number is dialed again when the list to dial is completed, '
+                'and the dialer starts again from the beginning.',
+        },
     )
     typeParameters = properties.Instance(
         'Parameters that apply to the disposition type.',
