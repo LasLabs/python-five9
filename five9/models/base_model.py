@@ -36,6 +36,18 @@ class BaseModel(properties.HasProperties):
         raise NotImplementedError()
 
     @classmethod
+    def deserialize(cls, value, trusted=False, verbose=True, **kwargs):
+        """Support deserialization of ``zeep`` objects."""
+        if not isinstance(value, dict):
+            try:
+                value = dict(value.__values__)
+            except AttributeError:
+                pass
+        return super(BaseModel, cls).deserialize(
+            value, trusted, verbose, **kwargs
+        )
+
+    @classmethod
     def search(cls, five9, filters):
         """Search for a record on the remote and return the results.
 
