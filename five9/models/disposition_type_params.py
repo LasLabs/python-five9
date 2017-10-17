@@ -20,6 +20,6 @@ class DispositionTypeParams(BaseModel):
         'Redial timer.',
         instance_class=Timer,
     )
-    userTimer = properties.Bool(
+    useTimer = properties.Bool(
         'Whether this disposition uses a redial timer.',
     )
