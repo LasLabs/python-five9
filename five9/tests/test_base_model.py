@@ -3,9 +3,15 @@
 # License MIT (https://opensource.org/licenses/MIT).
 
 import mock
+import properties
 import unittest
 
 from ..models.base_model import BaseModel
+
+
+class TestModel(BaseModel):
+    id = properties.Integer('ID')
+    not_a_field = True
 
 
 class TestBaseModel(unittest.TestCase):
@@ -13,6 +19,12 @@ class TestBaseModel(unittest.TestCase):
     def setUp(self):
         super(TestBaseModel, self).setUp()
         self.called_with = None
+        self.id = 1234
+
+    def new_record(self):
+        return TestModel(
+            id=self.id,
+        )
 
     def _test_method(self, data):
         self.called_with = data
@@ -61,7 +73,57 @@ class TestBaseModel(unittest.TestCase):
     def test_update(self):
         """It should set the attributes to the provided values."""
         data = {'test1': 12345, 'test2': 54321}
-        record = BaseModel()
+        record = self.new_record()
         record.update(data)
         for key, value in data.items():
             self.assertEqual(getattr(record, key), value)
+
+    def test_get_non_empty_vals(self):
+        """It should return the dict without NoneTypes."""
+        expect = {
+            'good_int': 1234,
+            'good_false': False,
+            'good_true': True,
+            'bad': None,
+        }
+        res = BaseModel.get_non_empty_vals(expect)
+        del expect['bad']
+        self.assertDictEqual(res, expect)
+
+    def test_dict_lookup_exist(self):
+        """It should return the attribute value when it exists."""
+        self.assertEqual(
+            self.new_record()['id'], self.id,
+        )
+
+    def test_dict_lookup_no_exist(self):
+        """It should raise a KeyError when the attribute isn't a field."""
+        with self.assertRaises(KeyError):
+            self.new_record()['not_a_field']
+
+    def test_dict_set_exist(self):
+        """It should set the attribute via the items."""
+        expect = 4321
+        record = self.new_record()
+        record['id'] = expect
+        self.assertEqual(record.id, expect)
+
+    def test_dict_set_no_exist(self):
+        """It should raise a KeyError and not change the non-field."""
+        record = self.new_record()
+        with self.assertRaises(KeyError):
+            record['not_a_field'] = False
+        self.assertTrue(record.not_a_field)
+
+    def test_get_exist(self):
+        """It should return the attribute if it exists."""
+        self.assertEqual(
+            self.new_record().get('id'), self.id,
+        )
+
+    def test_get_no_exist(self):
+        """It should return the default if the attribute doesn't exist."""
+        expect = 'Test'
+        self.assertEqual(
+            self.new_record().get('not_a_field', expect), expect,
+        )

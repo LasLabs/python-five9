@@ -82,7 +82,7 @@ representing the result:
    })
    result = client.configuration.getContactRecords(criteria)
    # The above result is basically unusable. Parse into a list of dicts::
-   client.parse_records(result['fields'], result['records'])
+   client.parse_response(result['fields'], result['records'])
 
 Example - Update a contact using their first and last name as the search keys:
 

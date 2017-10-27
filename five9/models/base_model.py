@@ -67,6 +67,13 @@ class BaseModel(properties.HasProperties):
             return None
         return results[0]
 
+    @staticmethod
+    def get_non_empty_vals(mapping):
+        """Return the mapping without any ``None`` values."""
+        return {
+            k: v for k, v in mapping.items() if v is not None
+        }
+
     def delete(self, five9):
         """Delete the record from the remote.
 
@@ -74,6 +81,13 @@ class BaseModel(properties.HasProperties):
             five9 (five9.Five9): The authenticated Five9 remote.
         """
         raise NotImplementedError()
+
+    def get(self, key, default=None):
+        """Return the field indicated by the key, if present."""
+        try:
+            return self.__getitem__(key)
+        except KeyError:
+            return default
 
     def update(self, data):
         """Update the current memory record with the given data dict.
@@ -118,11 +132,10 @@ class BaseModel(properties.HasProperties):
     @classmethod
     def _get_name_filters(cls, filters):
         """Return a regex filter for the UID column only."""
-        assert filters.get(cls.__uid_field__) is not None
-        if isinstance(filters[cls.__uid_field__], string_types):
-            filters = filters[cls.__uid_field__]
-        else:
-            filters = filters[cls.__uid_field__]
+        filters = filters.get(cls.__uid_field__)
+        if not filters:
+            filters = '.*'
+        elif not isinstance(filters, string_types):
             filters = r'(%s)' % ('|'.join(filters))
         return filters
 
@@ -141,4 +154,50 @@ class BaseModel(properties.HasProperties):
             list[BaseModel]: A list of records representing the result.
         """
         filters = cls._get_name_filters(filters)
-        return [cls(**row) for row in method(filters)]
+        return [
+            cls(**cls._zeep_to_dict(row)) for row in method(filters)
+        ]
+
+    @classmethod
+    def _zeep_to_dict(cls, obj):
+        """Convert a zeep object to a dictionary."""
+
+        # Return the input object if not compatible
+        try:
+            res = dict(obj.__values__)
+        except AttributeError:
+            return obj
+
+        res = cls.get_non_empty_vals(res)
+        return {
+            k: cls._zeep_to_dict(v) for k, v in res.items()
+        }
+
+    def __getitem__(self, item):
+        """Return the field indicated by the key, if present.
+        This is better than using ``getattr`` because it will not expose any
+        properties that are not meant to be fields for the object.
+        Raises:
+            KeyError: In the event that the field doesn't exist.
+        """
+        self.__check_field(item)
+        return getattr(self, item)
+
+    def __setitem__(self, key, value):
+        """Return the field indicated by the key, if present.
+        This is better than using ``getattr`` because it will not expose any
+        properties that are not meant to be fields for the object.
+        Raises:
+            KeyError: In the event that the field doesn't exist.
+        """
+        self.__check_field(key)
+        return setattr(self, key, value)
+
+    def __check_field(self, key):
+        """Raises a KeyError if the field doesn't exist."""
+        if not self._props.get(key):
+            raise KeyError(
+                'The field "%s" does not exist on "%s"' % (
+                    key, self.__class__.__name__,
+                ),
+            )

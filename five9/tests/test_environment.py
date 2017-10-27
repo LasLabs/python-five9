@@ -96,5 +96,5 @@ class TestEnvironment(unittest.TestCase):
         """It should call search on the model and return a recordset."""
         expect = {'test': 1234}
         results = self.env.search(expect)
-        self.model.search.assert_called_once_with(expect)
+        self.model.search.assert_called_once_with(self.five9, expect)
         self.assertEqual(results.__records__, self.model.search())

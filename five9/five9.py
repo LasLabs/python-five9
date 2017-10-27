@@ -168,7 +168,7 @@ class Five9(object):
                         'value': value,
                     },
                 })
-        return criteria
+        return criteria or None
 
     def _get_authenticated_client(self, wsdl):
         """Return an authenticated SOAP client.
