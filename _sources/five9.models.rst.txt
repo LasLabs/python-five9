@@ -20,14 +20,6 @@ five9\.models\.disposition module
     :undoc-members:
     :show-inheritance:
 
-five9\.models\.disposition\_type module
----------------------------------------
-
-.. automodule:: five9.models.disposition_type
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 five9\.models\.disposition\_type\_params module
 -----------------------------------------------
 

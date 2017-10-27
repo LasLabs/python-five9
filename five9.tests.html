@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.tests package &#8212; Python Five9 0.0.3b125 documentation</title>
+    <title>five9.tests package &#8212; Python Five9 0.0.3b171 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.0.3b125',
+        VERSION:     '0.0.3b171',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -97,12 +97,6 @@
 <dt id="five9.tests.common_crud.CommonCrud.test_search">
 <code class="descname">test_search</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/common_crud.html#CommonCrud.test_search"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.common_crud.CommonCrud.test_search" title="Permalink to this definition">¶</a></dt>
 <dd><p>It should search the remote for the name.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="five9.tests.common_crud.CommonCrud.test_search_assert">
-<code class="descname">test_search_assert</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/common_crud.html#CommonCrud.test_search_assert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.common_crud.CommonCrud.test_search_assert" title="Permalink to this definition">¶</a></dt>
-<dd><p>It should raise AssertionError when no name in filter.</p>
 </dd></dl>
 
 <dl class="method">
@@ -193,6 +187,11 @@
 <em class="property">class </em><code class="descclassname">five9.tests.test_base_model.</code><code class="descname">TestBaseModel</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_base_model.html#TestBaseModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_base_model.TestBaseModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></code></p>
 <dl class="method">
+<dt id="five9.tests.test_base_model.TestBaseModel.new_record">
+<code class="descname">new_record</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_base_model.html#TestBaseModel.new_record"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_base_model.TestBaseModel.new_record" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="five9.tests.test_base_model.TestBaseModel.setUp">
 <code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_base_model.html#TestBaseModel.setUp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_base_model.TestBaseModel.setUp" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -207,6 +206,48 @@
 <dt id="five9.tests.test_base_model.TestBaseModel.test_call_and_serialize_refresh_return">
 <code class="descname">test_call_and_serialize_refresh_return</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_base_model.html#TestBaseModel.test_call_and_serialize_refresh_return"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_base_model.TestBaseModel.test_call_and_serialize_refresh_return" title="Permalink to this definition">¶</a></dt>
 <dd><p>It should return the refreshed object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.test_base_model.TestBaseModel.test_dict_lookup_exist">
+<code class="descname">test_dict_lookup_exist</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_base_model.html#TestBaseModel.test_dict_lookup_exist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_base_model.TestBaseModel.test_dict_lookup_exist" title="Permalink to this definition">¶</a></dt>
+<dd><p>It should return the attribute value when it exists.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.test_base_model.TestBaseModel.test_dict_lookup_no_exist">
+<code class="descname">test_dict_lookup_no_exist</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_base_model.html#TestBaseModel.test_dict_lookup_no_exist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_base_model.TestBaseModel.test_dict_lookup_no_exist" title="Permalink to this definition">¶</a></dt>
+<dd><p>It should raise a KeyError when the attribute isn’t a field.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.test_base_model.TestBaseModel.test_dict_set_exist">
+<code class="descname">test_dict_set_exist</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_base_model.html#TestBaseModel.test_dict_set_exist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_base_model.TestBaseModel.test_dict_set_exist" title="Permalink to this definition">¶</a></dt>
+<dd><p>It should set the attribute via the items.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.test_base_model.TestBaseModel.test_dict_set_no_exist">
+<code class="descname">test_dict_set_no_exist</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_base_model.html#TestBaseModel.test_dict_set_no_exist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_base_model.TestBaseModel.test_dict_set_no_exist" title="Permalink to this definition">¶</a></dt>
+<dd><p>It should raise a KeyError and not change the non-field.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.test_base_model.TestBaseModel.test_get_exist">
+<code class="descname">test_get_exist</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_base_model.html#TestBaseModel.test_get_exist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_base_model.TestBaseModel.test_get_exist" title="Permalink to this definition">¶</a></dt>
+<dd><p>It should return the attribute if it exists.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.test_base_model.TestBaseModel.test_get_no_exist">
+<code class="descname">test_get_no_exist</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_base_model.html#TestBaseModel.test_get_no_exist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_base_model.TestBaseModel.test_get_no_exist" title="Permalink to this definition">¶</a></dt>
+<dd><p>It should return the default if the attribute doesn’t exist.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.tests.test_base_model.TestBaseModel.test_get_non_empty_vals">
+<code class="descname">test_get_non_empty_vals</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_base_model.html#TestBaseModel.test_get_non_empty_vals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_base_model.TestBaseModel.test_get_non_empty_vals" title="Permalink to this definition">¶</a></dt>
+<dd><p>It should return the dict without NoneTypes.</p>
 </dd></dl>
 
 <dl class="method">
@@ -232,6 +273,27 @@
 <code class="descname">test_update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_base_model.html#TestBaseModel.test_update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_base_model.TestBaseModel.test_update" title="Permalink to this definition">¶</a></dt>
 <dd><p>It should set the attributes to the provided values.</p>
 </dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="five9.tests.test_base_model.TestModel">
+<em class="property">class </em><code class="descclassname">five9.tests.test_base_model.</code><code class="descname">TestModel</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/tests/test_base_model.html#TestModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.tests.test_base_model.TestModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="five9.models.html#five9.models.base_model.BaseModel" title="five9.models.base_model.BaseModel"><code class="xref py py-class docutils literal"><span class="pre">five9.models.base_model.BaseModel</span></code></a></p>
+<p><strong>Required Properties:</strong></p>
+<ul class="simple">
+<li><strong>id</strong> (<code class="xref py py-class docutils literal"><span class="pre">Integer</span></code>): ID, an integer</li>
+</ul>
+<dl class="attribute">
+<dt id="five9.tests.test_base_model.TestModel.id">
+<code class="descname">id</code><a class="headerlink" href="#five9.tests.test_base_model.TestModel.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>ID</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="five9.tests.test_base_model.TestModel.not_a_field">
+<code class="descname">not_a_field</code><em class="property"> = True</em><a class="headerlink" href="#five9.tests.test_base_model.TestModel.not_a_field" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 

@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.models package &#8212; Python Five9 0.0.3b125 documentation</title>
+    <title>five9.models package &#8212; Python Five9 0.0.3b171 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.0.3b125',
+        VERSION:     '0.0.3b171',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -98,6 +98,18 @@ record that was sent to the server.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="five9.models.base_model.BaseModel.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>key</em>, <em>default=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/base_model.html#BaseModel.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.base_model.BaseModel.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the field indicated by the key, if present.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="five9.models.base_model.BaseModel.get_non_empty_vals">
+<em class="property">static </em><code class="descname">get_non_empty_vals</code><span class="sig-paren">(</span><em>mapping</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/base_model.html#BaseModel.get_non_empty_vals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.base_model.BaseModel.get_non_empty_vals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the mapping without any <code class="docutils literal"><span class="pre">None</span></code> values.</p>
 </dd></dl>
 
 <dl class="classmethod">
@@ -198,7 +210,7 @@ schema defined in <a class="reference internal" href="five9.html#five9.Five9.cre
 <li><strong>sendEmailNotification</strong> (<code class="xref py py-class docutils literal"><span class="pre">Bool</span></code>): Whether call details are sent as an email notification when the disposition is used by an agent., a boolean</li>
 <li><strong>sendIMNotification</strong> (<code class="xref py py-class docutils literal"><span class="pre">Bool</span></code>): Whether call details are sent as an instant message in the Five9 system when the disposition is used by an agent., a boolean</li>
 <li><strong>trackAsFirstCallResolution</strong> (<code class="xref py py-class docutils literal"><span class="pre">Bool</span></code>): Whether the call is included in the first call resolution statistics (customer’s needs addressed in the first call). Used primarily for inbound campaigns., a boolean</li>
-<li><strong>type</strong> (<a class="reference internal" href="#five9.models.DispositionType" title="five9.models.DispositionType"><code class="xref py py-class docutils literal"><span class="pre">DispositionType</span></code></a>): Disposition type., an instance of DispositionType</li>
+<li><strong>type</strong> (<code class="xref py py-class docutils literal"><span class="pre">StringChoice</span></code>): Disposition type., any of “FinalDisp” (Any contact number of the contact is not dialed again by the current campaign.), “FinalApplyToCampaigns” (Contact is not dialed again by any campaign that contains the disposition.), “AddActiveNumber” (Adds the number dialed to the DNC list.), “AddAndFinalize” (Adds the call results to the campaign history. This record is no longer dialing in this campaign. Does not add the contact’s other phone numbers to the DNC list.), “AddAllNumbers” (Adds all the contact’s phone numbers to the DNC list.), “DoNotDial” (Number is not dialed in the campaign, but other numbers from the CRM record can be dialed.), “RedialNumber” (Number is dialed again when the list to dial is completed, and the dialer starts again from the beginning.)</li>
 <li><strong>typeParameters</strong> (<a class="reference internal" href="#five9.models.disposition_type_params.DispositionTypeParams" title="five9.models.disposition_type_params.DispositionTypeParams"><code class="xref py py-class docutils literal"><span class="pre">DispositionTypeParams</span></code></a>): Parameters that apply to the disposition type., an instance of DispositionTypeParams</li>
 </ul>
 <dl class="attribute">
@@ -350,67 +362,6 @@ schema defined in <a class="reference internal" href="five9.html#five9.Five9.cre
 </dd></dl>
 
 </div>
-<div class="section" id="module-five9.models.disposition_type">
-<span id="five9-models-disposition-type-module"></span><h2>five9.models.disposition_type module<a class="headerlink" href="#module-five9.models.disposition_type" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="five9.models.disposition_type.DispositionType">
-<em class="property">class </em><code class="descclassname">five9.models.disposition_type.</code><code class="descname">DispositionType</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/disposition_type.html#DispositionType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.disposition_type.DispositionType" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#five9.models.base_model.BaseModel" title="five9.models.base_model.BaseModel"><code class="xref py py-class docutils literal"><span class="pre">five9.models.base_model.BaseModel</span></code></a></p>
-<p><strong>Required Properties:</strong></p>
-<ul class="simple">
-<li><strong>AddActiveNumber</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Adds the number dialed to the DNC list., a unicode string</li>
-<li><strong>AddAllNumbers</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Adds all the contact’s phone numbers to the DNC list., a unicode string</li>
-<li><strong>AddAndFinalize</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Adds the call results to the campaign history. This record is no longer dialing in this campaign. Does not add the contact’s other phone numbers to the DNC list., a unicode string</li>
-<li><strong>DoNotDial</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Number is not dialed in the campaign, but other numbers from the CRM record can be dialed., a unicode string</li>
-<li><strong>FinalApplyToCampaigns</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Contact is not dialed again by any campaign that contains the disposition., a unicode string</li>
-<li><strong>FinalDisp</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Any contact number of the contact is not dialed again by the current campaign., a unicode string</li>
-<li><strong>RedialNumber</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Number is dialed again when the list to dial is completed, and the dialer starts again from the beginning., a unicode string</li>
-</ul>
-<dl class="attribute">
-<dt id="five9.models.disposition_type.DispositionType.AddActiveNumber">
-<code class="descname">AddActiveNumber</code><a class="headerlink" href="#five9.models.disposition_type.DispositionType.AddActiveNumber" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds the number dialed to the DNC list.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="five9.models.disposition_type.DispositionType.AddAllNumbers">
-<code class="descname">AddAllNumbers</code><a class="headerlink" href="#five9.models.disposition_type.DispositionType.AddAllNumbers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds all the contact’s phone numbers to the DNC list.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="five9.models.disposition_type.DispositionType.AddAndFinalize">
-<code class="descname">AddAndFinalize</code><a class="headerlink" href="#five9.models.disposition_type.DispositionType.AddAndFinalize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds the call results to the campaign history. This record is no longer dialing in this campaign. Does not add the contact’s other phone numbers to the DNC list.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="five9.models.disposition_type.DispositionType.DoNotDial">
-<code class="descname">DoNotDial</code><a class="headerlink" href="#five9.models.disposition_type.DispositionType.DoNotDial" title="Permalink to this definition">¶</a></dt>
-<dd><p>Number is not dialed in the campaign, but other numbers from the CRM record can be dialed.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="five9.models.disposition_type.DispositionType.FinalApplyToCampaigns">
-<code class="descname">FinalApplyToCampaigns</code><a class="headerlink" href="#five9.models.disposition_type.DispositionType.FinalApplyToCampaigns" title="Permalink to this definition">¶</a></dt>
-<dd><p>Contact is not dialed again by any campaign that contains the disposition.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="five9.models.disposition_type.DispositionType.FinalDisp">
-<code class="descname">FinalDisp</code><a class="headerlink" href="#five9.models.disposition_type.DispositionType.FinalDisp" title="Permalink to this definition">¶</a></dt>
-<dd><p>Any contact number of the contact is not dialed again by the current campaign.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="five9.models.disposition_type.DispositionType.RedialNumber">
-<code class="descname">RedialNumber</code><a class="headerlink" href="#five9.models.disposition_type.DispositionType.RedialNumber" title="Permalink to this definition">¶</a></dt>
-<dd><p>Number is dialed again when the list to dial is completed, and the dialer starts again from the beginning.</p>
-</dd></dl>
-
-</dd></dl>
-
-</div>
 <div class="section" id="module-five9.models.disposition_type_params">
 <span id="five9-models-disposition-type-params-module"></span><h2>five9.models.disposition_type_params module<a class="headerlink" href="#module-five9.models.disposition_type_params" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
@@ -422,7 +373,7 @@ schema defined in <a class="reference internal" href="five9.html#five9.Five9.cre
 <li><strong>allowChangeTimer</strong> (<code class="xref py py-class docutils literal"><span class="pre">Bool</span></code>): Whether the agent can change the redial timer for this disposition., a boolean</li>
 <li><strong>attempts</strong> (<code class="xref py py-class docutils literal"><span class="pre">Integer</span></code>): Number of redial attempts., an integer</li>
 <li><strong>timer</strong> (<a class="reference internal" href="#five9.models.Timer" title="five9.models.Timer"><code class="xref py py-class docutils literal"><span class="pre">Timer</span></code></a>): Redial timer., an instance of Timer</li>
-<li><strong>userTimer</strong> (<code class="xref py py-class docutils literal"><span class="pre">Bool</span></code>): Whether this disposition uses a redial timer., a boolean</li>
+<li><strong>useTimer</strong> (<code class="xref py py-class docutils literal"><span class="pre">Bool</span></code>): Whether this disposition uses a redial timer., a boolean</li>
 </ul>
 <dl class="attribute">
 <dt id="five9.models.disposition_type_params.DispositionTypeParams.allowChangeTimer">
@@ -443,8 +394,8 @@ schema defined in <a class="reference internal" href="five9.html#five9.Five9.cre
 </dd></dl>
 
 <dl class="attribute">
-<dt id="five9.models.disposition_type_params.DispositionTypeParams.userTimer">
-<code class="descname">userTimer</code><a class="headerlink" href="#five9.models.disposition_type_params.DispositionTypeParams.userTimer" title="Permalink to this definition">¶</a></dt>
+<dt id="five9.models.disposition_type_params.DispositionTypeParams.useTimer">
+<code class="descname">useTimer</code><a class="headerlink" href="#five9.models.disposition_type_params.DispositionTypeParams.useTimer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether this disposition uses a redial timer.</p>
 </dd></dl>
 
@@ -717,7 +668,7 @@ schema defined in <a class="reference internal" href="five9.html#five9.Five9.cre
 <li><strong>sendEmailNotification</strong> (<code class="xref py py-class docutils literal"><span class="pre">Bool</span></code>): Whether call details are sent as an email notification when the disposition is used by an agent., a boolean</li>
 <li><strong>sendIMNotification</strong> (<code class="xref py py-class docutils literal"><span class="pre">Bool</span></code>): Whether call details are sent as an instant message in the Five9 system when the disposition is used by an agent., a boolean</li>
 <li><strong>trackAsFirstCallResolution</strong> (<code class="xref py py-class docutils literal"><span class="pre">Bool</span></code>): Whether the call is included in the first call resolution statistics (customer’s needs addressed in the first call). Used primarily for inbound campaigns., a boolean</li>
-<li><strong>type</strong> (<a class="reference internal" href="#five9.models.DispositionType" title="five9.models.DispositionType"><code class="xref py py-class docutils literal"><span class="pre">DispositionType</span></code></a>): Disposition type., an instance of DispositionType</li>
+<li><strong>type</strong> (<code class="xref py py-class docutils literal"><span class="pre">StringChoice</span></code>): Disposition type., any of “FinalDisp” (Any contact number of the contact is not dialed again by the current campaign.), “FinalApplyToCampaigns” (Contact is not dialed again by any campaign that contains the disposition.), “AddActiveNumber” (Adds the number dialed to the DNC list.), “AddAndFinalize” (Adds the call results to the campaign history. This record is no longer dialing in this campaign. Does not add the contact’s other phone numbers to the DNC list.), “AddAllNumbers” (Adds all the contact’s phone numbers to the DNC list.), “DoNotDial” (Number is not dialed in the campaign, but other numbers from the CRM record can be dialed.), “RedialNumber” (Number is dialed again when the list to dial is completed, and the dialer starts again from the beginning.)</li>
 <li><strong>typeParameters</strong> (<a class="reference internal" href="#five9.models.DispositionTypeParams" title="five9.models.DispositionTypeParams"><code class="xref py py-class docutils literal"><span class="pre">DispositionTypeParams</span></code></a>): Parameters that apply to the disposition type., an instance of DispositionTypeParams</li>
 </ul>
 <dl class="attribute">
@@ -869,64 +820,6 @@ schema defined in <a class="reference internal" href="five9.html#five9.Five9.cre
 </dd></dl>
 
 <dl class="class">
-<dt id="five9.models.DispositionType">
-<em class="property">class </em><code class="descclassname">five9.models.</code><code class="descname">DispositionType</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/disposition_type.html#DispositionType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.DispositionType" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#five9.models.base_model.BaseModel" title="five9.models.base_model.BaseModel"><code class="xref py py-class docutils literal"><span class="pre">five9.models.base_model.BaseModel</span></code></a></p>
-<p><strong>Required Properties:</strong></p>
-<ul class="simple">
-<li><strong>AddActiveNumber</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Adds the number dialed to the DNC list., a unicode string</li>
-<li><strong>AddAllNumbers</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Adds all the contact’s phone numbers to the DNC list., a unicode string</li>
-<li><strong>AddAndFinalize</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Adds the call results to the campaign history. This record is no longer dialing in this campaign. Does not add the contact’s other phone numbers to the DNC list., a unicode string</li>
-<li><strong>DoNotDial</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Number is not dialed in the campaign, but other numbers from the CRM record can be dialed., a unicode string</li>
-<li><strong>FinalApplyToCampaigns</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Contact is not dialed again by any campaign that contains the disposition., a unicode string</li>
-<li><strong>FinalDisp</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Any contact number of the contact is not dialed again by the current campaign., a unicode string</li>
-<li><strong>RedialNumber</strong> (<code class="xref py py-class docutils literal"><span class="pre">String</span></code>): Number is dialed again when the list to dial is completed, and the dialer starts again from the beginning., a unicode string</li>
-</ul>
-<dl class="attribute">
-<dt id="five9.models.DispositionType.AddActiveNumber">
-<code class="descname">AddActiveNumber</code><a class="headerlink" href="#five9.models.DispositionType.AddActiveNumber" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds the number dialed to the DNC list.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="five9.models.DispositionType.AddAllNumbers">
-<code class="descname">AddAllNumbers</code><a class="headerlink" href="#five9.models.DispositionType.AddAllNumbers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds all the contact’s phone numbers to the DNC list.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="five9.models.DispositionType.AddAndFinalize">
-<code class="descname">AddAndFinalize</code><a class="headerlink" href="#five9.models.DispositionType.AddAndFinalize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds the call results to the campaign history. This record is no longer dialing in this campaign. Does not add the contact’s other phone numbers to the DNC list.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="five9.models.DispositionType.DoNotDial">
-<code class="descname">DoNotDial</code><a class="headerlink" href="#five9.models.DispositionType.DoNotDial" title="Permalink to this definition">¶</a></dt>
-<dd><p>Number is not dialed in the campaign, but other numbers from the CRM record can be dialed.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="five9.models.DispositionType.FinalApplyToCampaigns">
-<code class="descname">FinalApplyToCampaigns</code><a class="headerlink" href="#five9.models.DispositionType.FinalApplyToCampaigns" title="Permalink to this definition">¶</a></dt>
-<dd><p>Contact is not dialed again by any campaign that contains the disposition.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="five9.models.DispositionType.FinalDisp">
-<code class="descname">FinalDisp</code><a class="headerlink" href="#five9.models.DispositionType.FinalDisp" title="Permalink to this definition">¶</a></dt>
-<dd><p>Any contact number of the contact is not dialed again by the current campaign.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="five9.models.DispositionType.RedialNumber">
-<code class="descname">RedialNumber</code><a class="headerlink" href="#five9.models.DispositionType.RedialNumber" title="Permalink to this definition">¶</a></dt>
-<dd><p>Number is dialed again when the list to dial is completed, and the dialer starts again from the beginning.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
 <dt id="five9.models.DispositionTypeParams">
 <em class="property">class </em><code class="descclassname">five9.models.</code><code class="descname">DispositionTypeParams</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/five9/models/disposition_type_params.html#DispositionTypeParams"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#five9.models.DispositionTypeParams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#five9.models.base_model.BaseModel" title="five9.models.base_model.BaseModel"><code class="xref py py-class docutils literal"><span class="pre">five9.models.base_model.BaseModel</span></code></a></p>
@@ -935,7 +828,7 @@ schema defined in <a class="reference internal" href="five9.html#five9.Five9.cre
 <li><strong>allowChangeTimer</strong> (<code class="xref py py-class docutils literal"><span class="pre">Bool</span></code>): Whether the agent can change the redial timer for this disposition., a boolean</li>
 <li><strong>attempts</strong> (<code class="xref py py-class docutils literal"><span class="pre">Integer</span></code>): Number of redial attempts., an integer</li>
 <li><strong>timer</strong> (<a class="reference internal" href="#five9.models.Timer" title="five9.models.Timer"><code class="xref py py-class docutils literal"><span class="pre">Timer</span></code></a>): Redial timer., an instance of Timer</li>
-<li><strong>userTimer</strong> (<code class="xref py py-class docutils literal"><span class="pre">Bool</span></code>): Whether this disposition uses a redial timer., a boolean</li>
+<li><strong>useTimer</strong> (<code class="xref py py-class docutils literal"><span class="pre">Bool</span></code>): Whether this disposition uses a redial timer., a boolean</li>
 </ul>
 <dl class="attribute">
 <dt id="five9.models.DispositionTypeParams.allowChangeTimer">
@@ -956,8 +849,8 @@ schema defined in <a class="reference internal" href="five9.html#five9.Five9.cre
 </dd></dl>
 
 <dl class="attribute">
-<dt id="five9.models.DispositionTypeParams.userTimer">
-<code class="descname">userTimer</code><a class="headerlink" href="#five9.models.DispositionTypeParams.userTimer" title="Permalink to this definition">¶</a></dt>
+<dt id="five9.models.DispositionTypeParams.useTimer">
+<code class="descname">useTimer</code><a class="headerlink" href="#five9.models.DispositionTypeParams.useTimer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether this disposition uses a redial timer.</p>
 </dd></dl>
 
@@ -1250,7 +1143,6 @@ schema defined in <a class="reference internal" href="five9.html#five9.Five9.cre
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-five9.models.base_model">five9.models.base_model module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-five9.models.disposition">five9.models.disposition module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-five9.models.disposition_type">five9.models.disposition_type module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-five9.models.disposition_type_params">five9.models.disposition_type_params module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-five9.models.key_value_pair">five9.models.key_value_pair module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-five9.models.timer">five9.models.timer module</a></li>

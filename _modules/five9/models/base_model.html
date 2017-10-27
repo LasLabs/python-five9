@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.models.base_model &#8212; Python Five9 0.0.3b125 documentation</title>
+    <title>five9.models.base_model &#8212; Python Five9 0.0.3b171 documentation</title>
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.0.3b125',
+        VERSION:     '0.0.3b171',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -108,6 +108,13 @@
             <span class="k">return</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
+<div class="viewcode-block" id="BaseModel.get_non_empty_vals"><a class="viewcode-back" href="../../../five9.models.html#five9.models.base_model.BaseModel.get_non_empty_vals">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_non_empty_vals</span><span class="p">(</span><span class="n">mapping</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the mapping without any ``None`` values.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">mapping</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="p">}</span></div>
+
 <div class="viewcode-block" id="BaseModel.delete"><a class="viewcode-back" href="../../../five9.models.html#five9.models.base_model.BaseModel.delete">[docs]</a>    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">five9</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Delete the record from the remote.</span>
 
@@ -115,6 +122,13 @@
 <span class="sd">            five9 (five9.Five9): The authenticated Five9 remote.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="BaseModel.get"><a class="viewcode-back" href="../../../five9.models.html#five9.models.base_model.BaseModel.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the field indicated by the key, if present.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">default</span></div>
 
 <div class="viewcode-block" id="BaseModel.update"><a class="viewcode-back" href="../../../five9.models.html#five9.models.base_model.BaseModel.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Update the current memory record with the given data dict.</span>
@@ -159,11 +173,10 @@
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">_get_name_filters</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filters</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a regex filter for the UID column only.&quot;&quot;&quot;</span>
-        <span class="k">assert</span> <span class="n">filters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">__uid_field__</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filters</span><span class="p">[</span><span class="bp">cls</span><span class="o">.</span><span class="n">__uid_field__</span><span class="p">],</span> <span class="n">string_types</span><span class="p">):</span>
-            <span class="n">filters</span> <span class="o">=</span> <span class="n">filters</span><span class="p">[</span><span class="bp">cls</span><span class="o">.</span><span class="n">__uid_field__</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">filters</span> <span class="o">=</span> <span class="n">filters</span><span class="p">[</span><span class="bp">cls</span><span class="o">.</span><span class="n">__uid_field__</span><span class="p">]</span>
+        <span class="n">filters</span> <span class="o">=</span> <span class="n">filters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">__uid_field__</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">filters</span><span class="p">:</span>
+            <span class="n">filters</span> <span class="o">=</span> <span class="s1">&#39;.*&#39;</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filters</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
             <span class="n">filters</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;(</span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">filters</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">filters</span>
 
@@ -182,7 +195,53 @@
 <span class="sd">            list[BaseModel]: A list of records representing the result.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">filters</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_get_name_filters</span><span class="p">(</span><span class="n">filters</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">[</span><span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">method</span><span class="p">(</span><span class="n">filters</span><span class="p">)]</span></div>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="bp">cls</span><span class="o">.</span><span class="n">_zeep_to_dict</span><span class="p">(</span><span class="n">row</span><span class="p">))</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">method</span><span class="p">(</span><span class="n">filters</span><span class="p">)</span>
+        <span class="p">]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_zeep_to_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert a zeep object to a dictionary.&quot;&quot;&quot;</span>
+
+        <span class="c1"># Return the input object if not compatible</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">__values__</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">obj</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_non_empty_vals</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="n">k</span><span class="p">:</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_zeep_to_dict</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the field indicated by the key, if present.</span>
+<span class="sd">        This is better than using ``getattr`` because it will not expose any</span>
+<span class="sd">        properties that are not meant to be fields for the object.</span>
+<span class="sd">        Raises:</span>
+<span class="sd">            KeyError: In the event that the field doesn&#39;t exist.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__check_field</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the field indicated by the key, if present.</span>
+<span class="sd">        This is better than using ``getattr`` because it will not expose any</span>
+<span class="sd">        properties that are not meant to be fields for the object.</span>
+<span class="sd">        Raises:</span>
+<span class="sd">            KeyError: In the event that the field doesn&#39;t exist.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__check_field</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__check_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Raises a KeyError if the field doesn&#39;t exist.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_props</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
+                <span class="s1">&#39;The field &quot;</span><span class="si">%s</span><span class="s1">&quot; does not exist on &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span>
+                    <span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                <span class="p">),</span>
+            <span class="p">)</span></div>
 </pre></div>
 
           </div>

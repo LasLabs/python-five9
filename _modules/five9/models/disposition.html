@@ -5,13 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>five9.models.disposition &#8212; Python Five9 0.0.3b125 documentation</title>
+    <title>five9.models.disposition &#8212; Python Five9 0.0.3b171 documentation</title>
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '0.0.3b125',
+        VERSION:     '0.0.3b171',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -46,7 +46,6 @@
 <span class="kn">import</span> <span class="nn">properties</span>
 
 <span class="kn">from</span> <span class="nn">.base_model</span> <span class="k">import</span> <span class="n">BaseModel</span>
-<span class="kn">from</span> <span class="nn">.disposition_type</span> <span class="k">import</span> <span class="n">DispositionType</span>
 <span class="kn">from</span> <span class="nn">.disposition_type_params</span> <span class="k">import</span> <span class="n">DispositionTypeParams</span>
 
 
@@ -84,9 +83,38 @@
         <span class="s1">&#39;statistics (customer</span><span class="se">\&#39;</span><span class="s1">s needs addressed in the first call). Used &#39;</span>
         <span class="s1">&#39;primarily for inbound campaigns.&#39;</span><span class="p">,</span>
     <span class="p">)</span>
-    <span class="nb">type</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">Instance</span><span class="p">(</span>
+    <span class="nb">type</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">StringChoice</span><span class="p">(</span>
         <span class="s1">&#39;Disposition type.&#39;</span><span class="p">,</span>
-        <span class="n">instance_class</span><span class="o">=</span><span class="n">DispositionType</span><span class="p">,</span>
+        <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;FinalDisp&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;FinalApplyToCampaigns&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;AddActiveNumber&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;AddAndFinalize&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;AddAllNumbers&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;DoNotDial&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;RedialNumber&#39;</span><span class="p">,</span>
+                 <span class="p">],</span>
+        <span class="n">descriptions</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;FinalDisp&#39;</span><span class="p">:</span>
+                <span class="s1">&#39;Any contact number of the contact is not dialed again by &#39;</span>
+                <span class="s1">&#39;the current campaign.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;FinalApplyToCampaigns&#39;</span><span class="p">:</span>
+                <span class="s1">&#39;Contact is not dialed again by any campaign that contains &#39;</span>
+                <span class="s1">&#39;the disposition.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;AddActiveNumber&#39;</span><span class="p">:</span>
+                <span class="s1">&#39;Adds the number dialed to the DNC list.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;AddAndFinalize&#39;</span><span class="p">:</span>
+                <span class="s1">&#39;Adds the call results to the campaign history. This record &#39;</span>
+                <span class="s1">&#39;is no longer dialing in this campaign. Does not add the &#39;</span>
+                <span class="s1">&#39;contact</span><span class="se">\&#39;</span><span class="s1">s other phone numbers to the DNC list.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;AddAllNumbers&#39;</span><span class="p">:</span>
+                <span class="s1">&#39;Adds all the contact</span><span class="se">\&#39;</span><span class="s1">s phone numbers to the DNC list.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;DoNotDial&#39;</span><span class="p">:</span>
+                <span class="s1">&#39;Number is not dialed in the campaign, but other numbers &#39;</span>
+                <span class="s1">&#39;from the CRM record can be dialed.&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;RedialNumber&#39;</span><span class="p">:</span>
+                <span class="s1">&#39;Number is dialed again when the list to dial is completed, &#39;</span>
+                <span class="s1">&#39;and the dialer starts again from the beginning.&#39;</span><span class="p">,</span>
+        <span class="p">},</span>
     <span class="p">)</span>
     <span class="n">typeParameters</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">Instance</span><span class="p">(</span>
         <span class="s1">&#39;Parameters that apply to the disposition type.&#39;</span><span class="p">,</span>
