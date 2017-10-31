@@ -121,7 +121,7 @@ class BaseModel(properties.HasProperties):
         if refresh:
             return cls.read(method.__self__, data[cls.__uid_field__])
         else:
-            return cls.deserialize(data)
+            return cls.deserialize(cls._get_non_empty_dict(data))
 
     @classmethod
     def _get_name_filters(cls, filters):

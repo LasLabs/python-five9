@@ -73,7 +73,10 @@ class TestEnvironment(unittest.TestCase):
         """It should return a deserialized memory record if no refresh."""
         expect = {'test': 1234}
         res = self.env.create(expect, False)
-        self.model.deserialize.assert_called_once_with(expect)
+        self.model._get_non_empty_dict.assert_called_once_with(expect)
+        self.model.deserialize.assert_called_once_with(
+            self.model._get_non_empty_dict(),
+        )
         self.assertEqual(len(res.__records__), 1)
         self.assertEqual(res.__records__[0], self.model.deserialize())
 
