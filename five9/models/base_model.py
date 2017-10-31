@@ -4,6 +4,7 @@
 
 import properties
 
+from zeep.helpers import serialize_object
 from six import string_types
 
 
@@ -66,13 +67,6 @@ class BaseModel(properties.HasProperties):
         if not results:
             return None
         return results[0]
-
-    @staticmethod
-    def get_non_empty_vals(mapping):
-        """Return the mapping without any ``None`` values."""
-        return {
-            k: v for k, v in mapping.items() if v is not None
-        }
 
     def delete(self, five9):
         """Delete the record from the remote.
@@ -140,6 +134,30 @@ class BaseModel(properties.HasProperties):
         return filters
 
     @classmethod
+    def _get_non_empty_dict(cls, mapping):
+        """Return the mapping without any ``None`` values (recursive)."""
+        res = {}
+        for key, value in mapping.items():
+            if hasattr(value, 'items'):
+                value = cls._get_non_empty_dict(value)
+            elif isinstance(value, list):
+                value = cls._get_non_empty_list(value)
+            if value is not None:
+                res[key] = value
+        return res
+
+    @classmethod
+    def _get_non_empty_list(cls, iter):
+        """Return a list of the input, excluding all ``None`` values."""
+        res = []
+        for value in iter:
+            if hasattr(value, 'items'):
+                value = cls._get_non_empty_dict(value)
+            if value is not None:
+                res.append(value)
+        return res
+
+    @classmethod
     def _name_search(cls, method, filters):
         """Helper for search methods that use name filters.
 
@@ -155,23 +173,15 @@ class BaseModel(properties.HasProperties):
         """
         filters = cls._get_name_filters(filters)
         return [
-            cls(**cls._zeep_to_dict(row)) for row in method(filters)
+            cls.deserialize(cls._zeep_to_dict(row)) for row in method(filters)
         ]
 
     @classmethod
     def _zeep_to_dict(cls, obj):
         """Convert a zeep object to a dictionary."""
-
-        # Return the input object if not compatible
-        try:
-            res = dict(obj.__values__)
-        except AttributeError:
-            return obj
-
-        res = cls.get_non_empty_vals(res)
-        return {
-            k: cls._zeep_to_dict(v) for k, v in res.items()
-        }
+        res = serialize_object(obj)
+        res = cls._get_non_empty_dict(res)
+        return res
 
     def __getitem__(self, item):
         """Return the field indicated by the key, if present.
