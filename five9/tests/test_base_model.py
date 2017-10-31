@@ -85,21 +85,17 @@ class TestBaseModel(unittest.TestCase):
             'good_false': False,
             'good_true': True,
             'bad': None,
-            'bad_dict': {
-                'key': None,
-            },
-            'bad_list': [
-                None,
-            ],
-            'bad_list_with_dict': [
-                {'key': None},
-            ]
+            'bad_dict': {'key': None},
+            'bad_list': [None],
+            'bad_list_with_dict': [{'key': None}],
+            'good_list': [1, 2],
+            'good_list_with_dict': [{'key': 1}],
         }
         res = BaseModel._get_non_empty_dict(expect)
-        del expect['bad']
-        expect['bad_dict'] = {}
-        expect['bad_list'] = []
-        expect['bad_list_with_dict'] = [{}]
+        del expect['bad'], \
+            expect['bad_dict'], \
+            expect['bad_list'], \
+            expect['bad_list_with_dict']
         self.assertDictEqual(res, expect)
 
     def test_dict_lookup_exist(self):
