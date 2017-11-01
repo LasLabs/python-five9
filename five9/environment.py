@@ -98,6 +98,7 @@ class Environment(object):
     @Api.model
     def new(self, data):
         """Create a new memory record, but do not create on the remote."""
+        data = self.__model__._get_non_empty_dict(data)
         return self.__class__(
             self.__five9__,
             self.__model__,

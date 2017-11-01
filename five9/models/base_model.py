@@ -121,7 +121,7 @@ class BaseModel(properties.HasProperties):
         if refresh:
             return cls.read(method.__self__, data[cls.__uid_field__])
         else:
-            return cls.deserialize(data)
+            return cls.deserialize(cls._get_non_empty_dict(data))
 
     @classmethod
     def _get_name_filters(cls, filters):
@@ -142,7 +142,7 @@ class BaseModel(properties.HasProperties):
                 value = cls._get_non_empty_dict(value)
             elif isinstance(value, list):
                 value = cls._get_non_empty_list(value)
-            if value is not None:
+            if value not in [[], {}, None]:
                 res[key] = value
         return res
 
@@ -152,7 +152,7 @@ class BaseModel(properties.HasProperties):
         res = []
         for value in iter:
             if hasattr(value, 'items'):
-                value = cls._get_non_empty_dict(value)
+                value = cls._get_non_empty_dict(value) or None
             if value is not None:
                 res.append(value)
         return res
